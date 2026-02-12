@@ -8,4 +8,5 @@ Nome: Diogo Ribeiro Vassalo de Abreu
 
 ## Lista de Resultados
 
-[TPC1](TPC1/)
+- [TPC1: ](TPC1/) Ontologia em RDF/OWL
+- [TPC2: ](TPC2/) Ontologia em RDF/OWL (Com Propriedades Adicionais)
