@@ -34,7 +34,7 @@ Lista de Cliente Obtida:
 
 Query
 
-```
+```sparql
 PREFIX : <http://example.org/polvo-filosofico#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 select * where {
@@ -59,7 +59,7 @@ Lista de Pratos Obtida:
 
 Query
 
-```
+```sparql
 PREFIX : <http://example.org/polvo-filosofico#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 select DISTINCT ?ing where {
@@ -85,7 +85,7 @@ Lista de Ingredientes obtida:
 
 Query
 
-```
+```sparql
 PREFIX : <http://example.org/polvo-filosofico#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 select ?nome where {
