@@ -6,7 +6,7 @@ Este trabalho consistiu na criação, povoamento e exploração de uma ontologia
 
 ### Modelação da Ontologia
 
-Numa primeira fase foi realizada a **modelação da ontologia utilizando a ferramenta Protégé** de acordo com a ontologia dada pelo professor ([ ./bibliotecatemporal.ttl:](bibliotecatemporal.ttl/))
+Numa primeira fase foi realizada a **modelação da ontologia utilizando a ferramenta Protégé** de acordo com a ontologia dada pelo professor ([ ./bibliotecatemporal.ttl](bibliotecatemporal.ttl/))
 
 Estas definições permitiram representar as relações entre **livros, autores, eventos históricos/futuros e diferentes linhas temporais**.
 
@@ -17,7 +17,7 @@ Após a definição da estrutura da ontologia, procedeu-se ao seu **povoamento c
 Para tal, foi desenvolvido um **script em Python**, recorrendo à biblioteca **rdflib**, que permitiu:
 
 1. Ler a ontologia em formato **Turtle (.ttl)**.
-2. Processar dois conjuntos de dados fornecidos em formato **JSON** ([ ./dataset_temporal_100.json:](dataset_temporal_100.json/) e [ ./dataset_temporal_100.json:](dataset_temporal_v2_100.json/)
+2. Processar dois conjuntos de dados fornecidos em formato **JSON** ([ ./dataset_temporal_100.json](dataset_temporal_100.json/) e [ ./dataset_temporal_v2_100.json](dataset_temporal_v2_100.json/)
 3. Criar automaticamente **indivíduos das classes definidas na ontologia**.
 4. Estabelecer as respetivas **relações entre os indivíduos**, como:
 
@@ -26,7 +26,7 @@ Para tal, foi desenvolvido um **script em Python**, recorrendo à biblioteca **r
    * referência a eventos históricos ou futuros,
    * associação de bibliotecários às bibliotecas onde trabalham.
 
-No final, o script gerou uma nova versão da ontologia já **povoada com dados**, que foi posteriormente carregada no **GraphDB** para permitir a execução de consultas SPARQL ([./bibliotecaTemporalFinal.ttl:](bibliotecaTemporalFinal.ttl/))
+No final, o script gerou uma nova versão da ontologia já **povoada com dados**, que foi posteriormente carregada no **GraphDB** para permitir a execução de consultas SPARQL ([./bibliotecaTemporalFinal.ttl](bibliotecaTemporalFinal.ttl/))
 
 
 # Exercícios SPARQL – Biblioteca Temporal
