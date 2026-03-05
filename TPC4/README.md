@@ -17,7 +17,7 @@ Após a definição da estrutura da ontologia, procedeu-se ao seu **povoamento c
 Para tal, foi desenvolvido um **script em Python**, recorrendo à biblioteca **rdflib**, que permitiu:
 
 1. Ler a ontologia em formato **Turtle (.ttl)**.
-2. Processar dois conjuntos de dados fornecidos em formato **JSON** ([ ./dataset_temporal_100.json](dataset_temporal_100.json/) e [ ./dataset_temporal_v2_100.json](dataset_temporal_v2_100.json/)
+2. Processar dois conjuntos de dados fornecidos em formato **JSON** ([ ./dataset_temporal_100.json](dataset_temporal_100.json/) e [ ./dataset_temporal_v2_100.json](dataset_temporal_v2_100.json/))
 3. Criar automaticamente **indivíduos das classes definidas na ontologia**.
 4. Estabelecer as respetivas **relações entre os indivíduos**, como:
 
