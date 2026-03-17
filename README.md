@@ -13,3 +13,4 @@ Nome: Diogo Ribeiro Vassalo de Abreu
 - [TPC3: ](TPC3/) Correção Ontologia e uso de GraphDB e SPARQL
 - [TPC4: ](TPC4/) Biblioteca Intemporal (Ontologia, Povoamento, Queries SPARQL)
 - [TPC5: ](TPC5/) Biblioteca Temporal — Aplicação Web
+- [TPC6: ](TPC5/) Biblioteca Temporal — Aplicação Web V2
