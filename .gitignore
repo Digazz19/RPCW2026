@@ -1,0 +1,7 @@
+# Clone temporário
+tmp/
+
+# Python
+scripts/venv/
+__pycache__/
+*.pyc
