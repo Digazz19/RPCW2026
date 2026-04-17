@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}{{ resource_name }}{% endblock %}
+{% block page_heading %}Recurso: {{ resource_name }}{% endblock %}
+
+{% block content %}
+<div class="grid-2">
+    <div class="card">
+        <div class="section-header">
+            <div>
+                <h3>Propriedades diretas</h3>
+                <p class="muted">Triples do tipo sujeito → predicado → objeto</p>
+            </div>
+            <div class="pill">{{ direct|length }} resultados</div>
+        </div>
+
+        {% if direct %}
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Propriedade</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in direct %}
+                    <tr>
+                        <td>{{ row.p.value }}</td>
+                        <td>{{ row.o.value }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state compact">
+            <p>Sem propriedades diretas para apresentar.</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <div class="section-header">
+            <div>
+                <h3>Relações inversas</h3>
+                <p class="muted">Triples em que este recurso surge como objeto</p>
+            </div>
+            <div class="pill">{{ inverse|length }} resultados</div>
+        </div>
+
+        {% if inverse %}
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sujeito</th>
+                        <th>Propriedade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in inverse %}
+                    <tr>
+                        <td>{{ row.s.value }}</td>
+                        <td>{{ row.p.value }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state compact">
+            <p>Sem relações inversas para apresentar.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

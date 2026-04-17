@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Relação{% endblock %}
+{% block page_heading %}Adicionar Relação{% endblock %}
+
+{% block content %}
+<div class="grid-2">
+    <div class="card">
+        <h3>Inserção manual de triple</h3>
+        <p class="muted">
+            Esta operação adiciona uma relação semântica ao repositório.
+        </p>
+
+        <form method="post" class="styled-form">
+            <label for="subject">Sujeito</label>
+            <input type="text" name="subject" id="subject" placeholder="Ex.: Creeper" required>
+
+            <label for="predicate">Predicado</label>
+            <input type="text" name="predicate" id="predicate" placeholder="Ex.: spawnsIn" required>
+
+            <label for="object">Objeto</label>
+            <input type="text" name="object" id="object" placeholder="Ex.: Plains" required>
+
+            <button type="submit" class="button button-primary">Inserir relação</button>
+        </form>
+
+        {% if message %}
+        <div class="status-box">
+            {{ message }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h3>Exemplo</h3>
+        <div class="code-box">
+            <code>Creeper spawnsIn Plains</code>
+        </div>
+
+        <p class="muted">
+            Usa nomes locais de recursos e propriedades definidos no namespace da ontologia.
+        </p>
+    </div>
+</div>
+{% endblock %}

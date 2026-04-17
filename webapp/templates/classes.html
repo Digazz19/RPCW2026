@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Classes{% endblock %}
+{% block page_heading %}Classes da Ontologia{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="section-header">
+        <div>
+            <h3>Lista de classes</h3>
+            <p class="muted">Tipos definidos na ontologia carregada no GraphDB.</p>
+        </div>
+        <div class="pill">{{ classes|length }} classes</div>
+    </div>
+
+    {% if classes %}
+    <div class="chips-grid">
+        {% for cls in classes %}
+        <a class="chip-link" href="{{ url_for('ontology.class_detail', class_name=cls) }}">
+            {{ cls }}
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h4>Sem classes disponíveis</h4>
+        <p>Não foi possível obter classes da ontologia.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

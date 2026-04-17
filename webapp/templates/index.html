@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Início{% endblock %}
+{% block page_heading %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="hero-card hero-card-single">
+    <div class="hero-text">
+        <span class="badge">Ontologia OWL</span>
+        <h1>Exploração semântica do universo Minecraft</h1>
+        <p>
+            Aplicação web para navegação da ontologia, consulta de classes,
+            exploração de recursos e execução de queries de competência
+            sobre o domínio Minecraft.
+        </p>
+
+        <div class="hero-actions">
+            <a class="button button-primary" href="{{ url_for('ontology.list_classes') }}">Explorar classes</a>
+            <a class="button button-secondary" href="{{ url_for('competency.competency') }}">Abrir queries</a>
+        </div>
+    </div>
+</div>
+
+<section class="home-section">
+        <div class="section-title-block">
+            <p class="section-kicker">Funcionalidades</p>
+            <h3>Módulos principais da aplicação</h3>
+        </div>
+
+        <div class="grid-3 home-cards">
+            <div class="card home-feature-card">
+                <div class="feature-icon">▦</div>
+                <h3>Navegação por classes</h3>
+                <p>Consulta a hierarquia ontológica e os tipos definidos no grafo.</p>
+            </div>
+
+            <div class="card home-feature-card">
+                <div class="feature-icon">◫</div>
+                <h3>Exploração de recursos</h3>
+                <p>Visualiza propriedades e relações associadas aos elementos da ontologia.</p>
+            </div>
+
+            <div class="card home-feature-card">
+                <div class="feature-icon">⌘</div>
+                <h3>Queries de competência</h3>
+                <p>Executa consultas orientadas às perguntas centrais do domínio.</p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

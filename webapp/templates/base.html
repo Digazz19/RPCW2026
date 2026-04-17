@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Minecraft Ontology Explorer{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">⛏</div>
+                <div>
+                    <h1>Minecraft Ontology</h1>
+                    <p>Knowledge Explorer</p>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="{{ url_for('main.index') }}" class="nav-link">Início</a>
+                <a href="{{ url_for('ontology.list_classes') }}" class="nav-link">Classes</a>
+                <a href="{{ url_for('competency.competency') }}" class="nav-link">Queries</a>
+                <a href="{{ url_for('admin.add_relation') }}" class="nav-link">Adicionar Relação</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>RPCW 2025/2026</p>
+                <p class="muted">GraphDB + Flask + OWL</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Exploração semântica</p>
+                    <h2>{% block page_heading %}Minecraft Ontology Explorer{% endblock %}</h2>
+                </div>
+            </header>
+
+            <section class="content-area">
+                {% block content %}{% endblock %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>
