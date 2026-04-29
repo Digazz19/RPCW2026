@@ -55,12 +55,6 @@
     :hasName "acacia_log"^^xsd:string ;
     :stackSize 64 .
 
-:acacia_planks a :Item ;
-    :hasDisplayName "Acacia Planks"^^xsd:string ;
-    :hasID 40 ;
-    :hasName "acacia_planks"^^xsd:string ;
-    :stackSize 64 .
-
 :acacia_pressure_plate a :Item ;
     :hasDisplayName "Acacia Pressure Plate"^^xsd:string ;
     :hasID 771 ;
@@ -205,12 +199,6 @@
     :hasName "archer_pottery_sherd"^^xsd:string ;
     :stackSize 64 .
 
-:armadillo_scute a :Item ;
-    :hasDisplayName "Armadillo Scute"^^xsd:string ;
-    :hasID 889 ;
-    :hasName "armadillo_scute"^^xsd:string ;
-    :stackSize 64 .
-
 :armadillo_spawn_egg a :Item ;
     :hasDisplayName "Armadillo Spawn Egg"^^xsd:string ;
     :hasID 1141 ;
@@ -335,12 +323,6 @@
     :hasDisplayName "Bamboo Mosaic Stairs"^^xsd:string ;
     :hasID 451 ;
     :hasName "bamboo_mosaic_stairs"^^xsd:string ;
-    :stackSize 64 .
-
-:bamboo_planks a :Item ;
-    :hasDisplayName "Bamboo Planks"^^xsd:string ;
-    :hasID 45 ;
-    :hasName "bamboo_planks"^^xsd:string ;
     :stackSize 64 .
 
 :bamboo_pressure_plate a :Item ;
@@ -529,12 +511,6 @@
     :hasName "birch_log"^^xsd:string ;
     :stackSize 64 .
 
-:birch_planks a :Item ;
-    :hasDisplayName "Birch Planks"^^xsd:string ;
-    :hasID 38 ;
-    :hasName "birch_planks"^^xsd:string ;
-    :stackSize 64 .
-
 :birch_pressure_plate a :Item ;
     :hasDisplayName "Birch Pressure Plate"^^xsd:string ;
     :hasID 769 ;
@@ -671,12 +647,6 @@
     :hasDisplayName "Black Wool"^^xsd:string ;
     :hasID 228 ;
     :hasName "black_wool"^^xsd:string ;
-    :stackSize 64 .
-
-:blackstone a :Item ;
-    :hasDisplayName "Blackstone"^^xsd:string ;
-    :hasID 1385 ;
-    :hasName "blackstone"^^xsd:string ;
     :stackSize 64 .
 
 :blackstone_slab a :Item ;
@@ -925,12 +895,6 @@
     :hasDisplayName "Bread"^^xsd:string ;
     :hasID 953 ;
     :hasName "bread"^^xsd:string ;
-    :stackSize 64 .
-
-:breeze_rod a :Item ;
-    :hasDisplayName "Breeze Rod"^^xsd:string ;
-    :hasID 1222 ;
-    :hasName "breeze_rod"^^xsd:string ;
     :stackSize 64 .
 
 :breeze_spawn_egg a :Item ;
@@ -1270,6 +1234,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Chainmail Boots"^^xsd:string ;
     :hasID 965 ;
     :hasName "chainmail_boots"^^xsd:string ;
@@ -1287,6 +1252,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Chainmail Chestplate"^^xsd:string ;
     :hasID 963 ;
     :hasName "chainmail_chestplate"^^xsd:string ;
@@ -1306,6 +1272,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Chainmail Helmet"^^xsd:string ;
     :hasID 962 ;
     :hasName "chainmail_helmet"^^xsd:string ;
@@ -1324,6 +1291,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Chainmail Leggings"^^xsd:string ;
     :hasID 964 ;
     :hasName "chainmail_leggings"^^xsd:string ;
@@ -1388,12 +1356,6 @@
     :hasDisplayName "Cherry Log"^^xsd:string ;
     :hasID 139 ;
     :hasName "cherry_log"^^xsd:string ;
-    :stackSize 64 .
-
-:cherry_planks a :Item ;
-    :hasDisplayName "Cherry Planks"^^xsd:string ;
-    :hasID 41 ;
-    :hasName "cherry_planks"^^xsd:string ;
     :stackSize 64 .
 
 :cherry_pressure_plate a :Item ;
@@ -1618,12 +1580,6 @@
     :hasName "coast_armor_trim_smithing_template"^^xsd:string ;
     :stackSize 64 .
 
-:cobbled_deepslate a :Item ;
-    :hasDisplayName "Cobbled Deepslate"^^xsd:string ;
-    :hasID 9 ;
-    :hasName "cobbled_deepslate"^^xsd:string ;
-    :stackSize 64 .
-
 :cobbled_deepslate_slab a :Item ;
     :hasDisplayName "Cobbled Deepslate Slab"^^xsd:string ;
     :hasID 712 ;
@@ -1640,12 +1596,6 @@
     :hasDisplayName "Cobbled Deepslate Wall"^^xsd:string ;
     :hasID 474 ;
     :hasName "cobbled_deepslate_wall"^^xsd:string ;
-    :stackSize 64 .
-
-:cobblestone a :Item ;
-    :hasDisplayName "Cobblestone"^^xsd:string ;
-    :hasID 35 ;
-    :hasName "cobblestone"^^xsd:string ;
     :stackSize 64 .
 
 :cobblestone_slab a :Item ;
@@ -1793,6 +1743,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Axe"^^xsd:string ;
     :hasID 919 ;
     :hasName "copper_axe"^^xsd:string ;
@@ -1826,6 +1777,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Boots"^^xsd:string ;
     :hasID 961 ;
     :hasName "copper_boots"^^xsd:string ;
@@ -1861,6 +1813,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Chestplate"^^xsd:string ;
     :hasID 959 ;
     :hasName "copper_chestplate"^^xsd:string ;
@@ -1904,6 +1857,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Helmet"^^xsd:string ;
     :hasID 958 ;
     :hasName "copper_helmet"^^xsd:string ;
@@ -1918,6 +1872,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Hoe"^^xsd:string ;
     :hasID 920 ;
     :hasName "copper_hoe"^^xsd:string ;
@@ -1929,12 +1884,6 @@
     :hasID 1255 ;
     :hasName "copper_horse_armor"^^xsd:string ;
     :stackSize 1 .
-
-:copper_ingot a :Item ;
-    :hasDisplayName "Copper Ingot"^^xsd:string ;
-    :hasID 906 ;
-    :hasName "copper_ingot"^^xsd:string ;
-    :stackSize 64 .
 
 :copper_lantern a :Item ;
     :hasDisplayName "Copper Lantern"^^xsd:string ;
@@ -1954,6 +1903,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Leggings"^^xsd:string ;
     :hasID 960 ;
     :hasName "copper_leggings"^^xsd:string ;
@@ -1986,6 +1936,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Pickaxe"^^xsd:string ;
     :hasID 918 ;
     :hasName "copper_pickaxe"^^xsd:string ;
@@ -2000,6 +1951,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Shovel"^^xsd:string ;
     :hasID 917 ;
     :hasName "copper_shovel"^^xsd:string ;
@@ -2018,6 +1970,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Spear"^^xsd:string ;
     :hasID 1298 ;
     :hasName "copper_spear"^^xsd:string ;
@@ -2036,6 +1989,7 @@
         :sweeping_edge,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :copper_ingot ;
     :hasDisplayName "Copper Sword"^^xsd:string ;
     :hasID 916 ;
     :hasName "copper_sword"^^xsd:string ;
@@ -2186,12 +2140,6 @@
     :hasDisplayName "Crimson Nylium"^^xsd:string ;
     :hasID 33 ;
     :hasName "crimson_nylium"^^xsd:string ;
-    :stackSize 64 .
-
-:crimson_planks a :Item ;
-    :hasDisplayName "Crimson Planks"^^xsd:string ;
-    :hasID 46 ;
-    :hasName "crimson_planks"^^xsd:string ;
     :stackSize 64 .
 
 :crimson_pressure_plate a :Item ;
@@ -2463,12 +2411,6 @@
     :hasDisplayName "Dark Oak Log"^^xsd:string ;
     :hasID 141 ;
     :hasName "dark_oak_log"^^xsd:string ;
-    :stackSize 64 .
-
-:dark_oak_planks a :Item ;
-    :hasDisplayName "Dark Oak Planks"^^xsd:string ;
-    :hasID 42 ;
-    :hasName "dark_oak_planks"^^xsd:string ;
     :stackSize 64 .
 
 :dark_oak_pressure_plate a :Item ;
@@ -2759,12 +2701,6 @@
     :hasName "detector_rail"^^xsd:string ;
     :stackSize 64 .
 
-:diamond a :Item ;
-    :hasDisplayName "Diamond"^^xsd:string ;
-    :hasID 898 ;
-    :hasName "diamond"^^xsd:string ;
-    :stackSize 64 .
-
 :diamond_axe a :Item,
         :Tool,
         :Weapon ;
@@ -2777,6 +2713,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Axe"^^xsd:string ;
     :hasID 939 ;
     :hasName "diamond_axe"^^xsd:string ;
@@ -2804,6 +2741,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Boots"^^xsd:string ;
     :hasID 973 ;
     :hasName "diamond_boots"^^xsd:string ;
@@ -2821,6 +2759,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Chestplate"^^xsd:string ;
     :hasID 971 ;
     :hasName "diamond_chestplate"^^xsd:string ;
@@ -2840,6 +2779,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Helmet"^^xsd:string ;
     :hasID 970 ;
     :hasName "diamond_helmet"^^xsd:string ;
@@ -2854,6 +2794,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Hoe"^^xsd:string ;
     :hasID 940 ;
     :hasName "diamond_hoe"^^xsd:string ;
@@ -2878,6 +2819,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Leggings"^^xsd:string ;
     :hasID 972 ;
     :hasName "diamond_leggings"^^xsd:string ;
@@ -2904,6 +2846,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Pickaxe"^^xsd:string ;
     :hasID 938 ;
     :hasName "diamond_pickaxe"^^xsd:string ;
@@ -2918,6 +2861,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Shovel"^^xsd:string ;
     :hasID 937 ;
     :hasName "diamond_shovel"^^xsd:string ;
@@ -2936,6 +2880,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Spear"^^xsd:string ;
     :hasID 1301 ;
     :hasName "diamond_spear"^^xsd:string ;
@@ -2954,6 +2899,7 @@
         :sweeping_edge,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :diamond ;
     :hasDisplayName "Diamond Sword"^^xsd:string ;
     :hasID 936 ;
     :hasName "diamond_sword"^^xsd:string ;
@@ -3105,6 +3051,7 @@
         :mending,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :phantom_membrane ;
     :hasDisplayName "Elytra"^^xsd:string ;
     :hasID 862 ;
     :hasName "elytra"^^xsd:string ;
@@ -3643,12 +3590,6 @@
     :hasName "gold_block"^^xsd:string ;
     :stackSize 64 .
 
-:gold_ingot a :Item ;
-    :hasDisplayName "Gold Ingot"^^xsd:string ;
-    :hasID 908 ;
-    :hasName "gold_ingot"^^xsd:string ;
-    :stackSize 64 .
-
 :gold_nugget a :Item ;
     :hasDisplayName "Gold Nugget"^^xsd:string ;
     :hasID 1118 ;
@@ -3679,6 +3620,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Axe"^^xsd:string ;
     :hasID 929 ;
     :hasName "golden_axe"^^xsd:string ;
@@ -3700,6 +3642,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Boots"^^xsd:string ;
     :hasID 977 ;
     :hasName "golden_boots"^^xsd:string ;
@@ -3723,6 +3666,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Chestplate"^^xsd:string ;
     :hasID 975 ;
     :hasName "golden_chestplate"^^xsd:string ;
@@ -3742,6 +3686,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Helmet"^^xsd:string ;
     :hasID 974 ;
     :hasName "golden_helmet"^^xsd:string ;
@@ -3756,6 +3701,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Hoe"^^xsd:string ;
     :hasID 930 ;
     :hasName "golden_hoe"^^xsd:string ;
@@ -3780,6 +3726,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Leggings"^^xsd:string ;
     :hasID 976 ;
     :hasName "golden_leggings"^^xsd:string ;
@@ -3800,6 +3747,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Pickaxe"^^xsd:string ;
     :hasID 928 ;
     :hasName "golden_pickaxe"^^xsd:string ;
@@ -3814,6 +3762,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Shovel"^^xsd:string ;
     :hasID 927 ;
     :hasName "golden_shovel"^^xsd:string ;
@@ -3832,6 +3781,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Spear"^^xsd:string ;
     :hasID 1300 ;
     :hasName "golden_spear"^^xsd:string ;
@@ -3850,6 +3800,7 @@
         :sweeping_edge,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :gold_ingot ;
     :hasDisplayName "Golden Sword"^^xsd:string ;
     :hasID 926 ;
     :hasName "golden_sword"^^xsd:string ;
@@ -4300,6 +4251,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Axe"^^xsd:string ;
     :hasID 934 ;
     :hasName "iron_axe"^^xsd:string ;
@@ -4333,6 +4285,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Boots"^^xsd:string ;
     :hasID 969 ;
     :hasName "iron_boots"^^xsd:string ;
@@ -4356,6 +4309,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Chestplate"^^xsd:string ;
     :hasID 967 ;
     :hasName "iron_chestplate"^^xsd:string ;
@@ -4387,6 +4341,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Helmet"^^xsd:string ;
     :hasID 966 ;
     :hasName "iron_helmet"^^xsd:string ;
@@ -4401,6 +4356,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Hoe"^^xsd:string ;
     :hasID 935 ;
     :hasName "iron_hoe"^^xsd:string ;
@@ -4412,12 +4368,6 @@
     :hasID 1256 ;
     :hasName "iron_horse_armor"^^xsd:string ;
     :stackSize 1 .
-
-:iron_ingot a :Item ;
-    :hasDisplayName "Iron Ingot"^^xsd:string ;
-    :hasID 904 ;
-    :hasName "iron_ingot"^^xsd:string ;
-    :stackSize 64 .
 
 :iron_leggings a :Armor,
         :Item ;
@@ -4431,6 +4381,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Leggings"^^xsd:string ;
     :hasID 968 ;
     :hasName "iron_leggings"^^xsd:string ;
@@ -4463,6 +4414,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Pickaxe"^^xsd:string ;
     :hasID 933 ;
     :hasName "iron_pickaxe"^^xsd:string ;
@@ -4477,6 +4429,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Shovel"^^xsd:string ;
     :hasID 932 ;
     :hasName "iron_shovel"^^xsd:string ;
@@ -4495,6 +4448,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Spear"^^xsd:string ;
     :hasID 1299 ;
     :hasName "iron_spear"^^xsd:string ;
@@ -4513,6 +4467,7 @@
         :sweeping_edge,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :iron_ingot ;
     :hasDisplayName "Iron Sword"^^xsd:string ;
     :hasID 931 ;
     :hasName "iron_sword"^^xsd:string ;
@@ -4601,12 +4556,6 @@
     :hasDisplayName "Jungle Log"^^xsd:string ;
     :hasID 137 ;
     :hasName "jungle_log"^^xsd:string ;
-    :stackSize 64 .
-
-:jungle_planks a :Item ;
-    :hasDisplayName "Jungle Planks"^^xsd:string ;
-    :hasID 39 ;
-    :hasName "jungle_planks"^^xsd:string ;
     :stackSize 64 .
 
 :jungle_pressure_plate a :Item ;
@@ -4729,12 +4678,6 @@
     :hasName "leaf_litter"^^xsd:string ;
     :stackSize 64 .
 
-:leather a :Item ;
-    :hasDisplayName "Leather"^^xsd:string ;
-    :hasID 1017 ;
-    :hasName "leather"^^xsd:string ;
-    :stackSize 64 .
-
 :leather_boots a :Armor,
         :Item ;
     :canBeEnchantedWith :binding_curse,
@@ -4750,6 +4693,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :leather ;
     :hasDisplayName "Leather Boots"^^xsd:string ;
     :hasID 957 ;
     :hasName "leather_boots"^^xsd:string ;
@@ -4767,6 +4711,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :leather ;
     :hasDisplayName "Leather Tunic"^^xsd:string ;
     :hasID 955 ;
     :hasName "leather_chestplate"^^xsd:string ;
@@ -4786,6 +4731,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :leather ;
     :hasDisplayName "Leather Cap"^^xsd:string ;
     :hasID 954 ;
     :hasName "leather_helmet"^^xsd:string ;
@@ -4810,6 +4756,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :leather ;
     :hasDisplayName "Leather Pants"^^xsd:string ;
     :hasID 956 ;
     :hasName "leather_leggings"^^xsd:string ;
@@ -5169,6 +5116,7 @@
         :unbreaking,
         :vanishing_curse,
         :wind_burst ;
+    :canBeRepairedWith :breeze_rod ;
     :hasDisplayName "Mace"^^xsd:string ;
     :hasID 1223 ;
     :hasName "mace"^^xsd:string ;
@@ -5335,12 +5283,6 @@
     :hasDisplayName "Mangrove Log"^^xsd:string ;
     :hasID 142 ;
     :hasName "mangrove_log"^^xsd:string ;
-    :stackSize 64 .
-
-:mangrove_planks a :Item ;
-    :hasDisplayName "Mangrove Planks"^^xsd:string ;
-    :hasID 44 ;
-    :hasName "mangrove_planks"^^xsd:string ;
     :stackSize 64 .
 
 :mangrove_pressure_plate a :Item ;
@@ -5817,6 +5759,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Axe"^^xsd:string ;
     :hasID 944 ;
     :hasName "netherite_axe"^^xsd:string ;
@@ -5844,6 +5787,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Boots"^^xsd:string ;
     :hasID 981 ;
     :hasName "netherite_boots"^^xsd:string ;
@@ -5861,6 +5805,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Chestplate"^^xsd:string ;
     :hasID 979 ;
     :hasName "netherite_chestplate"^^xsd:string ;
@@ -5880,6 +5825,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Helmet"^^xsd:string ;
     :hasID 978 ;
     :hasName "netherite_helmet"^^xsd:string ;
@@ -5894,6 +5840,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Hoe"^^xsd:string ;
     :hasID 945 ;
     :hasName "netherite_hoe"^^xsd:string ;
@@ -5905,12 +5852,6 @@
     :hasID 1259 ;
     :hasName "netherite_horse_armor"^^xsd:string ;
     :stackSize 1 .
-
-:netherite_ingot a :Item ;
-    :hasDisplayName "Netherite Ingot"^^xsd:string ;
-    :hasID 909 ;
-    :hasName "netherite_ingot"^^xsd:string ;
-    :stackSize 64 .
 
 :netherite_leggings a :Armor,
         :Item ;
@@ -5924,6 +5865,7 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Leggings"^^xsd:string ;
     :hasID 980 ;
     :hasName "netherite_leggings"^^xsd:string ;
@@ -5944,6 +5886,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Pickaxe"^^xsd:string ;
     :hasID 943 ;
     :hasName "netherite_pickaxe"^^xsd:string ;
@@ -5964,6 +5907,7 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Shovel"^^xsd:string ;
     :hasID 942 ;
     :hasName "netherite_shovel"^^xsd:string ;
@@ -5982,6 +5926,7 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Spear"^^xsd:string ;
     :hasID 1302 ;
     :hasName "netherite_spear"^^xsd:string ;
@@ -6000,6 +5945,7 @@
         :sweeping_edge,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :netherite_ingot ;
     :hasDisplayName "Netherite Sword"^^xsd:string ;
     :hasID 941 ;
     :hasName "netherite_sword"^^xsd:string ;
@@ -6076,12 +6022,6 @@
     :hasDisplayName "Oak Log"^^xsd:string ;
     :hasID 134 ;
     :hasName "oak_log"^^xsd:string ;
-    :stackSize 64 .
-
-:oak_planks a :Item ;
-    :hasDisplayName "Oak Planks"^^xsd:string ;
-    :hasID 36 ;
-    :hasName "oak_planks"^^xsd:string ;
     :stackSize 64 .
 
 :oak_pressure_plate a :Item ;
@@ -6456,12 +6396,6 @@
     :hasName "pale_oak_log"^^xsd:string ;
     :stackSize 64 .
 
-:pale_oak_planks a :Item ;
-    :hasDisplayName "Pale Oak Planks"^^xsd:string ;
-    :hasID 43 ;
-    :hasName "pale_oak_planks"^^xsd:string ;
-    :stackSize 64 .
-
 :pale_oak_pressure_plate a :Item ;
     :hasDisplayName "Pale Oak Pressure Plate"^^xsd:string ;
     :hasID 774 ;
@@ -6550,12 +6484,6 @@
     :hasDisplayName "Petrified Oak Slab"^^xsd:string ;
     :hasID 287 ;
     :hasName "petrified_oak_slab"^^xsd:string ;
-    :stackSize 64 .
-
-:phantom_membrane a :Item ;
-    :hasDisplayName "Phantom Membrane"^^xsd:string ;
-    :hasID 861 ;
-    :hasName "phantom_membrane"^^xsd:string ;
     :stackSize 64 .
 
 :phantom_spawn_egg a :Item ;
@@ -7748,6 +7676,18 @@
     :canBeEnchantedWith :mending,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :acacia_planks,
+        :bamboo_planks,
+        :birch_planks,
+        :cherry_planks,
+        :crimson_planks,
+        :dark_oak_planks,
+        :jungle_planks,
+        :mangrove_planks,
+        :oak_planks,
+        :pale_oak_planks,
+        :spruce_planks,
+        :warped_planks ;
     :hasDisplayName "Shield"^^xsd:string ;
     :hasID 1295 ;
     :hasName "shield"^^xsd:string ;
@@ -8128,12 +8068,6 @@
     :hasName "spruce_log"^^xsd:string ;
     :stackSize 64 .
 
-:spruce_planks a :Item ;
-    :hasDisplayName "Spruce Planks"^^xsd:string ;
-    :hasID 37 ;
-    :hasName "spruce_planks"^^xsd:string ;
-    :stackSize 64 .
-
 :spruce_pressure_plate a :Item ;
     :hasDisplayName "Spruce Pressure Plate"^^xsd:string ;
     :hasID 768 ;
@@ -8224,6 +8158,9 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :blackstone,
+        :cobbled_deepslate,
+        :cobblestone ;
     :hasDisplayName "Stone Axe"^^xsd:string ;
     :hasID 924 ;
     :hasName "stone_axe"^^xsd:string ;
@@ -8268,6 +8205,9 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :blackstone,
+        :cobbled_deepslate,
+        :cobblestone ;
     :hasDisplayName "Stone Hoe"^^xsd:string ;
     :hasID 925 ;
     :hasName "stone_hoe"^^xsd:string ;
@@ -8282,6 +8222,9 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :blackstone,
+        :cobbled_deepslate,
+        :cobblestone ;
     :hasDisplayName "Stone Pickaxe"^^xsd:string ;
     :hasID 923 ;
     :hasName "stone_pickaxe"^^xsd:string ;
@@ -8302,6 +8245,9 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :blackstone,
+        :cobbled_deepslate,
+        :cobblestone ;
     :hasDisplayName "Stone Shovel"^^xsd:string ;
     :hasID 922 ;
     :hasName "stone_shovel"^^xsd:string ;
@@ -8326,6 +8272,9 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :blackstone,
+        :cobbled_deepslate,
+        :cobblestone ;
     :hasDisplayName "Stone Spear"^^xsd:string ;
     :hasID 1297 ;
     :hasName "stone_spear"^^xsd:string ;
@@ -8350,6 +8299,9 @@
         :sweeping_edge,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :blackstone,
+        :cobbled_deepslate,
+        :cobblestone ;
     :hasDisplayName "Stone Sword"^^xsd:string ;
     :hasID 921 ;
     :hasName "stone_sword"^^xsd:string ;
@@ -8821,17 +8773,12 @@
         :thorns,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :turtle_scute ;
     :hasDisplayName "Turtle Shell"^^xsd:string ;
     :hasID 887 ;
     :hasName "turtle_helmet"^^xsd:string ;
     :maxDurability 275 ;
     :stackSize 1 .
-
-:turtle_scute a :Item ;
-    :hasDisplayName "Turtle Scute"^^xsd:string ;
-    :hasID 888 ;
-    :hasName "turtle_scute"^^xsd:string ;
-    :stackSize 64 .
 
 :turtle_spawn_egg a :Item ;
     :hasDisplayName "Turtle Spawn Egg"^^xsd:string ;
@@ -8961,12 +8908,6 @@
     :hasDisplayName "Warped Nylium"^^xsd:string ;
     :hasID 34 ;
     :hasName "warped_nylium"^^xsd:string ;
-    :stackSize 64 .
-
-:warped_planks a :Item ;
-    :hasDisplayName "Warped Planks"^^xsd:string ;
-    :hasID 47 ;
-    :hasName "warped_planks"^^xsd:string ;
     :stackSize 64 .
 
 :warped_pressure_plate a :Item ;
@@ -9656,6 +9597,7 @@
     :stackSize 64 .
 
 :wolf_armor a :Item ;
+    :canBeRepairedWith :armadillo_scute ;
     :hasDisplayName "Wolf Armor"^^xsd:string ;
     :hasID 890 ;
     :hasName "wolf_armor"^^xsd:string ;
@@ -9680,6 +9622,18 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :acacia_planks,
+        :bamboo_planks,
+        :birch_planks,
+        :cherry_planks,
+        :crimson_planks,
+        :dark_oak_planks,
+        :jungle_planks,
+        :mangrove_planks,
+        :oak_planks,
+        :pale_oak_planks,
+        :spruce_planks,
+        :warped_planks ;
     :hasDisplayName "Wooden Axe"^^xsd:string ;
     :hasID 914 ;
     :hasName "wooden_axe"^^xsd:string ;
@@ -9694,6 +9648,18 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :acacia_planks,
+        :bamboo_planks,
+        :birch_planks,
+        :cherry_planks,
+        :crimson_planks,
+        :dark_oak_planks,
+        :jungle_planks,
+        :mangrove_planks,
+        :oak_planks,
+        :pale_oak_planks,
+        :spruce_planks,
+        :warped_planks ;
     :hasDisplayName "Wooden Hoe"^^xsd:string ;
     :hasID 915 ;
     :hasName "wooden_hoe"^^xsd:string ;
@@ -9708,6 +9674,18 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :acacia_planks,
+        :bamboo_planks,
+        :birch_planks,
+        :cherry_planks,
+        :crimson_planks,
+        :dark_oak_planks,
+        :jungle_planks,
+        :mangrove_planks,
+        :oak_planks,
+        :pale_oak_planks,
+        :spruce_planks,
+        :warped_planks ;
     :hasDisplayName "Wooden Pickaxe"^^xsd:string ;
     :hasID 913 ;
     :hasName "wooden_pickaxe"^^xsd:string ;
@@ -9722,6 +9700,18 @@
         :silk_touch,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :acacia_planks,
+        :bamboo_planks,
+        :birch_planks,
+        :cherry_planks,
+        :crimson_planks,
+        :dark_oak_planks,
+        :jungle_planks,
+        :mangrove_planks,
+        :oak_planks,
+        :pale_oak_planks,
+        :spruce_planks,
+        :warped_planks ;
     :hasDisplayName "Wooden Shovel"^^xsd:string ;
     :hasID 912 ;
     :hasName "wooden_shovel"^^xsd:string ;
@@ -9740,6 +9730,18 @@
         :smite,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :acacia_planks,
+        :bamboo_planks,
+        :birch_planks,
+        :cherry_planks,
+        :crimson_planks,
+        :dark_oak_planks,
+        :jungle_planks,
+        :mangrove_planks,
+        :oak_planks,
+        :pale_oak_planks,
+        :spruce_planks,
+        :warped_planks ;
     :hasDisplayName "Wooden Spear"^^xsd:string ;
     :hasID 1296 ;
     :hasName "wooden_spear"^^xsd:string ;
@@ -9758,6 +9760,18 @@
         :sweeping_edge,
         :unbreaking,
         :vanishing_curse ;
+    :canBeRepairedWith :acacia_planks,
+        :bamboo_planks,
+        :birch_planks,
+        :cherry_planks,
+        :crimson_planks,
+        :dark_oak_planks,
+        :jungle_planks,
+        :mangrove_planks,
+        :oak_planks,
+        :pale_oak_planks,
+        :spruce_planks,
+        :warped_planks ;
     :hasDisplayName "Wooden Sword"^^xsd:string ;
     :hasID 911 ;
     :hasName "wooden_sword"^^xsd:string ;
@@ -9908,5 +9922,155 @@
     :hasDisplayName "Zombified Piglin Spawn Egg"^^xsd:string ;
     :hasID 1212 ;
     :hasName "zombified_piglin_spawn_egg"^^xsd:string ;
+    :stackSize 64 .
+
+:armadillo_scute a :Item ;
+    :hasDisplayName "Armadillo Scute"^^xsd:string ;
+    :hasID 889 ;
+    :hasName "armadillo_scute"^^xsd:string ;
+    :stackSize 64 .
+
+:breeze_rod a :Item ;
+    :hasDisplayName "Breeze Rod"^^xsd:string ;
+    :hasID 1222 ;
+    :hasName "breeze_rod"^^xsd:string ;
+    :stackSize 64 .
+
+:phantom_membrane a :Item ;
+    :hasDisplayName "Phantom Membrane"^^xsd:string ;
+    :hasID 861 ;
+    :hasName "phantom_membrane"^^xsd:string ;
+    :stackSize 64 .
+
+:turtle_scute a :Item ;
+    :hasDisplayName "Turtle Scute"^^xsd:string ;
+    :hasID 888 ;
+    :hasName "turtle_scute"^^xsd:string ;
+    :stackSize 64 .
+
+:leather a :Item ;
+    :hasDisplayName "Leather"^^xsd:string ;
+    :hasID 1017 ;
+    :hasName "leather"^^xsd:string ;
+    :stackSize 64 .
+
+:blackstone a :Item ;
+    :hasDisplayName "Blackstone"^^xsd:string ;
+    :hasID 1385 ;
+    :hasName "blackstone"^^xsd:string ;
+    :stackSize 64 .
+
+:cobbled_deepslate a :Item ;
+    :hasDisplayName "Cobbled Deepslate"^^xsd:string ;
+    :hasID 9 ;
+    :hasName "cobbled_deepslate"^^xsd:string ;
+    :stackSize 64 .
+
+:cobblestone a :Item ;
+    :hasDisplayName "Cobblestone"^^xsd:string ;
+    :hasID 35 ;
+    :hasName "cobblestone"^^xsd:string ;
+    :stackSize 64 .
+
+:acacia_planks a :Item ;
+    :hasDisplayName "Acacia Planks"^^xsd:string ;
+    :hasID 40 ;
+    :hasName "acacia_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:bamboo_planks a :Item ;
+    :hasDisplayName "Bamboo Planks"^^xsd:string ;
+    :hasID 45 ;
+    :hasName "bamboo_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:birch_planks a :Item ;
+    :hasDisplayName "Birch Planks"^^xsd:string ;
+    :hasID 38 ;
+    :hasName "birch_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:cherry_planks a :Item ;
+    :hasDisplayName "Cherry Planks"^^xsd:string ;
+    :hasID 41 ;
+    :hasName "cherry_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:crimson_planks a :Item ;
+    :hasDisplayName "Crimson Planks"^^xsd:string ;
+    :hasID 46 ;
+    :hasName "crimson_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:dark_oak_planks a :Item ;
+    :hasDisplayName "Dark Oak Planks"^^xsd:string ;
+    :hasID 42 ;
+    :hasName "dark_oak_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:jungle_planks a :Item ;
+    :hasDisplayName "Jungle Planks"^^xsd:string ;
+    :hasID 39 ;
+    :hasName "jungle_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:mangrove_planks a :Item ;
+    :hasDisplayName "Mangrove Planks"^^xsd:string ;
+    :hasID 44 ;
+    :hasName "mangrove_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:oak_planks a :Item ;
+    :hasDisplayName "Oak Planks"^^xsd:string ;
+    :hasID 36 ;
+    :hasName "oak_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:pale_oak_planks a :Item ;
+    :hasDisplayName "Pale Oak Planks"^^xsd:string ;
+    :hasID 43 ;
+    :hasName "pale_oak_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:spruce_planks a :Item ;
+    :hasDisplayName "Spruce Planks"^^xsd:string ;
+    :hasID 37 ;
+    :hasName "spruce_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:warped_planks a :Item ;
+    :hasDisplayName "Warped Planks"^^xsd:string ;
+    :hasID 47 ;
+    :hasName "warped_planks"^^xsd:string ;
+    :stackSize 64 .
+
+:copper_ingot a :Item ;
+    :hasDisplayName "Copper Ingot"^^xsd:string ;
+    :hasID 906 ;
+    :hasName "copper_ingot"^^xsd:string ;
+    :stackSize 64 .
+
+:diamond a :Item ;
+    :hasDisplayName "Diamond"^^xsd:string ;
+    :hasID 898 ;
+    :hasName "diamond"^^xsd:string ;
+    :stackSize 64 .
+
+:gold_ingot a :Item ;
+    :hasDisplayName "Gold Ingot"^^xsd:string ;
+    :hasID 908 ;
+    :hasName "gold_ingot"^^xsd:string ;
+    :stackSize 64 .
+
+:netherite_ingot a :Item ;
+    :hasDisplayName "Netherite Ingot"^^xsd:string ;
+    :hasID 909 ;
+    :hasName "netherite_ingot"^^xsd:string ;
+    :stackSize 64 .
+
+:iron_ingot a :Item ;
+    :hasDisplayName "Iron Ingot"^^xsd:string ;
+    :hasID 904 ;
+    :hasName "iron_ingot"^^xsd:string ;
     :stackSize 64 .
 

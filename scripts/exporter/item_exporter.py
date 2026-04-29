@@ -41,7 +41,7 @@ def export_items():
             for ench_uri in ench_by_cat.get(cat, []):
                 g.add((uri, MC.canBeEnchantedWith, ench_uri))
 
-        repairs = i.get('repairs', [])
+        repairs = i.get('repairWith', [])
         for r in repairs:
             g.add((uri, MC.canBeRepairedWith, MC[r]))
 
