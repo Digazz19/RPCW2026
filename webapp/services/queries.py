@@ -14,7 +14,10 @@ def get_instances_of_class_query(class_name: str):
     return PREFIXES + f"""
     SELECT DISTINCT ?instance
     WHERE {{
-      ?instance rdf:type mc:{class_name} .
+      ?instance rdf:type ?type .
+      ?type rdfs:subClassOf* mc:{class_name} .
+      FILTER(STRSTARTS(STR(?instance), STR(mc:)))
+      FILTER(?instance != mc:{class_name})
     }}
     ORDER BY ?instance
     """
@@ -49,18 +52,30 @@ def get_recipe_ingredients_query(item_name: str):
 
 def get_mobs_that_drop_item_query(item_name: str):
     return PREFIXES + f"""
-    SELECT ?mob
+    SELECT DISTINCT ?mob
     WHERE {{
-      mc:{item_name} mc:droppedBy ?mob .
+      {{
+        mc:{item_name} mc:droppedBy ?mob .
+      }}
+      UNION
+      {{
+        ?mob mc:drops mc:{item_name} .
+      }}
     }}
     ORDER BY ?mob
     """
 
 def get_biomes_for_mob_query(mob_name: str):
     return PREFIXES + f"""
-    SELECT ?biome
+    SELECT DISTINCT ?biome
     WHERE {{
-      mc:{mob_name} mc:spawnsIn ?biome .
+      {{
+        mc:{mob_name} mc:spawnsIn ?biome .
+      }}
+      UNION
+      {{
+        ?biome mc:hasSpawn mc:{mob_name} .
+      }}
     }}
     ORDER BY ?biome
     """
@@ -79,7 +94,7 @@ def get_items_for_enchantment_query(enchantment_name: str):
     return PREFIXES + f"""
     SELECT ?item
     WHERE {{
-      mc:{enchantment_name} mc:applicableTo ?item .
+      ?item mc:canBeEnchantedWith mc:{enchantment_name} .
     }}
     ORDER BY ?item
     """

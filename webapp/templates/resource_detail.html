@@ -9,7 +9,7 @@
         <div class="section-header">
             <div>
                 <h3>Propriedades diretas</h3>
-                <p class="muted">Triples do tipo sujeito → predicado → objeto</p>
+                <p class="muted">Triples em que este recurso surge como sujeito.</p>
             </div>
             <div class="pill">{{ direct|length }} resultados</div>
         </div>
@@ -26,8 +26,16 @@
                 <tbody>
                     {% for row in direct %}
                     <tr>
-                        <td>{{ row.p.value }}</td>
-                        <td>{{ row.o.value }}</td>
+                        <td>{{ row.p.value|local_name }}</td>
+                        <td>
+                            {% if row.o.value is internal_resource %}
+                                <a class="table-link" href="{{ url_for('ontology.resource_detail', resource_name=row.o.value|local_name) }}">
+                                    {{ row.o.value|local_name }}
+                                </a>
+                            {% else %}
+                                {{ row.o.value|local_name }}
+                            {% endif %}
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -44,30 +52,62 @@
         <div class="section-header">
             <div>
                 <h3>Relações inversas</h3>
-                <p class="muted">Triples em que este recurso surge como objeto</p>
+                <p class="muted">Agrupadas por propriedade.</p>
             </div>
-            <div class="pill">{{ inverse|length }} resultados</div>
+            <div class="pill">{{ total_inverse }} resultados</div>
         </div>
 
-        {% if inverse %}
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Sujeito</th>
-                        <th>Propriedade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in inverse %}
-                    <tr>
-                        <td>{{ row.s.value }}</td>
-                        <td>{{ row.p.value }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        {% if grouped_inverse %}
+            <div class="relation-groups">
+                {% for predicate, rows in grouped_inverse %}
+                {% set group_index = loop.index %}
+
+                <details class="relation-group" {% if group_index <= 3 %}open{% endif %}>
+                    <summary>
+                        <span>{{ predicate|local_name }}</span>
+                        <span class="pill small-pill">{{ rows|length }}</span>
+                    </summary>
+
+                    <div class="relation-list">
+                        {% for row in rows %}
+                        <a class="relation-item {% if loop.index > 20 %}hidden-relation hidden-{{ group_index }}{% endif %}"
+                        href="{{ url_for('ontology.resource_detail', resource_name=row.s.value|local_name) }}">
+                            {{ row.s.value|local_name }}
+                        </a>
+                        {% endfor %}
+
+                        {% if rows|length > 20 %}
+                        <button
+                            class="show-more-btn"
+                            type="button"
+                            data-expanded="false"
+                            data-show-text="Ver todos os {{ rows|length }} resultados"
+                            onclick="toggleRelations('{{ group_index }}', this)">
+                            Ver todos os {{ rows|length }} resultados
+                        </button>
+                        {% endif %}
+                    </div>
+                </details>
+                {% endfor %}
+            </div>
+
+            {% if total_pages > 1 %}
+            <div class="pagination">
+                {% if page > 1 %}
+                <a class="button button-secondary" href="{{ url_for('ontology.resource_detail', resource_name=resource_name, page=page-1) }}">
+                    Anterior
+                </a>
+                {% endif %}
+
+                <span class="pagination-label">Página {{ page }} de {{ total_pages }}</span>
+
+                {% if page < total_pages %}
+                <a class="button button-secondary" href="{{ url_for('ontology.resource_detail', resource_name=resource_name, page=page+1) }}">
+                    Próxima
+                </a>
+                {% endif %}
+            </div>
+            {% endif %}
         {% else %}
         <div class="empty-state compact">
             <p>Sem relações inversas para apresentar.</p>
@@ -75,4 +115,22 @@
         {% endif %}
     </div>
 </div>
+
+<script>
+function toggleRelations(groupIndex, button) {
+    const hiddenItems = document.querySelectorAll('.hidden-' + groupIndex);
+    const isExpanded = button.dataset.expanded === "true";
+
+    if (isExpanded) {
+        hiddenItems.forEach(item => item.classList.add('hidden-relation'));
+        button.textContent = button.dataset.showText;
+        button.dataset.expanded = "false";
+    } else {
+        hiddenItems.forEach(item => item.classList.remove('hidden-relation'));
+        button.textContent = "Ocultar resultados";
+        button.dataset.expanded = "true";
+    }
+}
+</script>
+
 {% endblock %}

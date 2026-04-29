@@ -51,7 +51,13 @@
                     {% for var in result.head.vars %}
                     <td>
                         {% if row[var] is defined %}
-                            {{ row[var].value }}
+                            {% if row[var].value is internal_resource %}
+                                <a class="table-link" href="{{ url_for('ontology.resource_detail', resource_name=row[var].value|local_name) }}">
+                                    {{ row[var].value|local_name }}
+                                </a>
+                            {% else %}
+                                {{ row[var].value|local_name }}
+                            {% endif %}
                         {% else %}
                             —
                         {% endif %}
