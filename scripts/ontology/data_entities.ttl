@@ -3,1100 +3,1347 @@
 
 :acacia_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 0 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Acacia Boat"^^xsd:string ;
-    :hasID 0 ;
     :hasName "acacia_boat"^^xsd:string .
 
 :acacia_chest_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 1 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Acacia Boat with Chest"^^xsd:string ;
-    :hasID 1 ;
     :hasName "acacia_chest_boat"^^xsd:string .
 
-:allay a :Mob ;
+:allay a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.6"^^xsd:float ;
+    :entityID 2 ;
     :entityWidth "0.35"^^xsd:float ;
     :hasDisplayName "Allay"^^xsd:string ;
-    :hasID 2 ;
     :hasName "allay"^^xsd:string .
 
 :area_effect_cloud a :Entity ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 3 ;
     :entityWidth "6"^^xsd:float ;
     :hasDisplayName "Area Effect Cloud"^^xsd:string ;
-    :hasID 3 ;
     :hasName "area_effect_cloud"^^xsd:string .
 
-:armadillo a :Entity ;
+:armadillo a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.65"^^xsd:float ;
+    :entityID 4 ;
     :entityWidth "0.7"^^xsd:float ;
     :hasDisplayName "Armadillo"^^xsd:string ;
-    :hasID 4 ;
     :hasName "armadillo"^^xsd:string .
 
 :armor_stand a :Entity ;
     :entityHeight "1.975"^^xsd:float ;
+    :entityID 5 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Armor Stand"^^xsd:string ;
-    :hasID 5 ;
     :hasName "armor_stand"^^xsd:string .
 
-:arrow a :ProjectileEntity ;
+:arrow a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 6 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Arrow"^^xsd:string ;
-    :hasID 6 ;
     :hasName "arrow"^^xsd:string .
 
-:axolotl a :Entity ;
+:axolotl a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.42"^^xsd:float ;
+    :entityID 7 ;
     :entityWidth "0.75"^^xsd:float ;
     :hasDisplayName "Axolotl"^^xsd:string ;
-    :hasID 7 ;
     :hasName "axolotl"^^xsd:string .
 
 :bamboo_chest_raft a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 8 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Bamboo Raft with Chest"^^xsd:string ;
-    :hasID 8 ;
     :hasName "bamboo_chest_raft"^^xsd:string .
 
 :bamboo_raft a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 9 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Bamboo Raft"^^xsd:string ;
-    :hasID 9 ;
     :hasName "bamboo_raft"^^xsd:string .
 
-:bat a :Entity ;
+:bat a :AmbientMob,
+        :Entity,
+        :Mob ;
     :entityHeight "0.9"^^xsd:float ;
+    :entityID 10 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Bat"^^xsd:string ;
-    :hasID 10 ;
     :hasName "bat"^^xsd:string .
 
-:bee a :Entity ;
+:bee a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.6"^^xsd:float ;
+    :entityID 11 ;
     :entityWidth "0.7"^^xsd:float ;
     :hasDisplayName "Bee"^^xsd:string ;
-    :hasID 11 ;
     :hasName "bee"^^xsd:string .
 
 :birch_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 12 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Birch Boat"^^xsd:string ;
-    :hasID 12 ;
     :hasName "birch_boat"^^xsd:string .
 
 :birch_chest_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 13 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Birch Boat with Chest"^^xsd:string ;
-    :hasID 13 ;
     :hasName "birch_chest_boat"^^xsd:string .
 
-:blaze a :HostileMob ;
+:blaze a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.8"^^xsd:float ;
+    :entityID 14 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Blaze"^^xsd:string ;
-    :hasID 14 ;
     :hasName "blaze"^^xsd:string .
 
 :block_display a :Entity ;
     :entityHeight "0"^^xsd:float ;
+    :entityID 15 ;
     :entityWidth "0"^^xsd:float ;
     :hasDisplayName "Block Display"^^xsd:string ;
-    :hasID 15 ;
     :hasName "block_display"^^xsd:string .
 
-:bogged a :HostileMob ;
+:bogged a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.99"^^xsd:float ;
+    :entityID 16 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Bogged"^^xsd:string ;
-    :hasID 16 ;
     :hasName "bogged"^^xsd:string .
 
-:breeze a :HostileMob ;
+:breeze a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.77"^^xsd:float ;
+    :entityID 17 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Breeze"^^xsd:string ;
-    :hasID 17 ;
     :hasName "breeze"^^xsd:string .
 
-:breeze_wind_charge a :ProjectileEntity ;
+:breeze_wind_charge a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.3125"^^xsd:float ;
+    :entityID 18 ;
     :entityWidth "0.3125"^^xsd:float ;
     :hasDisplayName "Wind Charge"^^xsd:string ;
-    :hasID 18 ;
     :hasName "breeze_wind_charge"^^xsd:string .
 
-:camel a :Entity ;
+:camel a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "2.375"^^xsd:float ;
+    :entityID 19 ;
     :entityWidth "1.7"^^xsd:float ;
     :hasDisplayName "Camel"^^xsd:string ;
-    :hasID 19 ;
     :hasName "camel"^^xsd:string .
 
-:camel_husk a :Entity ;
+:camel_husk a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "2.375"^^xsd:float ;
+    :entityID 20 ;
     :entityWidth "1.7"^^xsd:float ;
     :hasDisplayName "Camel Husk"^^xsd:string ;
-    :hasID 20 ;
     :hasName "camel_husk"^^xsd:string .
 
-:cat a :Entity ;
+:cat a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 21 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Cat"^^xsd:string ;
-    :hasID 21 ;
     :hasName "cat"^^xsd:string .
 
-:cave_spider a :HostileMob ;
+:cave_spider a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 22 ;
     :entityWidth "0.7"^^xsd:float ;
     :hasDisplayName "Cave Spider"^^xsd:string ;
-    :hasID 22 ;
     :hasName "cave_spider"^^xsd:string .
 
 :cherry_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 23 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Cherry Boat"^^xsd:string ;
-    :hasID 23 ;
     :hasName "cherry_boat"^^xsd:string .
 
 :cherry_chest_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 24 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Cherry Boat with Chest"^^xsd:string ;
-    :hasID 24 ;
     :hasName "cherry_chest_boat"^^xsd:string .
 
 :chest_minecart a :Entity ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 25 ;
     :entityWidth "0.98"^^xsd:float ;
     :hasDisplayName "Minecart with Chest"^^xsd:string ;
-    :hasID 25 ;
     :hasName "chest_minecart"^^xsd:string .
 
-:chicken a :Entity ;
+:chicken a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 26 ;
     :entityWidth "0.4"^^xsd:float ;
     :hasDisplayName "Chicken"^^xsd:string ;
-    :hasID 26 ;
     :hasName "chicken"^^xsd:string .
 
-:cod a :Mob ;
+:cod a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.3"^^xsd:float ;
+    :entityID 27 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Cod"^^xsd:string ;
-    :hasID 27 ;
     :hasName "cod"^^xsd:string .
 
 :command_block_minecart a :Entity ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 29 ;
     :entityWidth "0.98"^^xsd:float ;
     :hasDisplayName "Minecart with Command Block"^^xsd:string ;
-    :hasID 29 ;
     :hasName "command_block_minecart"^^xsd:string .
 
-:copper_golem a :Mob ;
+:copper_golem a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.98"^^xsd:float ;
+    :entityID 28 ;
     :entityWidth "0.49"^^xsd:float ;
     :hasDisplayName "Copper Golem"^^xsd:string ;
-    :hasID 28 ;
     :hasName "copper_golem"^^xsd:string .
 
-:cow a :Entity ;
+:cow a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.4"^^xsd:float ;
+    :entityID 30 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Cow"^^xsd:string ;
-    :hasID 30 ;
     :hasName "cow"^^xsd:string .
 
-:creaking a :HostileMob ;
+:creaking a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "2.7"^^xsd:float ;
+    :entityID 31 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Creaking"^^xsd:string ;
-    :hasID 31 ;
     :hasName "creaking"^^xsd:string .
 
-:creeper a :HostileMob ;
+:creeper a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.7"^^xsd:float ;
+    :entityID 32 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Creeper"^^xsd:string ;
-    :hasID 32 ;
     :hasName "creeper"^^xsd:string .
 
 :dark_oak_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 33 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Dark Oak Boat"^^xsd:string ;
-    :hasID 33 ;
     :hasName "dark_oak_boat"^^xsd:string .
 
 :dark_oak_chest_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 34 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Dark Oak Boat with Chest"^^xsd:string ;
-    :hasID 34 ;
     :hasName "dark_oak_chest_boat"^^xsd:string .
 
-:dolphin a :PassiveMob ;
+:dolphin a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.6"^^xsd:float ;
+    :entityID 35 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Dolphin"^^xsd:string ;
-    :hasID 35 ;
     :hasName "dolphin"^^xsd:string .
 
-:donkey a :Entity ;
+:donkey a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.5"^^xsd:float ;
+    :entityID 36 ;
     :entityWidth "1.3964844"^^xsd:float ;
     :hasDisplayName "Donkey"^^xsd:string ;
-    :hasID 36 ;
     :hasName "donkey"^^xsd:string .
 
-:dragon_fireball a :ProjectileEntity ;
+:dragon_fireball a :Entity,
+        :ProjectileEntity ;
     :entityHeight "1"^^xsd:float ;
+    :entityID 37 ;
     :entityWidth "1"^^xsd:float ;
     :hasDisplayName "Dragon Fireball"^^xsd:string ;
-    :hasID 37 ;
     :hasName "dragon_fireball"^^xsd:string .
 
-:drowned a :HostileMob ;
+:drowned a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 38 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Drowned"^^xsd:string ;
-    :hasID 38 ;
     :hasName "drowned"^^xsd:string .
 
-:egg a :ProjectileEntity ;
+:egg a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 39 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Thrown Egg"^^xsd:string ;
-    :hasID 39 ;
     :hasName "egg"^^xsd:string .
 
-:elder_guardian a :HostileMob ;
+:elder_guardian a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.9975"^^xsd:float ;
+    :entityID 40 ;
     :entityWidth "1.9975"^^xsd:float ;
     :hasDisplayName "Elder Guardian"^^xsd:string ;
-    :hasID 40 ;
     :hasName "elder_guardian"^^xsd:string .
 
-:end_crystal a :Entity ;
+:end_crystal a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "2"^^xsd:float ;
+    :entityID 45 ;
     :entityWidth "2"^^xsd:float ;
     :hasDisplayName "End Crystal"^^xsd:string ;
-    :hasID 45 ;
     :hasName "end_crystal"^^xsd:string .
 
-:ender_dragon a :Mob ;
+:ender_dragon a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "8"^^xsd:float ;
+    :entityID 43 ;
     :entityWidth "16"^^xsd:float ;
     :hasDisplayName "Ender Dragon"^^xsd:string ;
-    :hasID 43 ;
     :hasName "ender_dragon"^^xsd:string .
 
-:ender_pearl a :ProjectileEntity ;
+:ender_pearl a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 44 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Thrown Ender Pearl"^^xsd:string ;
-    :hasID 44 ;
     :hasName "ender_pearl"^^xsd:string .
 
-:enderman a :HostileMob ;
+:enderman a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "2.9"^^xsd:float ;
+    :entityID 41 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Enderman"^^xsd:string ;
-    :hasID 41 ;
     :hasName "enderman"^^xsd:string .
 
-:endermite a :HostileMob ;
+:endermite a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "0.3"^^xsd:float ;
+    :entityID 42 ;
     :entityWidth "0.4"^^xsd:float ;
     :hasDisplayName "Endermite"^^xsd:string ;
-    :hasID 42 ;
     :hasName "endermite"^^xsd:string .
 
-:evoker a :HostileMob ;
+:evoker a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 46 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Evoker"^^xsd:string ;
-    :hasID 46 ;
     :hasName "evoker"^^xsd:string .
 
-:evoker_fangs a :Entity ;
+:evoker_fangs a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.8"^^xsd:float ;
+    :entityID 47 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Evoker Fangs"^^xsd:string ;
-    :hasID 47 ;
     :hasName "evoker_fangs"^^xsd:string .
 
-:experience_bottle a :ProjectileEntity ;
+:experience_bottle a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 48 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Thrown Bottle o' Enchanting"^^xsd:string ;
-    :hasID 48 ;
     :hasName "experience_bottle"^^xsd:string .
 
 :experience_orb a :Entity ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 49 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Experience Orb"^^xsd:string ;
-    :hasID 49 ;
     :hasName "experience_orb"^^xsd:string .
 
-:eye_of_ender a :Entity ;
+:eye_of_ender a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 50 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Eye of Ender"^^xsd:string ;
-    :hasID 50 ;
     :hasName "eye_of_ender"^^xsd:string .
 
 :falling_block a :Entity ;
     :entityHeight "0.98"^^xsd:float ;
+    :entityID 51 ;
     :entityWidth "0.98"^^xsd:float ;
     :hasDisplayName "Falling Block"^^xsd:string ;
-    :hasID 51 ;
     :hasName "falling_block"^^xsd:string .
 
-:fireball a :ProjectileEntity ;
+:fireball a :Entity,
+        :ProjectileEntity ;
     :entityHeight "1"^^xsd:float ;
+    :entityID 52 ;
     :entityWidth "1"^^xsd:float ;
     :hasDisplayName "Fireball"^^xsd:string ;
-    :hasID 52 ;
     :hasName "fireball"^^xsd:string .
 
-:firework_rocket a :ProjectileEntity ;
+:firework_rocket a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 53 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Firework Rocket"^^xsd:string ;
-    :hasID 53 ;
     :hasName "firework_rocket"^^xsd:string .
 
-:fishing_bobber a :ProjectileEntity ;
+:fishing_bobber a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 156 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Fishing Bobber"^^xsd:string ;
-    :hasID 156 ;
     :hasName "fishing_bobber"^^xsd:string .
 
-:fox a :Entity ;
+:fox a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 54 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Fox"^^xsd:string ;
-    :hasID 54 ;
     :hasName "fox"^^xsd:string .
 
-:frog a :Entity ;
+:frog a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 55 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Frog"^^xsd:string ;
-    :hasID 55 ;
     :hasName "frog"^^xsd:string .
 
 :furnace_minecart a :Entity ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 56 ;
     :entityWidth "0.98"^^xsd:float ;
     :hasDisplayName "Minecart with Furnace"^^xsd:string ;
-    :hasID 56 ;
     :hasName "furnace_minecart"^^xsd:string .
 
-:ghast a :Mob ;
+:ghast a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "4"^^xsd:float ;
+    :entityID 57 ;
     :entityWidth "4"^^xsd:float ;
     :hasDisplayName "Ghast"^^xsd:string ;
-    :hasID 57 ;
     :hasName "ghast"^^xsd:string .
 
-:giant a :HostileMob ;
+:giant a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "12"^^xsd:float ;
+    :entityID 59 ;
     :entityWidth "3.6"^^xsd:float ;
     :hasDisplayName "Giant"^^xsd:string ;
-    :hasID 59 ;
     :hasName "giant"^^xsd:string .
 
 :glow_item_frame a :Entity ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 60 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Glow Item Frame"^^xsd:string ;
-    :hasID 60 ;
     :hasName "glow_item_frame"^^xsd:string .
 
-:glow_squid a :PassiveMob ;
+:glow_squid a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.8"^^xsd:float ;
+    :entityID 61 ;
     :entityWidth "0.8"^^xsd:float ;
     :hasDisplayName "Glow Squid"^^xsd:string ;
-    :hasID 61 ;
     :hasName "glow_squid"^^xsd:string .
 
-:goat a :Entity ;
+:goat a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.3"^^xsd:float ;
+    :entityID 62 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Goat"^^xsd:string ;
-    :hasID 62 ;
     :hasName "goat"^^xsd:string .
 
-:guardian a :HostileMob ;
+:guardian a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "0.85"^^xsd:float ;
+    :entityID 63 ;
     :entityWidth "0.85"^^xsd:float ;
     :hasDisplayName "Guardian"^^xsd:string ;
-    :hasID 63 ;
     :hasName "guardian"^^xsd:string .
 
-:happy_ghast a :Entity ;
+:happy_ghast a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "4"^^xsd:float ;
+    :entityID 58 ;
     :entityWidth "4"^^xsd:float ;
     :hasDisplayName "Happy Ghast"^^xsd:string ;
-    :hasID 58 ;
     :hasName "happy_ghast"^^xsd:string .
 
-:hoglin a :Entity ;
+:hoglin a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.4"^^xsd:float ;
+    :entityID 64 ;
     :entityWidth "1.3964844"^^xsd:float ;
     :hasDisplayName "Hoglin"^^xsd:string ;
-    :hasID 64 ;
     :hasName "hoglin"^^xsd:string .
 
 :hopper_minecart a :Entity ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 65 ;
     :entityWidth "0.98"^^xsd:float ;
     :hasDisplayName "Minecart with Hopper"^^xsd:string ;
-    :hasID 65 ;
     :hasName "hopper_minecart"^^xsd:string .
 
-:horse a :Entity ;
+:horse a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.6"^^xsd:float ;
+    :entityID 66 ;
     :entityWidth "1.3964844"^^xsd:float ;
     :hasDisplayName "Horse"^^xsd:string ;
-    :hasID 66 ;
     :hasName "horse"^^xsd:string .
 
-:husk a :HostileMob ;
+:husk a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 67 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Husk"^^xsd:string ;
-    :hasID 67 ;
     :hasName "husk"^^xsd:string .
 
-:illusioner a :HostileMob ;
+:illusioner a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 68 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Illusioner"^^xsd:string ;
-    :hasID 68 ;
     :hasName "illusioner"^^xsd:string .
 
 :interaction a :Entity ;
     :entityHeight "0"^^xsd:float ;
+    :entityID 69 ;
     :entityWidth "0"^^xsd:float ;
     :hasDisplayName "Interaction"^^xsd:string ;
-    :hasID 69 ;
     :hasName "interaction"^^xsd:string .
 
-:iron_golem a :Mob ;
+:iron_golem a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "2.7"^^xsd:float ;
+    :entityID 70 ;
     :entityWidth "1.4"^^xsd:float ;
     :hasDisplayName "Iron Golem"^^xsd:string ;
-    :hasID 70 ;
     :hasName "iron_golem"^^xsd:string .
 
 :item a :Entity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 71 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Item"^^xsd:string ;
-    :hasID 71 ;
     :hasName "item"^^xsd:string .
 
 :item_display a :Entity ;
     :entityHeight "0"^^xsd:float ;
+    :entityID 72 ;
     :entityWidth "0"^^xsd:float ;
     :hasDisplayName "Item Display"^^xsd:string ;
-    :hasID 72 ;
     :hasName "item_display"^^xsd:string .
 
 :item_frame a :Entity ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 73 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Item Frame"^^xsd:string ;
-    :hasID 73 ;
     :hasName "item_frame"^^xsd:string .
 
 :jungle_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 74 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Jungle Boat"^^xsd:string ;
-    :hasID 74 ;
     :hasName "jungle_boat"^^xsd:string .
 
 :jungle_chest_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 75 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Jungle Boat with Chest"^^xsd:string ;
-    :hasID 75 ;
     :hasName "jungle_chest_boat"^^xsd:string .
 
 :leash_knot a :Entity ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 76 ;
     :entityWidth "0.375"^^xsd:float ;
     :hasDisplayName "Leash Knot"^^xsd:string ;
-    :hasID 76 ;
     :hasName "leash_knot"^^xsd:string .
 
 :lightning_bolt a :Entity ;
     :entityHeight "0"^^xsd:float ;
+    :entityID 77 ;
     :entityWidth "0"^^xsd:float ;
     :hasDisplayName "Lightning Bolt"^^xsd:string ;
-    :hasID 77 ;
     :hasName "lightning_bolt"^^xsd:string .
 
-:lingering_potion a :ProjectileEntity ;
+:lingering_potion a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 106 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Lingering Potion"^^xsd:string ;
-    :hasID 106 ;
     :hasName "lingering_potion"^^xsd:string .
 
-:llama a :Entity ;
+:llama a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.87"^^xsd:float ;
+    :entityID 78 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Llama"^^xsd:string ;
-    :hasID 78 ;
     :hasName "llama"^^xsd:string .
 
-:llama_spit a :ProjectileEntity ;
+:llama_spit a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 79 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Llama Spit"^^xsd:string ;
-    :hasID 79 ;
     :hasName "llama_spit"^^xsd:string .
 
-:magma_cube a :Mob ;
+:magma_cube a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "0.52"^^xsd:float ;
+    :entityID 80 ;
     :entityWidth "0.52"^^xsd:float ;
     :hasDisplayName "Magma Cube"^^xsd:string ;
-    :hasID 80 ;
     :hasName "magma_cube"^^xsd:string .
 
 :mangrove_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 81 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Mangrove Boat"^^xsd:string ;
-    :hasID 81 ;
     :hasName "mangrove_boat"^^xsd:string .
 
 :mangrove_chest_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 82 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Mangrove Boat with Chest"^^xsd:string ;
-    :hasID 82 ;
     :hasName "mangrove_chest_boat"^^xsd:string .
 
 :mannequin a :Entity ;
     :entityHeight "1.8"^^xsd:float ;
+    :entityID 83 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Mannequin"^^xsd:string ;
-    :hasID 83 ;
     :hasName "mannequin"^^xsd:string .
 
 :marker a :Entity ;
     :entityHeight "0"^^xsd:float ;
+    :entityID 84 ;
     :entityWidth "0"^^xsd:float ;
     :hasDisplayName "Marker"^^xsd:string ;
-    :hasID 84 ;
     :hasName "marker"^^xsd:string .
 
 :minecart a :Entity ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 85 ;
     :entityWidth "0.98"^^xsd:float ;
     :hasDisplayName "Minecart"^^xsd:string ;
-    :hasID 85 ;
     :hasName "minecart"^^xsd:string .
 
-:mooshroom a :Entity ;
+:mooshroom a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.4"^^xsd:float ;
+    :entityID 86 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Mooshroom"^^xsd:string ;
-    :hasID 86 ;
     :hasName "mooshroom"^^xsd:string .
 
-:mule a :Entity ;
+:mule a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.6"^^xsd:float ;
+    :entityID 87 ;
     :entityWidth "1.3964844"^^xsd:float ;
     :hasDisplayName "Mule"^^xsd:string ;
-    :hasID 87 ;
     :hasName "mule"^^xsd:string .
 
-:nautilus a :Entity ;
+:nautilus a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.95"^^xsd:float ;
+    :entityID 88 ;
     :entityWidth "0.875"^^xsd:float ;
     :hasDisplayName "Nautilus"^^xsd:string ;
-    :hasID 88 ;
     :hasName "nautilus"^^xsd:string .
 
 :oak_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 89 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Oak Boat"^^xsd:string ;
-    :hasID 89 ;
     :hasName "oak_boat"^^xsd:string .
 
 :oak_chest_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 90 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Oak Boat with Chest"^^xsd:string ;
-    :hasID 90 ;
     :hasName "oak_chest_boat"^^xsd:string .
 
-:ocelot a :Entity ;
+:ocelot a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 91 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Ocelot"^^xsd:string ;
-    :hasID 91 ;
     :hasName "ocelot"^^xsd:string .
 
 :ominous_item_spawner a :Entity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 92 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Ominous Item Spawner"^^xsd:string ;
-    :hasID 92 ;
     :hasName "ominous_item_spawner"^^xsd:string .
 
 :painting a :Entity ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 93 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Painting"^^xsd:string ;
-    :hasID 93 ;
     :hasName "painting"^^xsd:string .
 
 :pale_oak_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 94 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Pale Oak Boat"^^xsd:string ;
-    :hasID 94 ;
     :hasName "pale_oak_boat"^^xsd:string .
 
 :pale_oak_chest_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 95 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Pale Oak Boat with Chest"^^xsd:string ;
-    :hasID 95 ;
     :hasName "pale_oak_chest_boat"^^xsd:string .
 
-:panda a :Entity ;
+:panda a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.25"^^xsd:float ;
+    :entityID 96 ;
     :entityWidth "1.3"^^xsd:float ;
     :hasDisplayName "Panda"^^xsd:string ;
-    :hasID 96 ;
     :hasName "panda"^^xsd:string .
 
-:parched a :HostileMob ;
+:parched a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.99"^^xsd:float ;
+    :entityID 97 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Parched"^^xsd:string ;
-    :hasID 97 ;
     :hasName "parched"^^xsd:string .
 
-:parrot a :Entity ;
+:parrot a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.9"^^xsd:float ;
+    :entityID 98 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Parrot"^^xsd:string ;
-    :hasID 98 ;
     :hasName "parrot"^^xsd:string .
 
-:phantom a :Mob ;
+:phantom a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 99 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Phantom"^^xsd:string ;
-    :hasID 99 ;
     :hasName "phantom"^^xsd:string .
 
-:pig a :Entity ;
+:pig a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.9"^^xsd:float ;
+    :entityID 100 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Pig"^^xsd:string ;
-    :hasID 100 ;
     :hasName "pig"^^xsd:string .
 
-:piglin a :HostileMob ;
+:piglin a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 101 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Piglin"^^xsd:string ;
-    :hasID 101 ;
     :hasName "piglin"^^xsd:string .
 
-:piglin_brute a :HostileMob ;
+:piglin_brute a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 102 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Piglin Brute"^^xsd:string ;
-    :hasID 102 ;
     :hasName "piglin_brute"^^xsd:string .
 
-:pillager a :HostileMob ;
+:pillager a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 103 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Pillager"^^xsd:string ;
-    :hasID 103 ;
     :hasName "pillager"^^xsd:string .
 
 :player a :Entity ;
     :entityHeight "1.8"^^xsd:float ;
+    :entityID 155 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Player"^^xsd:string ;
-    :hasID 155 ;
     :hasName "player"^^xsd:string .
 
-:polar_bear a :Entity ;
+:polar_bear a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.4"^^xsd:float ;
+    :entityID 104 ;
     :entityWidth "1.4"^^xsd:float ;
     :hasDisplayName "Polar Bear"^^xsd:string ;
-    :hasID 104 ;
     :hasName "polar_bear"^^xsd:string .
 
-:pufferfish a :Mob ;
+:pufferfish a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 107 ;
     :entityWidth "0.7"^^xsd:float ;
     :hasDisplayName "Pufferfish"^^xsd:string ;
-    :hasID 107 ;
     :hasName "pufferfish"^^xsd:string .
 
-:rabbit a :Entity ;
+:rabbit a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 108 ;
     :entityWidth "0.4"^^xsd:float ;
     :hasDisplayName "Rabbit"^^xsd:string ;
-    :hasID 108 ;
     :hasName "rabbit"^^xsd:string .
 
-:ravager a :HostileMob ;
+:ravager a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "2.2"^^xsd:float ;
+    :entityID 109 ;
     :entityWidth "1.95"^^xsd:float ;
     :hasDisplayName "Ravager"^^xsd:string ;
-    :hasID 109 ;
     :hasName "ravager"^^xsd:string .
 
-:salmon a :Mob ;
+:salmon a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.4"^^xsd:float ;
+    :entityID 110 ;
     :entityWidth "0.7"^^xsd:float ;
     :hasDisplayName "Salmon"^^xsd:string ;
-    :hasID 110 ;
     :hasName "salmon"^^xsd:string .
 
-:sheep a :Entity ;
+:sheep a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.3"^^xsd:float ;
+    :entityID 111 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Sheep"^^xsd:string ;
-    :hasID 111 ;
     :hasName "sheep"^^xsd:string .
 
-:shulker a :Mob ;
+:shulker a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1"^^xsd:float ;
+    :entityID 112 ;
     :entityWidth "1"^^xsd:float ;
     :hasDisplayName "Shulker"^^xsd:string ;
-    :hasID 112 ;
     :hasName "shulker"^^xsd:string .
 
-:shulker_bullet a :ProjectileEntity ;
+:shulker_bullet a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.3125"^^xsd:float ;
+    :entityID 113 ;
     :entityWidth "0.3125"^^xsd:float ;
     :hasDisplayName "Shulker Bullet"^^xsd:string ;
-    :hasID 113 ;
     :hasName "shulker_bullet"^^xsd:string .
 
-:silverfish a :HostileMob ;
+:silverfish a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "0.3"^^xsd:float ;
+    :entityID 114 ;
     :entityWidth "0.4"^^xsd:float ;
     :hasDisplayName "Silverfish"^^xsd:string ;
-    :hasID 114 ;
     :hasName "silverfish"^^xsd:string .
 
-:skeleton a :HostileMob ;
+:skeleton a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.99"^^xsd:float ;
+    :entityID 115 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Skeleton"^^xsd:string ;
-    :hasID 115 ;
     :hasName "skeleton"^^xsd:string .
 
-:skeleton_horse a :Entity ;
+:skeleton_horse a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.6"^^xsd:float ;
+    :entityID 116 ;
     :entityWidth "1.3964844"^^xsd:float ;
     :hasDisplayName "Skeleton Horse"^^xsd:string ;
-    :hasID 116 ;
     :hasName "skeleton_horse"^^xsd:string .
 
-:slime a :Mob ;
+:slime a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "0.52"^^xsd:float ;
+    :entityID 117 ;
     :entityWidth "0.52"^^xsd:float ;
     :hasDisplayName "Slime"^^xsd:string ;
-    :hasID 117 ;
     :hasName "slime"^^xsd:string .
 
-:small_fireball a :ProjectileEntity ;
+:small_fireball a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.3125"^^xsd:float ;
+    :entityID 118 ;
     :entityWidth "0.3125"^^xsd:float ;
     :hasDisplayName "Small Fireball"^^xsd:string ;
-    :hasID 118 ;
     :hasName "small_fireball"^^xsd:string .
 
-:sniffer a :Entity ;
+:sniffer a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.75"^^xsd:float ;
+    :entityID 119 ;
     :entityWidth "1.9"^^xsd:float ;
     :hasDisplayName "Sniffer"^^xsd:string ;
-    :hasID 119 ;
     :hasName "sniffer"^^xsd:string .
 
-:snow_golem a :Mob ;
+:snow_golem a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.9"^^xsd:float ;
+    :entityID 121 ;
     :entityWidth "0.7"^^xsd:float ;
     :hasDisplayName "Snow Golem"^^xsd:string ;
-    :hasID 121 ;
     :hasName "snow_golem"^^xsd:string .
 
-:snowball a :ProjectileEntity ;
+:snowball a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 120 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Snowball"^^xsd:string ;
-    :hasID 120 ;
     :hasName "snowball"^^xsd:string .
 
 :spawner_minecart a :Entity ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 122 ;
     :entityWidth "0.98"^^xsd:float ;
     :hasDisplayName "Minecart with Monster Spawner"^^xsd:string ;
-    :hasID 122 ;
     :hasName "spawner_minecart"^^xsd:string .
 
-:spectral_arrow a :ProjectileEntity ;
+:spectral_arrow a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 123 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Spectral Arrow"^^xsd:string ;
-    :hasID 123 ;
     :hasName "spectral_arrow"^^xsd:string .
 
-:spider a :HostileMob ;
+:spider a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "0.9"^^xsd:float ;
+    :entityID 124 ;
     :entityWidth "1.4"^^xsd:float ;
     :hasDisplayName "Spider"^^xsd:string ;
-    :hasID 124 ;
     :hasName "spider"^^xsd:string .
 
-:splash_potion a :ProjectileEntity ;
+:splash_potion a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.25"^^xsd:float ;
+    :entityID 105 ;
     :entityWidth "0.25"^^xsd:float ;
     :hasDisplayName "Splash Potion"^^xsd:string ;
-    :hasID 105 ;
     :hasName "splash_potion"^^xsd:string .
 
 :spruce_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 125 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Spruce Boat"^^xsd:string ;
-    :hasID 125 ;
     :hasName "spruce_boat"^^xsd:string .
 
 :spruce_chest_boat a :Entity ;
     :entityHeight "0.5625"^^xsd:float ;
+    :entityID 126 ;
     :entityWidth "1.375"^^xsd:float ;
     :hasDisplayName "Spruce Boat with Chest"^^xsd:string ;
-    :hasID 126 ;
     :hasName "spruce_chest_boat"^^xsd:string .
 
-:squid a :PassiveMob ;
+:squid a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.8"^^xsd:float ;
+    :entityID 127 ;
     :entityWidth "0.8"^^xsd:float ;
     :hasDisplayName "Squid"^^xsd:string ;
-    :hasID 127 ;
     :hasName "squid"^^xsd:string .
 
-:stray a :HostileMob ;
+:stray a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.99"^^xsd:float ;
+    :entityID 128 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Stray"^^xsd:string ;
-    :hasID 128 ;
     :hasName "stray"^^xsd:string .
 
-:strider a :Entity ;
+:strider a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.7"^^xsd:float ;
+    :entityID 129 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Strider"^^xsd:string ;
-    :hasID 129 ;
     :hasName "strider"^^xsd:string .
 
-:tadpole a :Mob ;
+:tadpole a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.3"^^xsd:float ;
+    :entityID 130 ;
     :entityWidth "0.4"^^xsd:float ;
     :hasDisplayName "Tadpole"^^xsd:string ;
-    :hasID 130 ;
     :hasName "tadpole"^^xsd:string .
 
 :text_display a :Entity ;
     :entityHeight "0"^^xsd:float ;
+    :entityID 131 ;
     :entityWidth "0"^^xsd:float ;
     :hasDisplayName "Text Display"^^xsd:string ;
-    :hasID 131 ;
     :hasName "text_display"^^xsd:string .
 
 :tnt a :Entity ;
     :entityHeight "0.98"^^xsd:float ;
+    :entityID 132 ;
     :entityWidth "0.98"^^xsd:float ;
     :hasDisplayName "Primed TNT"^^xsd:string ;
-    :hasID 132 ;
     :hasName "tnt"^^xsd:string .
 
 :tnt_minecart a :Entity ;
     :entityHeight "0.7"^^xsd:float ;
+    :entityID 133 ;
     :entityWidth "0.98"^^xsd:float ;
     :hasDisplayName "Minecart with TNT"^^xsd:string ;
-    :hasID 133 ;
     :hasName "tnt_minecart"^^xsd:string .
 
-:trader_llama a :Entity ;
+:trader_llama a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.87"^^xsd:float ;
+    :entityID 134 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Trader Llama"^^xsd:string ;
-    :hasID 134 ;
     :hasName "trader_llama"^^xsd:string .
 
-:trident a :ProjectileEntity ;
+:trident a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.5"^^xsd:float ;
+    :entityID 135 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Trident"^^xsd:string ;
-    :hasID 135 ;
     :hasName "trident"^^xsd:string .
 
-:tropical_fish a :Mob ;
+:tropical_fish a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.4"^^xsd:float ;
+    :entityID 136 ;
     :entityWidth "0.5"^^xsd:float ;
     :hasDisplayName "Tropical Fish"^^xsd:string ;
-    :hasID 136 ;
     :hasName "tropical_fish"^^xsd:string .
 
-:turtle a :Entity ;
+:turtle a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.4"^^xsd:float ;
+    :entityID 137 ;
     :entityWidth "1.2"^^xsd:float ;
     :hasDisplayName "Turtle"^^xsd:string ;
-    :hasID 137 ;
     :hasName "turtle"^^xsd:string .
 
-:vex a :HostileMob ;
+:vex a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "0.8"^^xsd:float ;
+    :entityID 138 ;
     :entityWidth "0.4"^^xsd:float ;
     :hasDisplayName "Vex"^^xsd:string ;
-    :hasID 138 ;
     :hasName "vex"^^xsd:string .
 
-:villager a :PassiveMob ;
+:villager a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 139 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Villager"^^xsd:string ;
-    :hasID 139 ;
     :hasName "villager"^^xsd:string .
 
-:vindicator a :HostileMob ;
+:vindicator a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 140 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Vindicator"^^xsd:string ;
-    :hasID 140 ;
     :hasName "vindicator"^^xsd:string .
 
-:wandering_trader a :PassiveMob ;
+:wandering_trader a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 141 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Wandering Trader"^^xsd:string ;
-    :hasID 141 ;
     :hasName "wandering_trader"^^xsd:string .
 
-:warden a :HostileMob ;
+:warden a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "2.9"^^xsd:float ;
+    :entityID 142 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Warden"^^xsd:string ;
-    :hasID 142 ;
     :hasName "warden"^^xsd:string .
 
-:wind_charge a :ProjectileEntity ;
+:wind_charge a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.3125"^^xsd:float ;
+    :entityID 143 ;
     :entityWidth "0.3125"^^xsd:float ;
     :hasDisplayName "Wind Charge"^^xsd:string ;
-    :hasID 143 ;
     :hasName "wind_charge"^^xsd:string .
 
-:witch a :HostileMob ;
+:witch a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 144 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Witch"^^xsd:string ;
-    :hasID 144 ;
     :hasName "witch"^^xsd:string .
 
-:wither a :HostileMob ;
+:wither a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "3.5"^^xsd:float ;
+    :entityID 145 ;
     :entityWidth "0.9"^^xsd:float ;
     :hasDisplayName "Wither"^^xsd:string ;
-    :hasID 145 ;
     :hasName "wither"^^xsd:string .
 
-:wither_skeleton a :HostileMob ;
+:wither_skeleton a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "2.4"^^xsd:float ;
+    :entityID 146 ;
     :entityWidth "0.7"^^xsd:float ;
     :hasDisplayName "Wither Skeleton"^^xsd:string ;
-    :hasID 146 ;
     :hasName "wither_skeleton"^^xsd:string .
 
-:wither_skull a :ProjectileEntity ;
+:wither_skull a :Entity,
+        :ProjectileEntity ;
     :entityHeight "0.3125"^^xsd:float ;
+    :entityID 147 ;
     :entityWidth "0.3125"^^xsd:float ;
     :hasDisplayName "Wither Skull"^^xsd:string ;
-    :hasID 147 ;
     :hasName "wither_skull"^^xsd:string .
 
-:wolf a :Entity ;
+:wolf a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.85"^^xsd:float ;
+    :entityID 148 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Wolf"^^xsd:string ;
-    :hasID 148 ;
     :hasName "wolf"^^xsd:string .
 
-:zoglin a :HostileMob ;
+:zoglin a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.4"^^xsd:float ;
+    :entityID 149 ;
     :entityWidth "1.3964844"^^xsd:float ;
     :hasDisplayName "Zoglin"^^xsd:string ;
-    :hasID 149 ;
     :hasName "zoglin"^^xsd:string .
 
-:zombie a :HostileMob ;
+:zombie a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 150 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Zombie"^^xsd:string ;
-    :hasID 150 ;
     :hasName "zombie"^^xsd:string .
 
-:zombie_horse a :Entity ;
+:zombie_horse a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "1.6"^^xsd:float ;
+    :entityID 151 ;
     :entityWidth "1.3964844"^^xsd:float ;
     :hasDisplayName "Zombie Horse"^^xsd:string ;
-    :hasID 151 ;
     :hasName "zombie_horse"^^xsd:string .
 
-:zombie_nautilus a :Entity ;
+:zombie_nautilus a :Animal,
+        :Entity,
+        :Mob,
+        :PassiveMob ;
     :entityHeight "0.95"^^xsd:float ;
+    :entityID 152 ;
     :entityWidth "0.875"^^xsd:float ;
     :hasDisplayName "Zombie Nautilus"^^xsd:string ;
-    :hasID 152 ;
     :hasName "zombie_nautilus"^^xsd:string .
 
-:zombie_villager a :HostileMob ;
+:zombie_villager a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 153 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Zombie Villager"^^xsd:string ;
-    :hasID 153 ;
     :hasName "zombie_villager"^^xsd:string .
 
-:zombified_piglin a :HostileMob ;
+:zombified_piglin a :Entity,
+        :HostileMob,
+        :Mob ;
     :entityHeight "1.95"^^xsd:float ;
+    :entityID 154 ;
     :entityWidth "0.6"^^xsd:float ;
     :hasDisplayName "Zombified Piglin"^^xsd:string ;
-    :hasID 154 ;
     :hasName "zombified_piglin"^^xsd:string .
 

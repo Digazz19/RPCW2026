@@ -7,21 +7,37 @@
 <div class="card">
     <h3>Executar query</h3>
     <p class="muted">
-        Seleciona o tipo de pergunta e indica o nome do recurso a consultar.
+        Seleciona o tipo de pergunta e, quando necessário, indica o nome local do recurso.
     </p>
 
     <form method="post" class="styled-form">
         <label for="query_type">Tipo de query</label>
         <select name="query_type" id="query_type">
-            <option value="ingredients" {% if selected_query == "ingredients" %}selected{% endif %}>Ingredientes de receita</option>
-            <option value="drops" {% if selected_query == "drops" %}selected{% endif %}>Mobs que dropam item</option>
-            <option value="biomes" {% if selected_query == "biomes" %}selected{% endif %}>Biomas de spawn de mob</option>
-            <option value="tool" {% if selected_query == "tool" %}selected{% endif %}>Ferramenta para minerar bloco</option>
-            <option value="enchantment" {% if selected_query == "enchantment" %}selected{% endif %}>Items aplicáveis a encantamento</option>
+            {% for key, option in query_options.items() %}
+            <option
+                value="{{ key }}"
+                data-placeholder="{{ option.placeholder }}"
+                data-needs-input="{{ 'true' if option.needs_input else 'false' }}"
+                {% if selected_query == key %}selected{% endif %}
+            >
+                {{ option.label }}
+            </option>
+            {% endfor %}
         </select>
 
-        <label for="input_value">Nome do recurso</label>
-        <input type="text" name="input_value" id="input_value" value="{{ input_value or '' }}" placeholder="Ex.: DiamondPickaxe">
+        <div id="input-group">
+            <label for="input_value">Nome do recurso</label>
+            <input
+                type="text"
+                name="input_value"
+                id="input_value"
+                value="{{ input_value or '' }}"
+                placeholder="Ex.: torch, creeper, diamond_ore, fortune"
+            >
+            <p class="muted">
+                Usa o nome local do recurso, por exemplo: <code>torch</code>, <code>creeper</code>, <code>diamond_ore</code>, <code>fortune</code>.
+            </p>
+        </div>
 
         <button type="submit" class="button button-primary">Executar</button>
     </form>
@@ -35,7 +51,12 @@
         </div>
     </div>
 
-    {% if result and result.results.bindings %}
+    {% if error %}
+    <div class="empty-state">
+        <h4>Erro na execução</h4>
+        <p>{{ error }}</p>
+    </div>
+    {% elif result and result.results.bindings %}
     <div class="table-wrapper">
         <table>
             <thead>
@@ -76,8 +97,34 @@
     {% else %}
     <div class="empty-state">
         <h4>Aguardando execução</h4>
-        <p>Escolhe uma query, introduz um recurso e executa a consulta.</p>
+        <p>Escolhe uma query, introduz um recurso quando necessário e executa a consulta.</p>
     </div>
     {% endif %}
 </div>
+
+<script>
+    function updateInputVisibility() {
+        const select = document.getElementById("query_type");
+        const selected = select.options[select.selectedIndex];
+        const needsInput = selected.dataset.needsInput === "true";
+        const placeholder = selected.dataset.placeholder || "Ex.: torch";
+
+        const inputGroup = document.getElementById("input-group");
+        const input = document.getElementById("input_value");
+
+        input.placeholder = placeholder;
+
+        if (needsInput) {
+            inputGroup.style.display = "block";
+            input.required = true;
+        } else {
+            inputGroup.style.display = "none";
+            input.required = false;
+            input.value = "";
+        }
+    }
+
+    document.getElementById("query_type").addEventListener("change", updateInputVisibility);
+    updateInputVisibility();
+</script>
 {% endblock %}

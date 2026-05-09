@@ -4,56 +4,118 @@ Projeto desenvolvido no âmbito da unidade curricular de **Representação e Pro
 
 ## Objetivo
 
-Especificação de uma ontologia para o domínio do Minecraft Java Edition 1.21.11, cobrindo mecânicas de sobrevivência: blocos, items, mobs, biomas, dimensões, estruturas, crafting, encantamentos, efeitos e progressão de jogo. A ontologia é explorável e extensível através de uma aplicação web.
+O objetivo deste projeto é especificar uma ontologia para o domínio do **Minecraft Java Edition 1.21.11**, cobrindo elementos e mecânicas de sobrevivência, como blocos, items, entidades, mobs, biomas, dimensões, estruturas, crafting, encantamentos, efeitos e progressão de jogo.
+
+A ontologia é explorável através de uma aplicação web desenvolvida em Flask, com ligação a um repositório GraphDB. A aplicação permite consultar classes, indivíduos, propriedades, relações diretas e inversas, executar queries de competência e adicionar novas triples ao repositório.
 
 ## Stack Tecnológica
 
-- **Protégé** — modelação da TBox (classes, propriedades, restrições)
-- **Python + rdflib** — geração da ABox a partir dos dados do PrismarineJS
-- **GraphDB** — triplestore com endpoint SPARQL
+- **Protégé** — modelação da TBox: classes, propriedades, restrições e hierarquia ontológica;
+- **Python + rdflib** — geração da ABox a partir de dados JSON;
+- **GraphDB** — armazenamento RDF e endpoint SPARQL;
+- **Flask** — aplicação web para exploração e extensão da ontologia;
+- **SPARQL** — consulta e atualização da ontologia.
 
 ## Fonte de Dados
 
-- **PrismarineJS/minecraft-data** (versão 1.21.11) — fonte primária para blocos, items, entidades, biomas, foods, enchantments, recipes e effects
-- **Dados manuais** — spawns mob↔bioma, drops de mobs, damage de armas/armaduras, dimensões e estruturas
+A ontologia é construída a partir de duas fontes principais:
 
-## Perguntas de Competência
+1. **PrismarineJS/minecraft-data**, versão `1.21.11`, usado como fonte primária para:
 
-A ontologia foi desenhada para responder a estas perguntas via SPARQL:
+   - blocos;
+   - items;
+   - entidades;
+   - biomas;
+   - foods;
+   - enchantments;
+   - recipes;
+   - effects.
 
-1. Que materiais preciso para craftar o item X?
-2. Que mobs dropam o item Y?
-3. Em que biomas spawna o mob Z?
-4. Que ferramenta mínima é necessária para minerar o bloco W?
-5. Que items posso encantar com Fortune? E com Sharpness?
-6. Que estruturas geram em cada bioma?
-7. Qual o caminho de progressão Wood → Stone → Iron → Diamond → Netherite?
-8. Que mobs são imunes a fogo? Que mobs ardem à luz do sol?
-9. Que items são necessários para abrir um portal para a Nether/End?
-10. Que blocos são afetados pela gravidade?
-11. Que food items dão mais saturation?
-12. Que encantamentos são incompatíveis entre si?
+2. **Dados manuais complementares**, usados para informação que não está suficientemente explícita no dataset principal:
+
+   - drops de mobs;
+   - spawns de mobs em biomas;
+   - tiers de materiais;
+   - requisitos mínimos de mineração;
+   - dimensões;
+   - estruturas;
+   - items necessários para aceder a dimensões;
+   - propriedades específicas de mobs;
+   - blocos afetados pela gravidade.
+
+Os dados manuais encontram-se em:
+
+```text
+data/manual/
+```
+
+A geração automática da ontologia junta os dados do PrismarineJS com estes dados manuais.
 
 ---
 
-## Estrutura da Ontologia (TBox)
+## Perguntas de Competência
 
-### Classes de Topo
+A ontologia e a aplicação web foram desenhadas para responder às seguintes perguntas de competência:
 
-A ontologia tem 6 classes de topo, conceptualmente ortogonais:
+1. Que ingredientes são necessários para craftar um item?
+2. Que mobs dropam determinado item?
+3. Em que biomas pode aparecer determinado mob?
+4. Que ferramenta ou tier mínimo é necessário para minerar um bloco?
+5. Que items podem receber determinado encantamento?
+6. Que estruturas geram num determinado bioma?
+7. Qual é a progressão dos tiers de material?
+8. Que mobs são imunes ao fogo?
+9. Que mobs ardem à luz do sol?
+10. Que items são necessários para aceder a uma dimensão?
+11. Que blocos são afetados pela gravidade?
+12. Que alimentos têm maior saturação?
+13. Que encantamentos são incompatíveis entre si?
 
-| Classe | Responde a... | Descrição |
-|--------|---------------|-----------|
-| `GameObject` | "O quê?" | Objetos tangíveis do jogo (blocos, items, entidades) |
-| `Environment` | "Onde?" | Localizações e contextos (dimensões, biomas, estruturas) |
-| `Recipe` | "Como se faz?" | Processos de produção |
-| `Enchantment` | "Que melhoria?" | Modificadores aplicáveis a items |
-| `Effect` | "Que estado?" | Estados temporários de entidades |
-| `MaterialTier` | "De que qualidade?" | Enumeração fechada de tiers de material |
+Estas perguntas são respondidas através de queries SPARQL integradas na página **Queries de Competência** da aplicação web.
 
-### Hierarquia Completa de Classes
+---
 
+## Estrutura da Ontologia
+
+A ontologia está dividida em duas partes principais:
+
+- **TBox**: classes, hierarquias, object properties, data properties e restrições;
+- **ABox**: indivíduos gerados automaticamente a partir dos datasets e dos dados manuais.
+
+A TBox principal encontra-se em:
+
+```text
+ontology/classes.ttl
 ```
+
+A ontologia final, com TBox e ABox combinadas, é gerada em:
+
+```text
+ontology/minecraft.ttl
+```
+
+---
+
+## Classes de Topo
+
+A ontologia organiza o domínio em seis classes principais:
+
+| Classe | Papel no domínio | Descrição |
+|---|---|---|
+| `GameObject` | O quê? | Objetos tangíveis do jogo, como blocos, items e entidades |
+| `Environment` | Onde? | Contextos espaciais, como dimensões, biomas e estruturas |
+| `Recipe` | Como se faz? | Processos de produção ou transformação de items |
+| `Enchantment` | Que melhoria? | Modificadores aplicáveis a items |
+| `Effect` | Que estado? | Estados temporários aplicáveis a entidades |
+| `MaterialTier` | Que nível? | Tiers de progressão e qualidade de materiais |
+
+---
+
+## Hierarquia de Classes
+
+Resumo da hierarquia principal:
+
+```text
 owl:Thing
 │
 ├── GameObject
@@ -96,9 +158,9 @@ owl:Thing
 │   │   ├── FluidBlock
 │   │   ├── GravityBlock
 │   │   ├── RedstoneBlock
-│   │   ├── LightEmittingBlock       [≡ Block ⊓ emitLight > 0]
-│   │   ├── TransparentBlock          [≡ Block ⊓ isTransparent = true]
-│   │   └── IndestructibleBlock       [≡ Block ⊓ hardness = -1.0]
+│   │   ├── LightEmittingBlock
+│   │   ├── TransparentBlock
+│   │   └── IndestructibleBlock
 │   │
 │   ├── Item
 │   │   ├── Tool
@@ -149,8 +211,8 @@ owl:Thing
 │   │   ├── Book
 │   │   ├── SmithingTemplate
 │   │   ├── UtilityItem
-│   │   ├── StackableItem             [≡ Item ⊓ stackSize > 1]
-│   │   └── NonStackableItem          [≡ Item ⊓ stackSize = 1]
+│   │   ├── StackableItem
+│   │   └── NonStackableItem
 │   │
 │   ├── Entity
 │   │   ├── Mob
@@ -167,9 +229,9 @@ owl:Thing
 │   │   │   └── AmbientMob
 │   │   └── ProjectileEntity
 │   │
-│   ├── PlaceableBlock                [≡ Block ⊓ Item]
-│   ├── RenewableResource             [≡ GameObject ⊓ isRenewable = true]
-│   └── NonRenewableResource          [≡ GameObject ⊓ isRenewable = false]
+│   ├── PlaceableBlock
+│   ├── RenewableResource
+│   └── NonRenewableResource
 │
 ├── Environment
 │   ├── Dimension
@@ -203,194 +265,471 @@ owl:Thing
 │   ├── BeneficialEffect
 │   └── HarmfulEffect
 │
-└── MaterialTier                      [enumeração: Wood, Stone, Copper, Iron,
-                                       Gold, Diamond, Netherite, Leather,
-                                       Chainmail, Turtle]
+└── MaterialTier
 ```
-
-### Decisões de Modelação Relevantes
-
-#### Dualidade Block↔Item (Opção C — Multi-classificação)
-
-Em Minecraft, muitos objetos existem simultaneamente como bloco no mundo e como item no inventário (ex: `stone`, `oak_planks`). Em vez de duplicar indivíduos ou forçar disjunção, usamos multi-classificação:
-
-- Um indivíduo `:Stone` pode ser `a :Block` **e** `a :Item` ao mesmo tempo
-- `Block` e `Item` **não** são declaradas como disjuntas
-- A classe definida `PlaceableBlock ≡ Block ⊓ Item` é inferida automaticamente pelo reasoner
-- Isto resulta em ~1013 indivíduos com dupla classificação, ~492 items puros e ~153 blocos não-coletáveis
-
-#### Enchantments — sem disjunção entre subclasses
-
-As subclasses de `Enchantment` (WeaponEnchantment, ArmorEnchantment, etc.) **não** são mutuamente disjuntas porque encantamentos como `Unbreaking` e `Mending` aplicam-se a múltiplos tipos de item simultaneamente. A classificação é feita pela relação `applicableTo`.
-
-#### Proveniência de items — relação, não subclasse
-
-A origem de um item (animal, mineral, mob drop) é modelada pela hierarquia de object properties `obtainedFrom` e não por subclasses tipo "AnimalDerivedItem", evitando classificações transversais artificiais.
 
 ---
 
-## Object Properties (38 total)
+## Decisões de Modelação
 
-### Hierarquia de obtenção
+### Dualidade entre `Block` e `Item`
 
+Em Minecraft, muitos recursos existem simultaneamente como bloco no mundo e como item no inventário. Por exemplo, `stone`, `oak_planks` ou `diamond_ore` podem ser tratados como recursos do jogo e, em alguns casos, como objetos manipuláveis.
+
+Por isso, `Block` e `Item` não foram modeladas como classes disjuntas. A ontologia permite multi-classificação, ou seja, o mesmo indivíduo pode pertencer simultaneamente a mais do que uma classe.
+
+A classe `PlaceableBlock` representa esta interseção:
+
+```text
+PlaceableBlock ≡ Block ⊓ Item
 ```
-obtainedFrom : Item → GameObject
-├── droppedBy    : Item → Mob          [inversa: drops]
-├── minedFrom    : Item → Block        [inversa: minedDrops]
-├── shearedFrom  : Item → GameObject
-├── milkableFrom : Item → Mob
-├── craftedBy    : Item → Recipe       [inversa: produces]
-└── smeltedFrom  : Item → Item         [inversa: smeltsInto]
-```
-
-### Ferramentas e materiais
-
-| Property | Domain → Range | Características |
-|----------|---------------|-----------------|
-| `minedWith` | Block → Tool | inversa: `canMine` |
-| `requiresMinTier` | Block → MaterialTier | Functional |
-| `madeOfMaterial` | Item → MaterialTier | Functional |
-
-### Localização e spawn
-
-| Property | Domain → Range | Características |
-|----------|---------------|-----------------|
-| `spawnsIn` | Mob → Biome | inversa: `hasSpawn` |
-| `locatedIn` | GameObject → Environment | **Transitive**, inversa: `contains` |
-| `generatesIn` | Structure → Biome | inversa: `hasStructure` |
-| `foundIn` | GameObject → Environment | — |
 
 ### Encantamentos
 
-| Property | Domain → Range | Características |
-|----------|---------------|-----------------|
-| `applicableTo` | Enchantment → Item | inversa: `canBeEnchantedWith` |
-| `incompatibleWith` | Enchantment → Enchantment | **Symmetric** |
+As subclasses de `Enchantment` não são necessariamente disjuntas, porque há encantamentos que se aplicam a vários tipos de item. Por exemplo, `unbreaking` e `mending` aplicam-se a vários equipamentos.
+
+A aplicabilidade é representada através das propriedades:
+
+```text
+applicableTo
+canBeEnchantedWith
+```
 
 ### Receitas
 
-| Property | Domain → Range | Características |
-|----------|---------------|-----------------|
-| `hasIngredient` | Recipe → Item | inversa: `usedIn` |
-| `produces` | Recipe → Item | **Functional** |
+As receitas são modeladas como indivíduos da classe `Recipe`, com subclasses para receitas shaped e shapeless.
 
-### Outras relações
+As relações principais são:
 
-| Property | Domain → Range |
-|----------|---------------|
-| `weakAgainst` | Mob → Item |
-| `immuneTo` | Mob → Effect |
-| `tamedWith` | TameableMob → Item |
-| `breedsWith` | PassiveMob → Item |
-| `ridesOn` | Entity → Vehicle |
-| `hasEffect` | Item → Effect |
-| `usesFuel` / `canBurnIn` | FunctionalBlock ↔ Item |
-| `requiredToEnter` / `opensAccess` | Dimension ↔ Item |
-| `storedIn` / `containsItem` | Item ↔ Container |
+```text
+produces
+craftedBy
+hasIngredient
+usedIn
+hasSlot
+slotItem
+slotRow
+slotColumn
+outputQuantity
+```
+
+A representação com `RecipeSlot` permite preservar a estrutura de receitas shaped e calcular quantidades de ingredientes.
+
+### Material tiers
+
+Os tiers de material são representados como indivíduos da classe `MaterialTier`.
+
+Exemplos:
+
+```text
+Wood
+Stone
+Copper
+Iron
+Gold
+Diamond
+Netherite
+Leather
+Chainmail
+Turtle
+```
+
+A propriedade `tierOrder` permite ordenar os tiers e responder a perguntas sobre progressão de jogo.
 
 ---
 
-## Data Properties (40 total)
+## Object Properties
 
-### Comuns a GameObjects
+A ontologia define relações entre indivíduos, incluindo:
 
-`hasName` (string), `hasDisplayName` (string), `hasID` (integer), `stackSize` (integer), `isRenewable` (boolean)
+| Property | Domínio → Alcance | Descrição |
+|---|---|---|
+| `obtainedFrom` | `Item → GameObject` | Origem genérica de um item |
+| `droppedBy` | `Item → Mob` | Mob que pode dropar o item |
+| `drops` | `Mob → Item` | Items que um mob pode dropar |
+| `minedFrom` | `Item → Block` | Bloco de onde um item pode ser obtido |
+| `minedDrops` | `Block → Item` | Item obtido ao minerar um bloco |
+| `minedWith` | `Block → Tool` | Ferramenta que pode minerar um bloco |
+| `canMine` | `Tool → Block` | Blocos que uma ferramenta pode minerar |
+| `requiresMinTier` | `Block → MaterialTier` | Tier mínimo necessário para minerar um bloco |
+| `madeOfMaterial` | `Item → MaterialTier` | Tier ou material principal de um item |
+| `spawnsIn` | `Mob → Biome` | Biomas onde um mob pode aparecer |
+| `hasSpawn` | `Biome → Mob` | Mobs que aparecem num bioma |
+| `locatedIn` | `GameObject → Environment` | Localização de um recurso |
+| `contains` | `Environment → GameObject` | Relação inversa de localização |
+| `generatesIn` | `Structure → Biome` | Biomas onde uma estrutura gera |
+| `hasStructure` | `Biome → Structure` | Estruturas existentes num bioma |
+| `applicableTo` | `Enchantment → Item` | Items aos quais um encantamento se aplica |
+| `canBeEnchantedWith` | `Item → Enchantment` | Encantamentos aplicáveis a um item |
+| `incompatibleWith` | `Enchantment → Enchantment` | Encantamentos incompatíveis |
+| `hasIngredient` | `Recipe → Item` | Ingrediente usado numa receita |
+| `usedIn` | `Item → Recipe` | Receitas onde um item é usado |
+| `produces` | `Recipe → Item` | Item produzido por uma receita |
+| `craftedBy` | `Item → Recipe` | Receita que produz o item |
+| `requiredToEnter` | `Dimension → Item` | Items necessários para aceder a uma dimensão |
+| `opensAccess` | `Item → Dimension` | Dimensão acessível através de um item |
+| `hasSlot` | `Recipe → RecipeSlot` | Slots associados a uma receita |
+| `slotItem` | `RecipeSlot → Item` | Item colocado num slot de crafting |
+
+Algumas destas propriedades têm inversas declaradas em OWL, permitindo navegação nos dois sentidos.
+
+---
+
+## Data Properties
+
+A ontologia define atributos literais para vários tipos de indivíduos.
+
+### Propriedades gerais
+
+```text
+hasName
+hasDisplayName
+blockID
+itemID
+entityID
+biomeID
+effectID
+enchantmentID
+stackSize
+isRenewable
+```
+
+A propriedade genérica `hasID` foi substituída, na geração de dados, por propriedades específicas como `blockID`, `itemID`, `entityID`, `biomeID`, `effectID` e `enchantmentID`. Isto evita ambiguidades em recursos que existem simultaneamente como bloco e item, como `diamond_ore`.
 
 ### Blocos
 
-`hardness` (float), `blastResistance` (float), `isTransparent` (boolean), `emitLight` (integer 0-15), `filterLight` (integer 0-15), `isDiggable` (boolean), `affectedByGravity` (boolean)
+```text
+hardness
+blastResistance
+isTransparent
+emitLight
+filterLight
+isDiggable
+affectedByGravity
+```
 
-### Items com durabilidade
+### Items e equipamentos
 
-`maxDurability` (integer), `attackDamage` (float), `attackSpeed` (float), `armorPoints` (integer), `armorToughness` (float), `knockbackResistance` (float)
+```text
+maxDurability
+attackDamage
+attackSpeed
+armorPoints
+armorToughness
+knockbackResistance
+```
 
 ### Food
 
-`foodPoints` (float), `saturation` (float), `effectiveQuality` (float), `saturationRatio` (float)
+```text
+foodPoints
+saturation
+effectiveQuality
+saturationRatio
+```
 
-### Mobs
+### Entidades e mobs
 
-`health` (float), `mobAttackDamage` (float), `experienceDrop` (integer), `entityWidth` (float), `entityHeight` (float), `isBurnableInSunlight` (boolean), `isImmuneToFire` (boolean)
+```text
+health
+mobAttackDamage
+experienceDrop
+entityWidth
+entityHeight
+isBurnableInSunlight
+isImmuneToFire
+```
 
-### Enchantments
+### Encantamentos
 
-`maxLevel` (integer), `enchantmentWeight` (integer), `isTreasureOnly` (boolean), `isCurse` (boolean), `isTradeable` (boolean), `isDiscoverable` (boolean)
+```text
+maxLevel
+enchantmentWeight
+isTreasureOnly
+isCurse
+isTradeable
+isDiscoverable
+```
 
-### Biomes
+### Biomas
 
-`temperature` (float), `hasPrecipitation` (boolean), `biomeCategory` (string)
+```text
+temperature
+hasPrecipitation
+biomeCategory
+```
 
-### Effects e Recipes
+### Receitas e slots
 
-`effectType` (string), `outputQuantity` (integer)
+```text
+outputQuantity
+slotRow
+slotColumn
+```
 
-> Todas as data properties são **Functional** (cada indivíduo tem no máximo um valor).
+### Material tiers
 
----
+```text
+tierOrder
+```
 
-## Classes Definidas (Equivalent Classes)
-
-Classes cujos membros são inferidos automaticamente pelo reasoner:
-
-| Classe | Definição OWL | Descrição |
-|--------|---------------|-----------|
-| `PlaceableBlock` | `Block ⊓ Item` | Objetos que existem como bloco e como item |
-| `LightEmittingBlock` | `Block ⊓ (emitLight some integer[>0])` | Blocos que emitem luz |
-| `TransparentBlock` | `Block ⊓ (isTransparent value true)` | Blocos transparentes |
-| `IndestructibleBlock` | `Block ⊓ (hardness value -1.0)` | Blocos indestrutíveis (bedrock) |
-| `StackableItem` | `Item ⊓ (stackSize some integer[>1])` | Items empilháveis |
-| `NonStackableItem` | `Item ⊓ (stackSize value 1)` | Items não empilháveis |
-| `RenewableResource` | `GameObject ⊓ (isRenewable value true)` | Recursos renováveis |
-| `NonRenewableResource` | `GameObject ⊓ (isRenewable value false)` | Recursos não renováveis |
-
----
-
-## Disjoint Classes
-
-Grupos de classes mutuamente exclusivas (nenhum indivíduo pode pertencer a duas delas):
-
-- **Topo:** GameObject, Environment, Recipe, Enchantment, Effect, MaterialTier
-- **Comportamento de mobs:** HostileMob ↔ PassiveMob
-- **Biomas por dimensão:** OverworldBiome, NetherBiome, EndBiome
-- **Tipos de receita:** CraftingRecipe, SmeltingRecipe, BrewingRecipe, SmithingRecipe
-- **Shaped vs Shapeless:** ShapedRecipe ↔ ShapelessRecipe
-- **Efeitos:** BeneficialEffect ↔ HarmfulEffect
-- **Subclasses de Item:** Tool, Weapon, Armor, Food, Material, Potion, Projectile, Bucket, Vehicle, MobEquipment, Decoration, SpawnEgg, MusicDisc, Dye, Book, SmithingTemplate, UtilityItem, Container
-- **Subclasses de Tool:** Pickaxe, Axe, Shovel, Hoe, Shears, FishingRod, FlintAndSteel, SpecialTool
-- **Subclasses de Weapon:** Sword, Bow, Crossbow, Trident, Mace, Shield
-- **Subclasses de Armor:** Helmet, Chestplate, Leggings, Boots, Elytra, WolfArmor
-- **Subclasses de Food:** RawFood, CookedFood, SpecialFood
-- **Subclasses de Material:** Ingot, Gem, RawMineral, Nugget, OrganicMaterial
-- **Subclasses de Block:** NaturalBlock, CraftedBlock, FunctionalBlock, Plant, FluidBlock, GravityBlock, LightSource, RedstoneBlock
-- **Subclasses de Environment:** Dimension, Biome, Structure
+Nem todas as data properties são funcionais. As propriedades que representam um único valor por indivíduo, como `hasID`, `stackSize`, `hardness` ou `maxLevel`, podem ser funcionais. Outras propriedades não são funcionais quando representam informação repetível ou estrutural.
 
 ---
 
-## Restrições (SubClass Of com expressões)
+## Classes Definidas
 
-| Classe | Restrição | Significado |
-|--------|-----------|-------------|
-| `Biome` | `locatedIn some Dimension` | Todo bioma pertence a uma dimensão |
-| `CraftingRecipe` | `hasIngredient max 9 Item` | Receitas de crafting têm no máximo 9 ingredientes |
-| `Food` | `foodPoints some xsd:float` | Toda comida tem pontos de fome |
+A ontologia inclui classes que podem ser inferidas pelo reasoner:
+
+| Classe | Definição conceptual | Descrição |
+|---|---|---|
+| `PlaceableBlock` | `Block ⊓ Item` | Recursos que podem existir como bloco e item |
+| `LightEmittingBlock` | `Block` com `emitLight > 0` | Blocos que emitem luz |
+| `TransparentBlock` | `Block` com `isTransparent = true` | Blocos transparentes |
+| `IndestructibleBlock` | `Block` com `hardness = -1.0` | Blocos indestrutíveis |
+| `StackableItem` | `Item` com `stackSize > 1` | Items empilháveis |
+| `NonStackableItem` | `Item` com `stackSize = 1` | Items não empilháveis |
+| `RenewableResource` | `GameObject` com `isRenewable = true` | Recursos renováveis |
+| `NonRenewableResource` | `GameObject` com `isRenewable = false` | Recursos não renováveis |
+
+---
+
+## Disjunções
+
+Foram definidas disjunções pontuais onde a distinção é segura no domínio.
+
+Exemplos:
+
+```text
+HostileMob disjointWith PassiveMob
+BeneficialEffect disjointWith HarmfulEffect
+ShapedRecipe disjointWith ShapelessRecipe
+```
+
+Não foram impostas disjunções globais entre `Block` e `Item`, porque isso impediria a representação natural de recursos que têm dupla natureza no Minecraft.
+
+---
+
+## Geração da Ontologia
+
+A ontologia final é gerada automaticamente a partir da TBox e dos dados.
+
+Comando:
+
+```bash
+python scripts/build_ontology.py
+```
+
+Este script:
+
+1. executa os exporters;
+2. gera os ficheiros `data_*.ttl`;
+3. junta `ontology/classes.ttl` com os ficheiros RDF gerados;
+4. produz `ontology/minecraft.ttl`;
+5. valida se o ficheiro Turtle final pode ser carregado;
+6. imprime estatísticas básicas da ontologia.
+
+Os ficheiros `scripts/ontology/data_*.ttl` são gerados automaticamente e não devem ser editados manualmente.
+
+---
+
+## Execução com GraphDB
+
+Para correr o projeto:
+
+1. Abrir o GraphDB.
+
+2. Criar um repositório chamado:
+
+```text
+minecraft
+```
+
+3. Importar o ficheiro:
+
+```text
+ontology/minecraft.ttl
+```
+
+4. Confirmar que o endpoint SPARQL fica disponível em:
+
+```text
+http://localhost:7200/repositories/minecraft
+```
+
+5. Entrar na pasta da aplicação web:
+
+```bash
+cd webapp
+```
+
+6. Instalar dependências:
+
+```bash
+pip install -r requirements.txt
+```
+
+7. Correr a aplicação:
+
+```bash
+python app.py
+```
+
+8. Abrir no browser:
+
+```text
+http://127.0.0.1:5000
+```
+
+Sempre que `ontology/minecraft.ttl` for regenerado, deve limpar-se ou recriar-se o repositório GraphDB antes de importar novamente a ontologia, para evitar mistura entre dados antigos e dados novos.
+
+---
+
+## Aplicação Web
+
+A aplicação web permite:
+
+- visualizar a página inicial do projeto;
+- listar classes da ontologia;
+- consultar indivíduos de uma classe;
+- abrir a página de detalhe de um recurso;
+- visualizar propriedades diretas de um recurso;
+- visualizar relações inversas agrupadas por propriedade;
+- executar queries de competência;
+- adicionar novas triples ao repositório GraphDB.
+
+Rotas principais:
+
+```text
+/
+ /ontology/classes
+ /ontology/classes/<class_name>
+ /ontology/resource/<resource_name>
+ /competency/
+ /admin/add-relation
+```
+
+---
+
+## Inserção de Novas Triples
+
+A página **Adicionar Relação** permite aumentar a ontologia a partir da aplicação web.
+
+Exemplos de triples que podem ser inseridas:
+
+```text
+creeper spawnsIn plains
+sand affectedByGravity true
+diamond_ore requiresMinTier Iron
+```
+
+A aplicação valida nomes locais e permite inserir tanto relações entre recursos como literais tipados.
 
 ---
 
 ## Estrutura do Projeto
 
-```
-RPCW-Projeto/
+```text
+Projeto2026/
+├── README.md
 ├── data/
-│   └── 1.21.11/           ← JSONs do PrismarineJS
-├── scripts/
-│   ├── venv/              ← ambiente Python
-│   ├── explore.py         ← exploração dos dados
-│   ├── explore_values.py  ← análise de valores categóricos
-│   └── classify_items.py  ← validação de heurísticas de classificação
+│   ├── 1.21.11/
+│   │   ├── blocks.json
+│   │   ├── items.json
+│   │   ├── entities.json
+│   │   ├── biomes.json
+│   │   ├── foods.json
+│   │   ├── enchantments.json
+│   │   ├── recipes.json
+│   │   └── effects.json
+│   └── manual/
+│       ├── material_tiers.json
+│       ├── block_mining.json
+│       ├── mob_drops.json
+│       ├── mob_spawns.json
+│       ├── dimensions.json
+│       ├── structures.json
+│       ├── portals.json
+│       ├── mob_properties.json
+│       └── block_properties.json
 ├── ontology/
-│   └── minecraft.ttl ← TBox (classes, propriedades, restrições)
-├── output/
-│   └── ontologia com toda a info pos processamento de dados
-├── webapp/                ← aplicação web (TODO)
-└── README.md
+│   ├── classes.ttl
+│   └── minecraft.ttl
+├── scripts/
+│   ├── build_ontology.py
+│   ├── explore.py
+│   ├── explore_values.py
+│   ├── classify_items.py
+│   ├── exporter/
+│   │   ├── common.py
+│   │   ├── classifiers.py
+│   │   ├── run_all.py
+│   │   ├── item_exporter.py
+│   │   ├── blocks_exporter.py
+│   │   ├── entities_exporter.py
+│   │   ├── biomes_exporter.py
+│   │   ├── foods_exporter.py
+│   │   ├── enchantments_exporter.py
+│   │   ├── effects_exporter.py
+│   │   ├── recipies_exporter.py
+│   │   └── manual_exporter.py
+│   └── ontology/
+│       ├── data_items.ttl
+│       ├── data_blocks.ttl
+│       ├── data_entities.ttl
+│       ├── data_biomes.ttl
+│       ├── data_foods.ttl
+│       ├── data_enchantments.ttl
+│       ├── data_effects.ttl
+│       ├── data_recipes.ttl
+│       └── data_manual.ttl
+└── webapp/
+    ├── app.py
+    ├── config.py
+    ├── requirements.txt
+    ├── routes/
+    ├── services/
+    ├── static/
+    └── templates/
 ```
+
+---
+
+## Exemplos de Demonstração
+
+Exemplos úteis para testar na aplicação:
+
+| Query | Input |
+|---|---|
+| Ingredientes de receita | `torch` |
+| Mobs que dropam item | `gunpowder` |
+| Biomas de spawn de mob | `creeper` |
+| Ferramenta para minerar bloco | `diamond_ore` |
+| Items aplicáveis a encantamento | `fortune` |
+| Estruturas por bioma | `desert` |
+| Items necessários para dimensão | `nether` |
+| Encantamentos incompatíveis | `fortune` |
+
+Queries sem input:
+
+| Query |
+|---|
+| Progressão de tiers |
+| Mobs imunes ao fogo |
+| Mobs que ardem à luz do sol |
+| Blocos afetados pela gravidade |
+| Alimentos com maior saturação |
+
+---
+
+## Limitações
+
+Alguma informação de domínio foi adicionada manualmente porque não está totalmente disponível ou normalizada no dataset PrismarineJS.
+
+Os dados manuais cobrem um subconjunto representativo do domínio, suficiente para demonstrar as queries de competência e a extensibilidade da ontologia. A cobertura pode ser aumentada adicionando novas entradas aos ficheiros em `data/manual/` e regenerando a ontologia.
+
+---
+
+## Autoria
+
+Projeto desenvolvido para RPCW 2025/2026.

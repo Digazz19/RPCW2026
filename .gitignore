@@ -18,3 +18,9 @@ instance/
 
 # OS
 .DS_Store
+
+#
+__MACOSX/
+webapp/venv/
+.venv/
+*.log

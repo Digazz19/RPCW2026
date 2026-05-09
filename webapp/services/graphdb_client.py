@@ -20,3 +20,13 @@ def run_update(update_query: str):
     )
     response.raise_for_status()
     return True
+
+def run_ask(query: str):
+    response = requests.post(
+        GRAPHDB_ENDPOINT,
+        data={"query": query},
+        headers={"Accept": "application/sparql-results+json"},
+        timeout=30
+    )
+    response.raise_for_status()
+    return response.json().get("boolean", False)

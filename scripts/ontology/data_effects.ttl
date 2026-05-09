@@ -1,203 +1,283 @@
 @prefix : <http://rpcw.di.uminho.pt/2026/minecraft/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:Absorption a :BeneficialEffect ;
+:Absorption a :BeneficialEffect,
+        :Effect ;
+    :effectID 21 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Absorption"^^xsd:string ;
-    :hasID 21 ;
     :hasName "Absorption"^^xsd:string .
 
-:BadLuck a :HarmfulEffect ;
+:BadLuck a :Effect,
+        :HarmfulEffect ;
+    :effectID 26 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Bad Luck"^^xsd:string ;
-    :hasID 26 ;
     :hasName "BadLuck"^^xsd:string .
 
-:BadOmen a :HarmfulEffect ;
+:BadOmen a :Effect,
+        :HarmfulEffect ;
+    :effectID 30 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Bad Omen"^^xsd:string ;
-    :hasID 30 ;
     :hasName "BadOmen"^^xsd:string .
 
-:Blindness a :HarmfulEffect ;
+:Blindness a :Effect,
+        :HarmfulEffect ;
+    :effectID 14 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Blindness"^^xsd:string ;
-    :hasID 14 ;
     :hasName "Blindness"^^xsd:string .
 
-:BreathOfTheNautilus a :BeneficialEffect ;
+:BreathOfTheNautilus a :BeneficialEffect,
+        :Effect ;
+    :effectID 39 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Breath of the Nautilus"^^xsd:string ;
-    :hasID 39 ;
     :hasName "BreathOfTheNautilus"^^xsd:string .
 
-:ConduitPower a :BeneficialEffect ;
+:ConduitPower a :BeneficialEffect,
+        :Effect ;
+    :effectID 28 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Conduit Power"^^xsd:string ;
-    :hasID 28 ;
     :hasName "ConduitPower"^^xsd:string .
 
-:Darkness a :HarmfulEffect ;
+:Darkness a :Effect,
+        :HarmfulEffect ;
+    :effectID 32 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Darkness"^^xsd:string ;
-    :hasID 32 ;
     :hasName "Darkness"^^xsd:string .
 
-:DolphinsGrace a :BeneficialEffect ;
+:DolphinsGrace a :BeneficialEffect,
+        :Effect ;
+    :effectID 29 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Dolphin's Grace"^^xsd:string ;
-    :hasID 29 ;
     :hasName "DolphinsGrace"^^xsd:string .
 
-:FireResistance a :BeneficialEffect ;
+:FireResistance a :BeneficialEffect,
+        :Effect ;
+    :effectID 11 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Fire Resistance"^^xsd:string ;
-    :hasID 11 ;
     :hasName "FireResistance"^^xsd:string .
 
-:Glowing a :HarmfulEffect ;
+:Glowing a :Effect,
+        :HarmfulEffect ;
+    :effectID 23 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Glowing"^^xsd:string ;
-    :hasID 23 ;
     :hasName "Glowing"^^xsd:string .
 
-:Haste a :BeneficialEffect ;
+:Haste a :BeneficialEffect,
+        :Effect ;
+    :effectID 2 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Haste"^^xsd:string ;
-    :hasID 2 ;
     :hasName "Haste"^^xsd:string .
 
-:HealthBoost a :BeneficialEffect ;
+:HealthBoost a :BeneficialEffect,
+        :Effect ;
+    :effectID 20 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Health Boost"^^xsd:string ;
-    :hasID 20 ;
     :hasName "HealthBoost"^^xsd:string .
 
-:HeroOfTheVillage a :BeneficialEffect ;
+:HeroOfTheVillage a :BeneficialEffect,
+        :Effect ;
+    :effectID 31 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Hero of the Village"^^xsd:string ;
-    :hasID 31 ;
     :hasName "HeroOfTheVillage"^^xsd:string .
 
-:Hunger a :HarmfulEffect ;
+:Hunger a :Effect,
+        :HarmfulEffect ;
+    :effectID 16 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Hunger"^^xsd:string ;
-    :hasID 16 ;
     :hasName "Hunger"^^xsd:string .
 
-:Infested a :HarmfulEffect ;
+:Infested a :Effect,
+        :HarmfulEffect ;
+    :effectID 38 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Infested"^^xsd:string ;
-    :hasID 38 ;
     :hasName "Infested"^^xsd:string .
 
-:InstantDamage a :HarmfulEffect ;
+:InstantDamage a :Effect,
+        :HarmfulEffect ;
+    :effectID 6 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Instant Damage"^^xsd:string ;
-    :hasID 6 ;
     :hasName "InstantDamage"^^xsd:string .
 
-:InstantHealth a :BeneficialEffect ;
+:InstantHealth a :BeneficialEffect,
+        :Effect ;
+    :effectID 5 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Instant Health"^^xsd:string ;
-    :hasID 5 ;
     :hasName "InstantHealth"^^xsd:string .
 
-:Invisibility a :BeneficialEffect ;
+:Invisibility a :BeneficialEffect,
+        :Effect ;
+    :effectID 13 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Invisibility"^^xsd:string ;
-    :hasID 13 ;
     :hasName "Invisibility"^^xsd:string .
 
-:JumpBoost a :BeneficialEffect ;
+:JumpBoost a :BeneficialEffect,
+        :Effect ;
+    :effectID 7 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Jump Boost"^^xsd:string ;
-    :hasID 7 ;
     :hasName "JumpBoost"^^xsd:string .
 
-:Levitation a :HarmfulEffect ;
+:Levitation a :Effect,
+        :HarmfulEffect ;
+    :effectID 24 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Levitation"^^xsd:string ;
-    :hasID 24 ;
     :hasName "Levitation"^^xsd:string .
 
-:Luck a :BeneficialEffect ;
+:Luck a :BeneficialEffect,
+        :Effect ;
+    :effectID 25 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Luck"^^xsd:string ;
-    :hasID 25 ;
     :hasName "Luck"^^xsd:string .
 
-:MiningFatigue a :HarmfulEffect ;
+:MiningFatigue a :Effect,
+        :HarmfulEffect ;
+    :effectID 3 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Mining Fatigue"^^xsd:string ;
-    :hasID 3 ;
     :hasName "MiningFatigue"^^xsd:string .
 
-:Nausea a :HarmfulEffect ;
+:Nausea a :Effect,
+        :HarmfulEffect ;
+    :effectID 8 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Nausea"^^xsd:string ;
-    :hasID 8 ;
     :hasName "Nausea"^^xsd:string .
 
-:NightVision a :BeneficialEffect ;
+:NightVision a :BeneficialEffect,
+        :Effect ;
+    :effectID 15 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Night Vision"^^xsd:string ;
-    :hasID 15 ;
     :hasName "NightVision"^^xsd:string .
 
-:Oozing a :HarmfulEffect ;
+:Oozing a :Effect,
+        :HarmfulEffect ;
+    :effectID 37 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Oozing"^^xsd:string ;
-    :hasID 37 ;
     :hasName "Oozing"^^xsd:string .
 
-:Poison a :HarmfulEffect ;
+:Poison a :Effect,
+        :HarmfulEffect ;
+    :effectID 18 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Poison"^^xsd:string ;
-    :hasID 18 ;
     :hasName "Poison"^^xsd:string .
 
-:RaidOmen a :HarmfulEffect ;
+:RaidOmen a :Effect,
+        :HarmfulEffect ;
+    :effectID 34 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Raid Omen"^^xsd:string ;
-    :hasID 34 ;
     :hasName "RaidOmen"^^xsd:string .
 
-:Regeneration a :BeneficialEffect ;
+:Regeneration a :BeneficialEffect,
+        :Effect ;
+    :effectID 9 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Regeneration"^^xsd:string ;
-    :hasID 9 ;
     :hasName "Regeneration"^^xsd:string .
 
-:Resistance a :BeneficialEffect ;
+:Resistance a :BeneficialEffect,
+        :Effect ;
+    :effectID 10 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Resistance"^^xsd:string ;
-    :hasID 10 ;
     :hasName "Resistance"^^xsd:string .
 
-:Saturation a :BeneficialEffect ;
+:Saturation a :BeneficialEffect,
+        :Effect ;
+    :effectID 22 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Saturation"^^xsd:string ;
-    :hasID 22 ;
     :hasName "Saturation"^^xsd:string .
 
-:SlowFalling a :BeneficialEffect ;
+:SlowFalling a :BeneficialEffect,
+        :Effect ;
+    :effectID 27 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Slow Falling"^^xsd:string ;
-    :hasID 27 ;
     :hasName "SlowFalling"^^xsd:string .
 
-:Slowness a :HarmfulEffect ;
+:Slowness a :Effect,
+        :HarmfulEffect ;
+    :effectID 1 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Slowness"^^xsd:string ;
-    :hasID 1 ;
     :hasName "Slowness"^^xsd:string .
 
-:Speed a :BeneficialEffect ;
+:Speed a :BeneficialEffect,
+        :Effect ;
+    :effectID 0 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Speed"^^xsd:string ;
-    :hasID 0 ;
     :hasName "Speed"^^xsd:string .
 
-:Strength a :BeneficialEffect ;
+:Strength a :BeneficialEffect,
+        :Effect ;
+    :effectID 4 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Strength"^^xsd:string ;
-    :hasID 4 ;
     :hasName "Strength"^^xsd:string .
 
-:TrialOmen a :HarmfulEffect ;
+:TrialOmen a :Effect,
+        :HarmfulEffect ;
+    :effectID 33 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Trial Omen"^^xsd:string ;
-    :hasID 33 ;
     :hasName "TrialOmen"^^xsd:string .
 
-:WaterBreathing a :BeneficialEffect ;
+:WaterBreathing a :BeneficialEffect,
+        :Effect ;
+    :effectID 12 ;
+    :effectType "good"^^xsd:string ;
     :hasDisplayName "Water Breathing"^^xsd:string ;
-    :hasID 12 ;
     :hasName "WaterBreathing"^^xsd:string .
 
-:Weakness a :HarmfulEffect ;
+:Weakness a :Effect,
+        :HarmfulEffect ;
+    :effectID 17 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Weakness"^^xsd:string ;
-    :hasID 17 ;
     :hasName "Weakness"^^xsd:string .
 
-:Weaving a :HarmfulEffect ;
+:Weaving a :Effect,
+        :HarmfulEffect ;
+    :effectID 36 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Weaving"^^xsd:string ;
-    :hasID 36 ;
     :hasName "Weaving"^^xsd:string .
 
-:WindCharged a :HarmfulEffect ;
+:WindCharged a :Effect,
+        :HarmfulEffect ;
+    :effectID 35 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Wind Charged"^^xsd:string ;
-    :hasID 35 ;
     :hasName "WindCharged"^^xsd:string .
 
-:Wither a :HarmfulEffect ;
+:Wither a :Effect,
+        :HarmfulEffect ;
+    :effectID 19 ;
+    :effectType "bad"^^xsd:string ;
     :hasDisplayName "Wither"^^xsd:string ;
-    :hasID 19 ;
     :hasName "Wither"^^xsd:string .
 

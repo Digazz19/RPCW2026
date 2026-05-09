@@ -121,9 +121,8 @@
 
 ###  http://rpcw.di.uminho.pt/2026/minecraft/hasSlot
 :hasSlot rdf:type owl:ObjectProperty ;
-         rdfs:domain :ShapedRecipe ;
+         rdfs:domain :Recipe ;
          rdfs:range :RecipeSlot .
-
 
 ###  http://rpcw.di.uminho.pt/2026/minecraft/hasSpawn
 :hasSpawn rdf:type owl:ObjectProperty ;
@@ -462,7 +461,53 @@
        rdfs:range xsd:integer ;
        rdfs:comment "ID numérico PrismarineJS" .
 
+###  http://rpcw.di.uminho.pt/2026/minecraft/blockID
+:blockID rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Block ;
+         rdfs:range xsd:integer ;
+         rdfs:comment "ID do recurso enquanto bloco no dataset PrismarineJS." .
 
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/itemID
+:itemID rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :Item ;
+        rdfs:range xsd:integer ;
+        rdfs:comment "ID do recurso enquanto item no dataset PrismarineJS." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/entityID
+:entityID rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Entity ;
+          rdfs:range xsd:integer ;
+          rdfs:comment "ID do recurso enquanto entidade no dataset PrismarineJS." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/biomeID
+:biomeID rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Biome ;
+         rdfs:range xsd:integer ;
+         rdfs:comment "ID do recurso enquanto bioma no dataset PrismarineJS." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/effectID
+:effectID rdf:type owl:DatatypeProperty ,
+                   owl:FunctionalProperty ;
+          rdfs:domain :Effect ;
+          rdfs:range xsd:integer ;
+          rdfs:comment "ID do recurso enquanto efeito no dataset PrismarineJS." .
+
+
+###  http://rpcw.di.uminho.pt/2026/minecraft/enchantmentID
+:enchantmentID rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :Enchantment ;
+               rdfs:range xsd:integer ;
+               rdfs:comment "ID do recurso enquanto encantamento no dataset PrismarineJS." .
+               
 ###  http://rpcw.di.uminho.pt/2026/minecraft/hasName
 :hasName rdf:type owl:DatatypeProperty ,
                   owl:FunctionalProperty ;
@@ -670,7 +715,12 @@
              rdfs:domain :Biome ;
              rdfs:range xsd:float .
 
-
+###  http://rpcw.di.uminho.pt/2026/minecraft/tierOrder
+:tierOrder rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :MaterialTier ;
+           rdfs:range xsd:integer .
+           
 #################################################################
 #    Classes
 #################################################################

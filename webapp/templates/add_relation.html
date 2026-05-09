@@ -13,15 +13,35 @@
 
         <form method="post" class="styled-form">
             <label for="subject">Sujeito</label>
-            <input type="text" name="subject" id="subject" placeholder="Ex.: Creeper" required>
+            <input type="text" name="subject" id="subject" placeholder="Ex.: creeper" required>
 
             <label for="predicate">Predicado</label>
-            <input type="text" name="predicate" id="predicate" placeholder="Ex.: spawnsIn" required>
+            <select name="predicate" id="predicate" required>
+                {% for prop in properties %}
+                <option value="{{ prop.name }}">
+                    {{ prop.name }} — {{ prop.type }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <label for="object_kind">Tipo de objeto</label>
+            <select name="object_kind" id="object_kind">
+                <option value="resource">Recurso da ontologia</option>
+                <option value="literal">Literal</option>
+            </select>
 
             <label for="object">Objeto</label>
-            <input type="text" name="object" id="object" placeholder="Ex.: Plains" required>
+            <input type="text" name="object" id="object" placeholder="Ex.: plains ou true" required>
 
-            <button type="submit" class="button button-primary">Inserir relação</button>
+            <label for="literal_type">Tipo do literal</label>
+            <select name="literal_type" id="literal_type">
+                <option value="string">string</option>
+                <option value="integer">integer</option>
+                <option value="float">float</option>
+                <option value="boolean">boolean</option>
+            </select>
+
+            <button type="submit" class="button button-primary">Inserir triple</button>
         </form>
 
         {% if message %}
@@ -34,11 +54,14 @@
     <div class="card">
         <h3>Exemplo</h3>
         <div class="code-box">
-            <code>Creeper spawnsIn Plains</code>
+            <code>creeper spawnsIn plains</code>
         </div>
 
         <p class="muted">
-            Usa nomes locais de recursos e propriedades definidos no namespace da ontologia.
+            Exemplos:
+            <br>creeper spawnsIn plains
+            <br>sand affectedByGravity true
+            <br>diamond_ore requiresMinTier Iron
         </p>
     </div>
 </div>

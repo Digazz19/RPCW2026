@@ -1,10 +1,11 @@
 @prefix : <http://rpcw.di.uminho.pt/2026/minecraft/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:aqua_affinity a :Head_armorEnchantment ;
+:aqua_affinity a :Enchantment,
+        :Head_armorEnchantment ;
+    :enchantmentID 0 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Aqua Affinity"^^xsd:string ;
-    :hasID 0 ;
     :hasName "aqua_affinity"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -16,10 +17,11 @@
     :minCostA 0 ;
     :minCostB 1 .
 
-:binding_curse a :EquippableEnchantment ;
+:binding_curse a :Enchantment,
+        :EquippableEnchantment ;
+    :enchantmentID 2 ;
     :enchantmentWeight 1 ;
     :hasDisplayName "Curse of Binding"^^xsd:string ;
-    :hasID 2 ;
     :hasName "binding_curse"^^xsd:string ;
     :isCurse true ;
     :isDiscoverable true ;
@@ -31,10 +33,11 @@
     :minCostA 0 ;
     :minCostB 1 .
 
-:efficiency a :MiningEnchantment ;
+:efficiency a :Enchantment,
+        :MiningEnchantment ;
+    :enchantmentID 8 ;
     :enchantmentWeight 10 ;
     :hasDisplayName "Efficiency"^^xsd:string ;
-    :hasID 8 ;
     :hasName "efficiency"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -46,10 +49,11 @@
     :minCostA 4 ;
     :minCostB 1 .
 
-:feather_falling a :Foot_armorEnchantment ;
+:feather_falling a :Enchantment,
+        :Foot_armorEnchantment ;
+    :enchantmentID 9 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Feather Falling"^^xsd:string ;
-    :hasID 9 ;
     :hasName "feather_falling"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -61,10 +65,11 @@
     :minCostA 3 ;
     :minCostB 1 .
 
-:fire_aspect a :Fire_aspectEnchantment ;
+:fire_aspect a :Enchantment,
+        :Fire_aspectEnchantment ;
+    :enchantmentID 10 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Fire Aspect"^^xsd:string ;
-    :hasID 10 ;
     :hasName "fire_aspect"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -76,10 +81,11 @@
     :minCostA 1 ;
     :minCostB 1 .
 
-:flame a :BowEnchantment ;
+:flame a :BowEnchantment,
+        :Enchantment ;
+    :enchantmentID 12 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Flame"^^xsd:string ;
-    :hasID 12 ;
     :hasName "flame"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -91,10 +97,11 @@
     :minCostA 0 ;
     :minCostB 1 .
 
-:knockback a :Melee_weaponEnchantment ;
+:knockback a :Enchantment,
+        :Melee_weaponEnchantment ;
+    :enchantmentID 17 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Knockback"^^xsd:string ;
-    :hasID 17 ;
     :hasName "knockback"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -106,10 +113,11 @@
     :minCostA 1 ;
     :minCostB 1 .
 
-:looting a :Melee_weaponEnchantment ;
+:looting a :Enchantment,
+        :Melee_weaponEnchantment ;
+    :enchantmentID 18 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Looting"^^xsd:string ;
-    :hasID 18 ;
     :hasName "looting"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -121,10 +129,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:luck_of_the_sea a :FishingEnchantment ;
+:luck_of_the_sea a :Enchantment,
+        :FishingEnchantment ;
+    :enchantmentID 20 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Luck of the Sea"^^xsd:string ;
-    :hasID 20 ;
     :hasName "luck_of_the_sea"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -136,10 +145,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:lunge a :LungeEnchantment ;
+:lunge a :Enchantment,
+        :LungeEnchantment ;
+    :enchantmentID 21 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Lunge"^^xsd:string ;
-    :hasID 21 ;
     :hasName "lunge"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -151,10 +161,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:lure a :FishingEnchantment ;
+:lure a :Enchantment,
+        :FishingEnchantment ;
+    :enchantmentID 22 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Lure"^^xsd:string ;
-    :hasID 22 ;
     :hasName "lure"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -166,10 +177,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:power a :BowEnchantment ;
+:power a :BowEnchantment,
+        :Enchantment ;
+    :enchantmentID 26 ;
     :enchantmentWeight 10 ;
     :hasDisplayName "Power"^^xsd:string ;
-    :hasID 26 ;
     :hasName "power"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -181,10 +193,11 @@
     :minCostA 4 ;
     :minCostB 1 .
 
-:punch a :BowEnchantment ;
+:punch a :BowEnchantment,
+        :Enchantment ;
+    :enchantmentID 29 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Punch"^^xsd:string ;
-    :hasID 29 ;
     :hasName "punch"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -196,10 +209,11 @@
     :minCostA 1 ;
     :minCostB 1 .
 
-:quick_charge a :CrossbowEnchantment ;
+:quick_charge a :CrossbowEnchantment,
+        :Enchantment ;
+    :enchantmentID 30 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Quick Charge"^^xsd:string ;
-    :hasID 30 ;
     :hasName "quick_charge"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -211,10 +225,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:respiration a :Head_armorEnchantment ;
+:respiration a :Enchantment,
+        :Head_armorEnchantment ;
+    :enchantmentID 31 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Respiration"^^xsd:string ;
-    :hasID 31 ;
     :hasName "respiration"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -226,10 +241,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:soul_speed a :Foot_armorEnchantment ;
+:soul_speed a :Enchantment,
+        :Foot_armorEnchantment ;
+    :enchantmentID 36 ;
     :enchantmentWeight 1 ;
     :hasDisplayName "Soul Speed"^^xsd:string ;
-    :hasID 36 ;
     :hasName "soul_speed"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable false ;
@@ -241,10 +257,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:sweeping_edge a :SweepingEnchantment ;
+:sweeping_edge a :Enchantment,
+        :SweepingEnchantment ;
+    :enchantmentID 37 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Sweeping Edge"^^xsd:string ;
-    :hasID 37 ;
     :hasName "sweeping_edge"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -256,10 +273,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:swift_sneak a :Leg_armorEnchantment ;
+:swift_sneak a :Enchantment,
+        :Leg_armorEnchantment ;
+    :enchantmentID 38 ;
     :enchantmentWeight 1 ;
     :hasDisplayName "Swift Sneak"^^xsd:string ;
-    :hasID 38 ;
     :hasName "swift_sneak"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable false ;
@@ -271,10 +289,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:thorns a :ArmorEnchantment ;
+:thorns a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 39 ;
     :enchantmentWeight 1 ;
     :hasDisplayName "Thorns"^^xsd:string ;
-    :hasID 39 ;
     :hasName "thorns"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -286,10 +305,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:unbreaking a :DurabilityEnchantment ;
+:unbreaking a :DurabilityEnchantment,
+        :Enchantment ;
+    :enchantmentID 40 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Unbreaking"^^xsd:string ;
-    :hasID 40 ;
     :hasName "unbreaking"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable true ;
@@ -301,10 +321,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:vanishing_curse a :VanishingEnchantment ;
+:vanishing_curse a :Enchantment,
+        :VanishingEnchantment ;
+    :enchantmentID 41 ;
     :enchantmentWeight 1 ;
     :hasDisplayName "Curse of Vanishing"^^xsd:string ;
-    :hasID 41 ;
     :hasName "vanishing_curse"^^xsd:string ;
     :isCurse true ;
     :isDiscoverable true ;
@@ -316,10 +337,11 @@
     :minCostA 0 ;
     :minCostB 1 .
 
-:wind_burst a :MaceEnchantment ;
+:wind_burst a :Enchantment,
+        :MaceEnchantment ;
+    :enchantmentID 42 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Wind Burst"^^xsd:string ;
-    :hasID 42 ;
     :hasName "wind_burst"^^xsd:string ;
     :isCurse false ;
     :isDiscoverable false ;
@@ -331,10 +353,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:channeling a :TridentEnchantment ;
+:channeling a :Enchantment,
+        :TridentEnchantment ;
+    :enchantmentID 5 ;
     :enchantmentWeight 1 ;
     :hasDisplayName "Channeling"^^xsd:string ;
-    :hasID 5 ;
     :hasName "channeling"^^xsd:string ;
     :incompatibleWith :riptide ;
     :isCurse false ;
@@ -347,10 +370,11 @@
     :minCostA 0 ;
     :minCostB 1 .
 
-:depth_strider a :Foot_armorEnchantment ;
+:depth_strider a :Enchantment,
+        :Foot_armorEnchantment ;
+    :enchantmentID 7 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Depth Strider"^^xsd:string ;
-    :hasID 7 ;
     :hasName "depth_strider"^^xsd:string ;
     :incompatibleWith :frost_walker ;
     :isCurse false ;
@@ -363,10 +387,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:fortune a :Mining_lootEnchantment ;
+:fortune a :Enchantment,
+        :Mining_lootEnchantment ;
+    :enchantmentID 13 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Fortune"^^xsd:string ;
-    :hasID 13 ;
     :hasName "fortune"^^xsd:string ;
     :incompatibleWith :silk_touch ;
     :isCurse false ;
@@ -379,10 +404,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:frost_walker a :Foot_armorEnchantment ;
+:frost_walker a :Enchantment,
+        :Foot_armorEnchantment ;
+    :enchantmentID 14 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Frost Walker"^^xsd:string ;
-    :hasID 14 ;
     :hasName "frost_walker"^^xsd:string ;
     :incompatibleWith :depth_strider ;
     :isCurse false ;
@@ -395,10 +421,11 @@
     :minCostA 1 ;
     :minCostB 1 .
 
-:infinity a :BowEnchantment ;
+:infinity a :BowEnchantment,
+        :Enchantment ;
+    :enchantmentID 16 ;
     :enchantmentWeight 1 ;
     :hasDisplayName "Infinity"^^xsd:string ;
-    :hasID 16 ;
     :hasName "infinity"^^xsd:string ;
     :incompatibleWith :mending ;
     :isCurse false ;
@@ -411,10 +438,11 @@
     :minCostA 0 ;
     :minCostB 1 .
 
-:loyalty a :TridentEnchantment ;
+:loyalty a :Enchantment,
+        :TridentEnchantment ;
+    :enchantmentID 19 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Loyalty"^^xsd:string ;
-    :hasID 19 ;
     :hasName "loyalty"^^xsd:string ;
     :incompatibleWith :riptide ;
     :isCurse false ;
@@ -427,10 +455,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:mending a :DurabilityEnchantment ;
+:mending a :DurabilityEnchantment,
+        :Enchantment ;
+    :enchantmentID 23 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Mending"^^xsd:string ;
-    :hasID 23 ;
     :hasName "mending"^^xsd:string ;
     :incompatibleWith :infinity ;
     :isCurse false ;
@@ -443,10 +472,11 @@
     :minCostA 0 ;
     :minCostB 1 .
 
-:multishot a :CrossbowEnchantment ;
+:multishot a :CrossbowEnchantment,
+        :Enchantment ;
+    :enchantmentID 24 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Multishot"^^xsd:string ;
-    :hasID 24 ;
     :hasName "multishot"^^xsd:string ;
     :incompatibleWith :piercing ;
     :isCurse false ;
@@ -459,10 +489,11 @@
     :minCostA 0 ;
     :minCostB 1 .
 
-:piercing a :CrossbowEnchantment ;
+:piercing a :CrossbowEnchantment,
+        :Enchantment ;
+    :enchantmentID 25 ;
     :enchantmentWeight 10 ;
     :hasDisplayName "Piercing"^^xsd:string ;
-    :hasID 25 ;
     :hasName "piercing"^^xsd:string ;
     :incompatibleWith :multishot ;
     :isCurse false ;
@@ -475,10 +506,11 @@
     :minCostA 3 ;
     :minCostB 1 .
 
-:silk_touch a :Mining_lootEnchantment ;
+:silk_touch a :Enchantment,
+        :Mining_lootEnchantment ;
+    :enchantmentID 34 ;
     :enchantmentWeight 1 ;
     :hasDisplayName "Silk Touch"^^xsd:string ;
-    :hasID 34 ;
     :hasName "silk_touch"^^xsd:string ;
     :incompatibleWith :fortune ;
     :isCurse false ;
@@ -491,10 +523,11 @@
     :minCostA 0 ;
     :minCostB 1 .
 
-:riptide a :TridentEnchantment ;
+:riptide a :Enchantment,
+        :TridentEnchantment ;
+    :enchantmentID 32 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Riptide"^^xsd:string ;
-    :hasID 32 ;
     :hasName "riptide"^^xsd:string ;
     :incompatibleWith :channeling,
         :loyalty ;
@@ -508,10 +541,11 @@
     :minCostA 2 ;
     :minCostB 1 .
 
-:blast_protection a :ArmorEnchantment ;
+:blast_protection a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 3 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Blast Protection"^^xsd:string ;
-    :hasID 3 ;
     :hasName "blast_protection"^^xsd:string ;
     :incompatibleWith :fire_protection,
         :projectile_protection,
@@ -526,10 +560,11 @@
     :minCostA 3 ;
     :minCostB 1 .
 
-:fire_protection a :ArmorEnchantment ;
+:fire_protection a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 11 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Fire Protection"^^xsd:string ;
-    :hasID 11 ;
     :hasName "fire_protection"^^xsd:string ;
     :incompatibleWith :blast_protection,
         :projectile_protection,
@@ -544,10 +579,11 @@
     :minCostA 3 ;
     :minCostB 1 .
 
-:projectile_protection a :ArmorEnchantment ;
+:projectile_protection a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 27 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Projectile Protection"^^xsd:string ;
-    :hasID 27 ;
     :hasName "projectile_protection"^^xsd:string ;
     :incompatibleWith :blast_protection,
         :fire_protection,
@@ -562,10 +598,11 @@
     :minCostA 3 ;
     :minCostB 1 .
 
-:protection a :ArmorEnchantment ;
+:protection a :ArmorEnchantment,
+        :Enchantment ;
+    :enchantmentID 28 ;
     :enchantmentWeight 10 ;
     :hasDisplayName "Protection"^^xsd:string ;
-    :hasID 28 ;
     :hasName "protection"^^xsd:string ;
     :incompatibleWith :blast_protection,
         :fire_protection,
@@ -580,10 +617,11 @@
     :minCostA 3 ;
     :minCostB 1 .
 
-:bane_of_arthropods a :WeaponEnchantment ;
+:bane_of_arthropods a :Enchantment,
+        :WeaponEnchantment ;
+    :enchantmentID 1 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Bane of Arthropods"^^xsd:string ;
-    :hasID 1 ;
     :hasName "bane_of_arthropods"^^xsd:string ;
     :incompatibleWith :breach,
         :density,
@@ -600,10 +638,11 @@
     :minCostA 4 ;
     :minCostB 1 .
 
-:breach a :MaceEnchantment ;
+:breach a :Enchantment,
+        :MaceEnchantment ;
+    :enchantmentID 4 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Breach"^^xsd:string ;
-    :hasID 4 ;
     :hasName "breach"^^xsd:string ;
     :incompatibleWith :bane_of_arthropods,
         :density,
@@ -620,10 +659,11 @@
     :minCostA 3 ;
     :minCostB 1 .
 
-:density a :MaceEnchantment ;
+:density a :Enchantment,
+        :MaceEnchantment ;
+    :enchantmentID 6 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Density"^^xsd:string ;
-    :hasID 6 ;
     :hasName "density"^^xsd:string ;
     :incompatibleWith :bane_of_arthropods,
         :breach,
@@ -640,10 +680,11 @@
     :minCostA 4 ;
     :minCostB 1 .
 
-:impaling a :TridentEnchantment ;
+:impaling a :Enchantment,
+        :TridentEnchantment ;
+    :enchantmentID 15 ;
     :enchantmentWeight 2 ;
     :hasDisplayName "Impaling"^^xsd:string ;
-    :hasID 15 ;
     :hasName "impaling"^^xsd:string ;
     :incompatibleWith :bane_of_arthropods,
         :breach,
@@ -660,10 +701,11 @@
     :minCostA 4 ;
     :minCostB 1 .
 
-:sharpness a :Sharp_weaponEnchantment ;
+:sharpness a :Enchantment,
+        :Sharp_weaponEnchantment ;
+    :enchantmentID 33 ;
     :enchantmentWeight 10 ;
     :hasDisplayName "Sharpness"^^xsd:string ;
-    :hasID 33 ;
     :hasName "sharpness"^^xsd:string ;
     :incompatibleWith :bane_of_arthropods,
         :breach,
@@ -680,10 +722,11 @@
     :minCostA 4 ;
     :minCostB 1 .
 
-:smite a :WeaponEnchantment ;
+:smite a :Enchantment,
+        :WeaponEnchantment ;
+    :enchantmentID 35 ;
     :enchantmentWeight 5 ;
     :hasDisplayName "Smite"^^xsd:string ;
-    :hasID 35 ;
     :hasName "smite"^^xsd:string ;
     :incompatibleWith :bane_of_arthropods,
         :breach,

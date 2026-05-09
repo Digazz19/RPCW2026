@@ -44,7 +44,6 @@ def resource_detail(resource_name):
         value = str(value)
         return value.startswith("node") or "/.well-known/genid/" in value
 
-    # esconder blank nodes feios
     clean_direct = []
     for row in direct_rows:
         o_value = row.get("o", {}).get("value", "")
@@ -57,7 +56,16 @@ def resource_detail(resource_name):
         if not is_blank_node_value(s_value):
             clean_inverse.append(row)
 
-    # agrupar relações inversas por propriedade
+    # Agrupar propriedades diretas por predicado
+    grouped_direct = defaultdict(list)
+
+    for row in clean_direct:
+        predicate = row["p"]["value"]
+        grouped_direct[predicate].append(row)
+
+    grouped_direct = dict(sorted(grouped_direct.items(), key=lambda item: item[0]))
+
+    # Agrupar relações inversas por predicado
     grouped_inverse = defaultdict(list)
 
     for row in clean_inverse:
@@ -66,29 +74,31 @@ def resource_detail(resource_name):
 
     grouped_inverse = dict(sorted(grouped_inverse.items(), key=lambda item: item[0]))
 
-    # paginação por grupos
+    # Paginação só para grupos inversos, como já tinhas
     group_items = list(grouped_inverse.items())
     total_groups = len(group_items)
     total_pages = max((total_groups + per_page - 1) // per_page, 1)
 
     if page < 1:
         page = 1
+
     if page > total_pages:
         page = total_pages
 
     start = (page - 1) * per_page
     end = start + per_page
 
-    paginated_groups = group_items[start:end]
+    paginated_inverse_groups = group_items[start:end]
 
     return render_template(
         "resource_detail.html",
         resource_name=resource_name,
         direct=clean_direct,
         inverse=clean_inverse,
-        grouped_inverse=paginated_groups,
+        grouped_direct=grouped_direct.items(),
+        grouped_inverse=paginated_inverse_groups,
         page=page,
         total_pages=total_pages,
-        total_inverse=len(clean_inverse)
+        total_direct=len(clean_direct),
+        total_inverse=len(clean_inverse),
     )
-

@@ -9,38 +9,52 @@
         <div class="section-header">
             <div>
                 <h3>Propriedades diretas</h3>
-                <p class="muted">Triples em que este recurso surge como sujeito.</p>
+                <p class="muted">Agrupadas por propriedade.</p>
             </div>
-            <div class="pill">{{ direct|length }} resultados</div>
+            <div class="pill">{{ total_direct }} resultados</div>
         </div>
 
-        {% if direct %}
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Propriedade</th>
-                        <th>Valor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in direct %}
-                    <tr>
-                        <td>{{ row.p.value|local_name }}</td>
-                        <td>
+        {% if grouped_direct %}
+            <div class="relation-groups">
+                {% for predicate, rows in grouped_direct %}
+                {% set group_index = loop.index %}
+
+                <details class="relation-group" {% if group_index <= 5 %}open{% endif %}>
+                    <summary>
+                        <span>{{ predicate|local_name }}</span>
+                        <span class="pill small-pill">{{ rows|length }}</span>
+                    </summary>
+
+                    <div class="relation-list">
+                        {% for row in rows %}
                             {% if row.o.value is internal_resource %}
-                                <a class="table-link" href="{{ url_for('ontology.resource_detail', resource_name=row.o.value|local_name) }}">
+                                <a
+                                    class="relation-item {% if loop.index > 20 %}hidden-relation hidden-direct-{{ group_index }}{% endif %}"
+                                    href="{{ url_for('ontology.resource_detail', resource_name=row.o.value|local_name) }}"
+                                >
                                     {{ row.o.value|local_name }}
                                 </a>
                             {% else %}
-                                {{ row.o.value|local_name }}
+                                <div class="relation-item {% if loop.index > 20 %}hidden-relation hidden-direct-{{ group_index }}{% endif %}">
+                                    {{ row.o.value|local_name }}
+                                </div>
                             {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                        {% endfor %}
+
+                        {% if rows|length > 20 %}
+                        <button
+                            class="show-more-btn"
+                            type="button"
+                            data-expanded="false"
+                            data-show-text="Ver todos os {{ rows|length }} resultados"
+                            onclick="toggleRelations('direct-{{ group_index }}', this)">
+                            Ver todos os {{ rows|length }} resultados
+                        </button>
+                        {% endif %}
+                    </div>
+                </details>
+                {% endfor %}
+            </div>
         {% else %}
         <div class="empty-state compact">
             <p>Sem propriedades diretas para apresentar.</p>
@@ -70,8 +84,10 @@
 
                     <div class="relation-list">
                         {% for row in rows %}
-                        <a class="relation-item {% if loop.index > 20 %}hidden-relation hidden-{{ group_index }}{% endif %}"
-                        href="{{ url_for('ontology.resource_detail', resource_name=row.s.value|local_name) }}">
+                        <a
+                            class="relation-item {% if loop.index > 20 %}hidden-relation hidden-inverse-{{ group_index }}{% endif %}"
+                            href="{{ url_for('ontology.resource_detail', resource_name=row.s.value|local_name) }}"
+                        >
                             {{ row.s.value|local_name }}
                         </a>
                         {% endfor %}
@@ -82,7 +98,7 @@
                             type="button"
                             data-expanded="false"
                             data-show-text="Ver todos os {{ rows|length }} resultados"
-                            onclick="toggleRelations('{{ group_index }}', this)">
+                            onclick="toggleRelations('inverse-{{ group_index }}', this)">
                             Ver todos os {{ rows|length }} resultados
                         </button>
                         {% endif %}
@@ -117,8 +133,8 @@
 </div>
 
 <script>
-function toggleRelations(groupIndex, button) {
-    const hiddenItems = document.querySelectorAll('.hidden-' + groupIndex);
+function toggleRelations(groupKey, button) {
+    const hiddenItems = document.querySelectorAll('.hidden-' + groupKey);
     const isExpanded = button.dataset.expanded === "true";
 
     if (isExpanded) {
