@@ -6,7 +6,7 @@ Projeto desenvolvido no âmbito da unidade curricular de **Representação e Pro
 
 O objetivo deste projeto é especificar uma ontologia para o domínio do **Minecraft Java Edition 1.21.11**, cobrindo elementos e mecânicas de sobrevivência, como blocos, items, entidades, mobs, biomas, dimensões, estruturas, crafting, encantamentos, efeitos e progressão de jogo.
 
-A ontologia é explorável através de uma aplicação web desenvolvida em Flask, com ligação a um repositório GraphDB. A aplicação permite consultar classes, indivíduos, propriedades, relações diretas e inversas, executar queries de competência e adicionar novas triples ao repositório.
+A ontologia é explorável através de uma aplicação web desenvolvida em Flask, com ligação a um repositório GraphDB. A aplicação permite consultar classes, indivíduos, propriedades, relações diretas e inversas, executar queries de competência e aumentar a ontologia ao nível da ABox, criando novos recursos, adicionando conhecimento guiado e inserindo triples validadas no repositório.
 
 ## Stack Tecnológica
 
@@ -473,7 +473,7 @@ slotColumn
 tierOrder
 ```
 
-Nem todas as data properties são funcionais. As propriedades que representam um único valor por indivíduo, como `hasID`, `stackSize`, `hardness` ou `maxLevel`, podem ser funcionais. Outras propriedades não são funcionais quando representam informação repetível ou estrutural.
+Nem todas as data properties são funcionais. As propriedades que representam um único valor por indivíduo, como `blockID`, `itemID`, `entityID`, `stackSize`, `hardness` ou `maxLevel`, podem ser funcionais. Outras propriedades não são funcionais quando representam informação repetível ou estrutural.
 
 ---
 
@@ -593,10 +593,12 @@ A aplicação web permite:
 - listar classes da ontologia;
 - consultar indivíduos de uma classe;
 - abrir a página de detalhe de um recurso;
-- visualizar propriedades diretas de um recurso;
+- visualizar propriedades diretas agrupadas por propriedade;
 - visualizar relações inversas agrupadas por propriedade;
 - executar queries de competência;
-- adicionar novas triples ao repositório GraphDB.
+- criar novos recursos na ABox;
+- adicionar conhecimento através de formulários guiados;
+- inserir triples genéricas com validação de tipo, domínio e range quando possível.
 
 Rotas principais:
 
@@ -606,16 +608,77 @@ Rotas principais:
  /ontology/classes/<class_name>
  /ontology/resource/<resource_name>
  /competency/
+ /admin/add-resource
+ /admin/add-knowledge
  /admin/add-relation
 ```
 
 ---
 
-## Inserção de Novas Triples
+## Extensão da Ontologia pela Aplicação Web
 
-A página **Adicionar Relação** permite aumentar a ontologia a partir da aplicação web.
+A aplicação permite aumentar a ontologia ao nível da ABox, mantendo a TBox controlada nos ficheiros Turtle.
 
-Exemplos de triples que podem ser inseridas:
+Existem três modos de extensão.
+
+### Adicionar Recurso
+
+A página **Adicionar Recurso** permite criar novos indivíduos na ontologia, indicando:
+
+- nome local;
+- classe OWL;
+- nome legível;
+- descrição opcional.
+
+Exemplo:
+
+```text
+test_mob rdf:type HostileMob
+test_mob rdfs:label "Test Mob"
+test_mob rdfs:comment "Mob criado pela app"
+```
+
+Depois de criado, o recurso pode ser consultado em:
+
+```text
+/ontology/resource/test_mob
+```
+
+E passa a aparecer nas páginas das classes compatíveis, por exemplo:
+
+```text
+/ontology/classes/HostileMob
+```
+
+### Adicionar Conhecimento
+
+A página **Adicionar Conhecimento** permite inserir padrões frequentes de conhecimento através de formulários guiados.
+
+Exemplos de conhecimento suportado:
+
+- drop de mob;
+- spawn de mob em bioma;
+- estrutura em bioma;
+- item necessário para aceder a dimensão;
+- tier mínimo para minerar bloco;
+- bloco afetado pela gravidade;
+- mob imune ao fogo;
+- mob que arde à luz do sol.
+
+Exemplo:
+
+```text
+test_mob drops gunpowder
+gunpowder droppedBy test_mob
+```
+
+Neste modo, a aplicação cria automaticamente as relações inversas necessárias e valida os tipos esperados dos recursos.
+
+### Adicionar Relação
+
+A página **Adicionar Relação** permite inserir triples genéricas no repositório GraphDB.
+
+Exemplos válidos:
 
 ```text
 creeper spawnsIn plains
@@ -623,7 +686,24 @@ sand affectedByGravity true
 diamond_ore requiresMinTier Iron
 ```
 
-A aplicação valida nomes locais e permite inserir tanto relações entre recursos como literais tipados.
+A aplicação valida:
+
+- nomes locais;
+- existência do predicado;
+- se o predicado é `ObjectProperty` ou `DatatypeProperty`;
+- se o objeto deve ser recurso ou literal;
+- o tipo do literal;
+- domínio e range quando essa informação existe na TBox.
+
+Exemplo de triple rejeitada:
+
+```text
+creeper spawnsIn gunpowder
+```
+
+Esta triple é rejeitada porque `spawnsIn` espera um recurso da classe `Biome`, e `gunpowder` é um `Item`.
+
+As alterações feitas pela aplicação são inseridas diretamente no repositório GraphDB em tempo de execução. Para as tornar permanentes no ficheiro base da ontologia, devem ser exportadas do GraphDB ou adicionadas aos ficheiros em `data/manual/` e regeneradas com `python scripts/build_ontology.py`.
 
 ---
 
@@ -688,9 +768,21 @@ Projeto2026/
     ├── config.py
     ├── requirements.txt
     ├── routes/
+    │   ├── admin.py
+    │   ├── competency.py
+    │   ├── main.py
+    │   └── ontology.py
     ├── services/
+    │   ├── graphdb_client.py
+    │   ├── queries.py
+    │   └── validation.py
     ├── static/
     └── templates/
+        ├── add_resource.html
+        ├── add_knowledge.html
+        ├── add_relation.html
+        ├── competency.html
+        └── resource_detail.html
 ```
 
 ---
@@ -719,6 +811,19 @@ Queries sem input:
 | Mobs que ardem à luz do sol |
 | Blocos afetados pela gravidade |
 | Alimentos com maior saturação |
+
+### Extensão da ontologia pela aplicação
+
+Exemplos úteis para demonstrar a extensão da ontologia:
+
+| Funcionalidade | Exemplo |
+|---|---|
+| Adicionar Recurso | criar `test_mob` como `HostileMob` |
+| Adicionar Conhecimento | `test_mob drops gunpowder` |
+| Adicionar Relação válida | `test_mob spawnsIn plains` |
+| Validação de erro | rejeitar `test_mob spawnsIn gunpowder` |
+
+Após estas operações, os novos dados podem ser consultados nas páginas dos recursos envolvidos.
 
 ---
 

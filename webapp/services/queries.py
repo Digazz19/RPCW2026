@@ -271,7 +271,23 @@ def ask_resource_exists_query(resource_name: str):
 
     return PREFIXES + f"""
     ASK {{
-      mc:{resource_name} ?p ?o .
+      {{
+        mc:{resource_name} ?p ?o .
+      }}
+      UNION
+      {{
+        ?s ?p mc:{resource_name} .
+      }}
+    }}
+    """
+
+
+def ask_class_exists_query(class_name: str):
+    class_name = safe_local_name(class_name)
+
+    return PREFIXES + f"""
+    ASK {{
+      mc:{class_name} a owl:Class .
     }}
     """
 
@@ -284,6 +300,39 @@ def ask_property_exists_query(property_name: str):
       mc:{property_name} a ?type .
       FILTER(?type IN (owl:ObjectProperty, owl:DatatypeProperty))
     }}
+    """
+
+
+def ask_instance_of_query(resource_name: str, class_name: str):
+    resource_name = safe_local_name(resource_name)
+    class_name = safe_local_name(class_name)
+
+    return PREFIXES + f"""
+    ASK {{
+      mc:{resource_name} rdf:type ?type .
+      ?type rdfs:subClassOf* mc:{class_name} .
+    }}
+    """
+
+
+def get_property_metadata_query(property_name: str):
+    property_name = safe_local_name(property_name)
+
+    return PREFIXES + f"""
+    SELECT DISTINCT ?type ?domain ?range
+    WHERE {{
+      mc:{property_name} a ?type .
+      FILTER(?type IN (owl:ObjectProperty, owl:DatatypeProperty))
+
+      OPTIONAL {{
+        mc:{property_name} rdfs:domain ?domain .
+      }}
+
+      OPTIONAL {{
+        mc:{property_name} rdfs:range ?range .
+      }}
+    }}
+    ORDER BY ?type ?domain ?range
     """
 
 

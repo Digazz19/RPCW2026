@@ -6,9 +6,9 @@
 {% block content %}
 <div class="grid-2">
     <div class="card">
-        <h3>Inserção manual de triple</h3>
+        <h3>Inserção validada de triple</h3>
         <p class="muted">
-            Esta operação adiciona uma relação semântica ao repositório.
+            Esta operação adiciona uma triple ao repositório, validando o tipo da propriedade e, quando possível, o domínio e o range.
         </p>
 
         <form method="post" class="styled-form">
@@ -58,10 +58,16 @@
         </div>
 
         <p class="muted">
-            Exemplos:
+            Exemplos válidos:
             <br>creeper spawnsIn plains
             <br>sand affectedByGravity true
             <br>diamond_ore requiresMinTier Iron
+        </p>
+
+        <p class="muted">
+            Exemplos rejeitados pela validação:
+            <br><code>creeper spawnsIn gunpowder</code>, porque <code>spawnsIn</code> espera um <code>Biome</code>.
+            <br><code>sand affectedByGravity plains</code>, porque <code>affectedByGravity</code> espera literal booleano.
         </p>
     </div>
 </div>

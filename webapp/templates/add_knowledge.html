@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Conhecimento{% endblock %}
+{% block page_heading %}Adicionar Conhecimento{% endblock %}
+
+{% block content %}
+<div class="grid-2">
+    <div class="card">
+        <h3>Inserção guiada de conhecimento</h3>
+        <p class="muted">
+            Este formulário adiciona padrões frequentes de conhecimento, criando automaticamente as relações necessárias.
+        </p>
+
+        <form method="post" class="styled-form">
+            <label for="knowledge_type">Tipo de conhecimento</label>
+            <select name="knowledge_type" id="knowledge_type">
+                <option value="mob_drop">Drop de mob</option>
+                <option value="mob_spawn">Spawn de mob em bioma</option>
+                <option value="structure_biome">Estrutura em bioma</option>
+                <option value="dimension_access">Item necessário para dimensão</option>
+                <option value="mining_tier">Tier mínimo para minerar bloco</option>
+                <option value="gravity_block">Bloco afetado pela gravidade</option>
+                <option value="fire_immune">Mob imune ao fogo</option>
+                <option value="sunlight_burn">Mob arde à luz do sol</option>
+            </select>
+
+            <label for="primary_value" id="primary_label">Mob</label>
+            <input
+                type="text"
+                name="primary_value"
+                id="primary_value"
+                placeholder="Ex.: creeper"
+                required
+            >
+
+            <div id="secondary_group">
+                <label for="secondary_value" id="secondary_label">Item</label>
+                <input
+                    type="text"
+                    name="secondary_value"
+                    id="secondary_value"
+                    placeholder="Ex.: gunpowder"
+                >
+            </div>
+
+            <div id="boolean_group" style="display: none;">
+                <label for="boolean_value" id="boolean_label">Valor booleano</label>
+                <select name="boolean_value" id="boolean_value">
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                </select>
+            </div>
+
+            <button type="submit" class="button button-primary">Inserir conhecimento</button>
+        </form>
+
+        {% if message %}
+        <div class="status-box">
+            {{ message }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h3>Exemplos</h3>
+
+        <p class="muted">
+            <strong>Drop de mob</strong>
+            <br>
+            <code>creeper drops gunpowder</code>
+            <br>
+            Também insere:
+            <br>
+            <code>gunpowder droppedBy creeper</code>
+        </p>
+
+        <p class="muted">
+            <strong>Spawn de mob</strong>
+            <br>
+            <code>creeper spawnsIn plains</code>
+            <br>
+            Também insere:
+            <br>
+            <code>plains hasSpawn creeper</code>
+        </p>
+
+        <p class="muted">
+            Este modo é mais seguro do que a inserção genérica, porque valida os tipos esperados dos recursos.
+        </p>
+    </div>
+</div>
+
+<script>
+const config = {
+    mob_drop: {
+        primaryLabel: "Mob",
+        primaryPlaceholder: "Ex.: creeper",
+        secondaryLabel: "Item",
+        secondaryPlaceholder: "Ex.: gunpowder",
+        showSecondary: true,
+        showBoolean: false
+    },
+    mob_spawn: {
+        primaryLabel: "Mob",
+        primaryPlaceholder: "Ex.: creeper",
+        secondaryLabel: "Bioma",
+        secondaryPlaceholder: "Ex.: plains",
+        showSecondary: true,
+        showBoolean: false
+    },
+    structure_biome: {
+        primaryLabel: "Estrutura",
+        primaryPlaceholder: "Ex.: village",
+        secondaryLabel: "Bioma",
+        secondaryPlaceholder: "Ex.: plains",
+        showSecondary: true,
+        showBoolean: false
+    },
+    dimension_access: {
+        primaryLabel: "Dimensão",
+        primaryPlaceholder: "Ex.: nether",
+        secondaryLabel: "Item",
+        secondaryPlaceholder: "Ex.: obsidian",
+        showSecondary: true,
+        showBoolean: false
+    },
+    mining_tier: {
+        primaryLabel: "Bloco",
+        primaryPlaceholder: "Ex.: diamond_ore",
+        secondaryLabel: "Tier mínimo",
+        secondaryPlaceholder: "Ex.: Iron",
+        showSecondary: true,
+        showBoolean: false
+    },
+    gravity_block: {
+        primaryLabel: "Bloco",
+        primaryPlaceholder: "Ex.: sand",
+        secondaryLabel: "",
+        secondaryPlaceholder: "",
+        showSecondary: false,
+        showBoolean: false
+    },
+    fire_immune: {
+        primaryLabel: "Mob",
+        primaryPlaceholder: "Ex.: blaze",
+        secondaryLabel: "",
+        secondaryPlaceholder: "",
+        showSecondary: false,
+        showBoolean: true,
+        booleanLabel: "Imune ao fogo"
+    },
+    sunlight_burn: {
+        primaryLabel: "Mob",
+        primaryPlaceholder: "Ex.: zombie",
+        secondaryLabel: "",
+        secondaryPlaceholder: "",
+        showSecondary: false,
+        showBoolean: true,
+        booleanLabel: "Arde à luz do sol"
+    }
+};
+
+function updateKnowledgeForm() {
+    const type = document.getElementById("knowledge_type").value;
+    const cfg = config[type];
+
+    const primaryLabel = document.getElementById("primary_label");
+    const primaryInput = document.getElementById("primary_value");
+
+    const secondaryGroup = document.getElementById("secondary_group");
+    const secondaryLabel = document.getElementById("secondary_label");
+    const secondaryInput = document.getElementById("secondary_value");
+
+    const booleanGroup = document.getElementById("boolean_group");
+    const booleanLabel = document.getElementById("boolean_label");
+
+    primaryLabel.textContent = cfg.primaryLabel;
+    primaryInput.placeholder = cfg.primaryPlaceholder;
+
+    if (cfg.showSecondary) {
+        secondaryGroup.style.display = "block";
+        secondaryLabel.textContent = cfg.secondaryLabel;
+        secondaryInput.placeholder = cfg.secondaryPlaceholder;
+        secondaryInput.required = true;
+    } else {
+        secondaryGroup.style.display = "none";
+        secondaryInput.required = false;
+        secondaryInput.value = "";
+    }
+
+    if (cfg.showBoolean) {
+        booleanGroup.style.display = "block";
+        booleanLabel.textContent = cfg.booleanLabel || "Valor booleano";
+    } else {
+        booleanGroup.style.display = "none";
+    }
+}
+
+document.getElementById("knowledge_type").addEventListener("change", updateKnowledgeForm);
+updateKnowledgeForm();
+</script>
+{% endblock %}

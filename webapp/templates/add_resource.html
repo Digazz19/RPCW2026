@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Recurso{% endblock %}
+{% block page_heading %}Adicionar Recurso{% endblock %}
+
+{% block content %}
+<div class="grid-2">
+    <div class="card">
+        <h3>Criar novo indivíduo</h3>
+        <p class="muted">
+            Esta operação cria um novo recurso na ABox da ontologia.
+        </p>
+
+        <form method="post" class="styled-form">
+            <label for="resource_name">Nome local</label>
+            <input
+                type="text"
+                name="resource_name"
+                id="resource_name"
+                placeholder="Ex.: custom_mob"
+                required
+            >
+
+            <label for="class_name">Classe</label>
+            <select name="class_name" id="class_name" required>
+                {% for class_name in classes %}
+                <option value="{{ class_name }}">{{ class_name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="display_name">Nome legível</label>
+            <input
+                type="text"
+                name="display_name"
+                id="display_name"
+                placeholder="Ex.: Custom Mob"
+            >
+
+            <label for="description">Descrição opcional</label>
+            <input
+                type="text"
+                name="description"
+                id="description"
+                placeholder="Ex.: Recurso criado manualmente pela aplicação web"
+            >
+
+            <button type="submit" class="button button-primary">Criar recurso</button>
+        </form>
+
+        {% if message %}
+        <div class="status-box">
+            {{ message }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h3>Exemplo</h3>
+        <div class="code-box">
+            <code>custom_mob rdf:type HostileMob</code>
+        </div>
+
+        <p class="muted">
+            Depois de criado, o recurso pode ser consultado em:
+            <br>
+            <code>/ontology/resource/custom_mob</code>
+        </p>
+
+        <p class="muted">
+            Esta funcionalidade aumenta a ontologia ao nível da ABox, criando novos indivíduos sem alterar a TBox.
+        </p>
+    </div>
+</div>
+{% endblock %}
