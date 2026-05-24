@@ -5,19 +5,17 @@
 
 {% block content %}
 <div class="card">
-    <div class="section-header">
-        <div>
-            <h3>Lista de classes</h3>
-            <p class="muted">Tipos definidos na ontologia carregada no GraphDB.</p>
-        </div>
-        <div class="pill">{{ classes|length }} classes</div>
+    <div class="section-header" style="margin-bottom: 20px;">
+        <span class="pill">{{ classes|length }} classes carregadas</span>
+        <p class="muted" style="font-family: var(--font-body); font-size: 14px;">Tipos definidos na ontologia no GraphDB.</p>
     </div>
 
     {% if classes %}
-    <div class="chips-grid">
+    <div class="inventory-grid">
         {% for cls in classes %}
-        <a class="chip-link" href="{{ url_for('ontology.class_detail', class_name=cls) }}">
-            {{ cls }}
+        <a class="inventory-slot" href="{{ url_for('ontology.class_detail', class_name=cls) }}">
+            <img src="{{ url_for('static', filename='icons/enchanted_book.png') }}" class="mc-icon" alt="Class">
+            <span>{{ cls }}</span>
         </a>
         {% endfor %}
     </div>

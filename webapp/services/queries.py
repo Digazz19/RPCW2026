@@ -346,3 +346,35 @@ def get_insertable_properties_query():
     }
     ORDER BY ?property
     """
+
+def get_recipes_using_item_query(item_name: str):
+    item_name = safe_local_name(item_name)
+
+    return PREFIXES + f"""
+    SELECT DISTINCT ?recipe ?outputItem
+    WHERE {{
+      {{
+        ?recipe mc:hasIngredient mc:{item_name} .
+      }}
+      UNION
+      {{
+        ?recipe mc:hasSlot ?slot .
+        ?slot mc:slotItem mc:{item_name} .
+      }}
+
+      OPTIONAL {{
+        ?recipe mc:produces ?outputItem .
+      }}
+    }}
+    ORDER BY ?recipe
+    """
+
+def get_recipe_output_query(recipe_name: str) -> str:
+    recipe_name = safe_local_name(recipe_name)
+
+    return PREFIXES + f"""
+    SELECT ?outputItem
+    WHERE {{
+      mc:{recipe_name} mc:produces ?outputItem .
+    }}
+    """

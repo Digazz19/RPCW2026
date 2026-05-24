@@ -5,29 +5,24 @@
 
 {% block content %}
 <div class="card">
-    <div class="section-header">
-        <div>
-            <h3>Indivíduos de {{ class_name }}</h3>
-            <p class="muted">Resultados obtidos por rdf:type.</p>
-        </div>
-        <div class="pill">{{ instances|length }} indivíduos</div>
+    <div class="section-header" style="margin-bottom: 20px;">
+        <span class="pill">{{ instances|length }} Indivíduos Encontrados</span>
+        <p class="muted" style="font-family: var(--font-body); font-size: 14px;">Resultados obtidos por rdf:type.</p>
     </div>
 
     {% if instances %}
-    <div class="list-grid">
+    <div class="inventory-grid">
         {% for instance in instances %}
-        <a class="list-card" href="{{ url_for('ontology.resource_detail', resource_name=instance) }}">
-            <span class="list-title">{{ instance }}</span>
-            <span class="list-subtitle">Abrir detalhe do recurso</span>
+        <a class="inventory-slot" href="{{ url_for('ontology.resource_detail', resource_name=instance) }}">
+            <img src="{{ url_for('static', filename='icons/name_tag.png') }}" class="mc-icon" alt="Instance">
+            <span>{{ instance }}</span>
         </a>
         {% endfor %}
     </div>
     {% else %}
     <div class="empty-state">
         <h4>Sem indivíduos disponíveis</h4>
-        <p>
-            Não existem resultados associados a esta classe no repositório atual.
-        </p>
+        <p>Não existem resultados associados a esta classe no repositório atual.</p>
     </div>
     {% endif %}
 </div>

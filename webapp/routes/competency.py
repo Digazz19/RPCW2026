@@ -15,6 +15,7 @@ from services.queries import (
     get_gravity_blocks_query,
     get_top_foods_by_saturation_query,
     get_incompatible_enchantments_query,
+    get_recipes_using_item_query,
 )
 
 QUERY_OPTIONS = {
@@ -96,9 +97,41 @@ QUERY_OPTIONS = {
         "builder": get_incompatible_enchantments_query,
         "needs_input": True,
     },
+    "recipe_output": {
+        "label": "Qual é o resultado desta receita?",
+        "needs_input": True,
+        "placeholder": "Ex.: recipe_985_13"
+    },
+    "recipes_using_item": {
+        "label": "Receitas que usam item",
+        "placeholder": "Ex.: stick",
+        "builder": get_recipes_using_item_query,
+        "needs_input": True,
+    },
 }
 
 competency_bp = Blueprint("competency", __name__)
+
+
+def fetch_resource_names():
+    """Busca todos os nomes locais de recursos da ontologia."""
+    query = """
+    PREFIX : <http://rpcw.di.uminho.pt/2026/minecraft/>
+
+    SELECT DISTINCT ?name WHERE {
+        ?s a ?type .
+        FILTER(STRSTARTS(STR(?s), STR(:)))
+        BIND(STRAFTER(STR(?s), STR(:)) AS ?name)
+        FILTER(?name != "")
+    }
+    ORDER BY ?name
+    """
+    try:
+        result = run_select(query)
+        return [row["name"]["value"] for row in result["results"]["bindings"]]
+    except Exception:
+        return []
+
 
 @competency_bp.route("/", methods=["GET", "POST"])
 def competency():
@@ -115,12 +148,24 @@ def competency():
 
         if not option:
             error = "Tipo de query inválido."
+        elif selected_query == "recipe_output":
+            if not input_value:
+                error = "Por favor, indica o nome da receita."
+            else:
+                from services.queries import get_recipe_output_query
+                query = get_recipe_output_query(input_value)
+                try:
+                    result = run_select(query)
+                except Exception as e:
+                    error = str(e)
         else:
             try:
                 query = option["builder"](input_value)
                 result = run_select(query)
             except Exception as e:
                 error = str(e)
+
+    resource_names = fetch_resource_names()
 
     return render_template(
         "competency.html",
@@ -129,4 +174,38 @@ def competency():
         input_value=input_value,
         query_options=QUERY_OPTIONS,
         error=error,
+        resource_names=resource_names,
+    )
+
+
+@competency_bp.route("/sparql", methods=["GET", "POST"])
+def sparql_livre():
+    query = request.form.get("sparql_query", "").strip()
+    result = None
+    error = None
+
+    if request.method == "GET":
+        query = """PREFIX : <http://rpcw.di.uminho.pt/2026/minecraft/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?s ?p ?o
+WHERE {
+    ?s ?p ?o .
+}
+LIMIT 20"""
+
+    if request.method == "POST":
+        if not query:
+            error = "O bloco de comandos não pode executar uma query vazia."
+        else:
+            try:
+                result = run_select(query)
+            except Exception as e:
+                error = str(e)
+
+    return render_template(
+        "sparql.html",
+        query=query,
+        result=result,
+        error=error
     )

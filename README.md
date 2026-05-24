@@ -1,61 +1,24 @@
 # Ontologia Minecraft — Java Edition 1.21.11
 
-Projeto desenvolvido no âmbito da unidade curricular de **Representação e Processamento de Conhecimento na Web (RPCW)** da Universidade do Minho, 2025/2026.
+Este projeto foi desenvolvido no âmbito da unidade curricular de **Representação e Processamento de Conhecimento na Web (RPCW)** da Universidade do Minho, 2025/2026.
 
-## Objetivo
+## 1. Objetivo
 
-O objetivo deste projeto é especificar uma ontologia para o domínio do **Minecraft Java Edition 1.21.11**, cobrindo elementos e mecânicas de sobrevivência, como blocos, items, entidades, mobs, biomas, dimensões, estruturas, crafting, encantamentos, efeitos e progressão de jogo.
+O objetivo deste projeto é especificar e implementar uma ontologia para o domínio do **Minecraft Java Edition 1.21.11**, representando elementos relevantes do modo sobrevivência: blocos, items, entidades, mobs, biomas, dimensões, estruturas, receitas, encantamentos, efeitos e progressão de materiais.
 
-A ontologia é explorável através de uma aplicação web desenvolvida em Flask, com ligação a um repositório GraphDB. A aplicação permite consultar classes, indivíduos, propriedades, relações diretas e inversas, executar queries de competência e aumentar a ontologia ao nível da ABox, criando novos recursos, adicionando conhecimento guiado e inserindo triples validadas no repositório.
+A ontologia é explorada através de uma aplicação web em **Flask**, ligada a um repositório **GraphDB**. A aplicação permite navegar por classes e indivíduos, consultar propriedades diretas e inversas, executar queries de competência e aumentar a ABox através da criação de recursos e inserção de conhecimento validado.
 
-## Stack Tecnológica
+## 2. Fontes de dados
 
-- **Protégé** — modelação da TBox: classes, propriedades, restrições e hierarquia ontológica;
-- **Python + rdflib** — geração da ABox a partir de dados JSON;
-- **GraphDB** — armazenamento RDF e endpoint SPARQL;
-- **Flask** — aplicação web para exploração e extensão da ontologia;
-- **SPARQL** — consulta e atualização da ontologia.
+A fonte principal de dados foi o dataset **PrismarineJS/minecraft-data**, versão `1.21.11`, usado para extrair informação sobre blocos, items, entidades, biomas, alimentos, encantamentos, receitas e efeitos.
 
-## Fonte de Dados
+Como nem toda a informação necessária para as queries de competência se encontrava explícita ou normalizada nesse dataset, foram também criados ficheiros manuais em `data/manual/`. Estes dados complementares cobrem drops de mobs, biomas de spawn, tiers de materiais, requisitos mínimos de mineração, dimensões, estruturas, items necessários para aceder a dimensões, propriedades específicas de mobs e blocos afetados pela gravidade.
 
-A ontologia é construída a partir de duas fontes principais:
+A geração final combina a TBox definida manualmente com os indivíduos produzidos automaticamente a partir destes dados.
 
-1. **PrismarineJS/minecraft-data**, versão `1.21.11`, usado como fonte primária para:
+## 3. Perguntas de competência
 
-   - blocos;
-   - items;
-   - entidades;
-   - biomas;
-   - foods;
-   - enchantments;
-   - recipes;
-   - effects.
-
-2. **Dados manuais complementares**, usados para informação que não está suficientemente explícita no dataset principal:
-
-   - drops de mobs;
-   - spawns de mobs em biomas;
-   - tiers de materiais;
-   - requisitos mínimos de mineração;
-   - dimensões;
-   - estruturas;
-   - items necessários para aceder a dimensões;
-   - propriedades específicas de mobs;
-   - blocos afetados pela gravidade.
-
-Os dados manuais encontram-se em:
-
-```text
-data/manual/
-```
-
-A geração automática da ontologia junta os dados do PrismarineJS com estes dados manuais.
-
----
-
-## Perguntas de Competência
-
-A ontologia e a aplicação web foram desenhadas para responder às seguintes perguntas de competência:
+A ontologia e a aplicação foram desenhadas para responder, entre outras, às seguintes perguntas:
 
 1. Que ingredientes são necessários para craftar um item?
 2. Que mobs dropam determinado item?
@@ -71,629 +34,115 @@ A ontologia e a aplicação web foram desenhadas para responder às seguintes pe
 12. Que alimentos têm maior saturação?
 13. Que encantamentos são incompatíveis entre si?
 
-Estas perguntas são respondidas através de queries SPARQL integradas na página **Queries de Competência** da aplicação web.
-
----
-
-## Estrutura da Ontologia
-
-A ontologia está dividida em duas partes principais:
-
-- **TBox**: classes, hierarquias, object properties, data properties e restrições;
-- **ABox**: indivíduos gerados automaticamente a partir dos datasets e dos dados manuais.
-
-A TBox principal encontra-se em:
-
-```text
-ontology/classes.ttl
-```
-
-A ontologia final, com TBox e ABox combinadas, é gerada em:
-
-```text
-ontology/minecraft.ttl
-```
-
----
-
-## Classes de Topo
-
-A ontologia organiza o domínio em seis classes principais:
-
-| Classe | Papel no domínio | Descrição |
-|---|---|---|
-| `GameObject` | O quê? | Objetos tangíveis do jogo, como blocos, items e entidades |
-| `Environment` | Onde? | Contextos espaciais, como dimensões, biomas e estruturas |
-| `Recipe` | Como se faz? | Processos de produção ou transformação de items |
-| `Enchantment` | Que melhoria? | Modificadores aplicáveis a items |
-| `Effect` | Que estado? | Estados temporários aplicáveis a entidades |
-| `MaterialTier` | Que nível? | Tiers de progressão e qualidade de materiais |
-
----
-
-## Hierarquia de Classes
-
-Resumo da hierarquia principal:
-
-```text
-owl:Thing
-│
-├── GameObject
-│   ├── Block
-│   │   ├── NaturalBlock
-│   │   │   ├── Ore
-│   │   │   │   ├── MetalOre
-│   │   │   │   └── GemOre
-│   │   │   ├── Stone
-│   │   │   ├── Dirt
-│   │   │   ├── Sand
-│   │   │   └── Terrain
-│   │   ├── Plant
-│   │   │   ├── Log
-│   │   │   ├── Leaves
-│   │   │   ├── Sapling
-│   │   │   ├── Flower
-│   │   │   ├── Crop
-│   │   │   └── Fungus
-│   │   ├── CraftedBlock
-│   │   │   ├── Planks
-│   │   │   ├── Slab
-│   │   │   ├── Stairs
-│   │   │   ├── Wall
-│   │   │   ├── Fence
-│   │   │   ├── Door
-│   │   │   ├── Bed
-│   │   │   ├── Sign
-│   │   │   ├── Wool
-│   │   │   └── GlassBlock
-│   │   ├── FunctionalBlock
-│   │   │   ├── Furnace
-│   │   │   ├── CraftingStation
-│   │   │   ├── BrewingStand
-│   │   │   ├── EnchantingTable
-│   │   │   ├── Beacon
-│   │   │   ├── Anvil
-│   │   │   └── StorageBlock
-│   │   ├── LightSource
-│   │   ├── FluidBlock
-│   │   ├── GravityBlock
-│   │   ├── RedstoneBlock
-│   │   ├── LightEmittingBlock
-│   │   ├── TransparentBlock
-│   │   └── IndestructibleBlock
-│   │
-│   ├── Item
-│   │   ├── Tool
-│   │   │   ├── Pickaxe
-│   │   │   ├── Axe
-│   │   │   ├── Shovel
-│   │   │   ├── Hoe
-│   │   │   ├── Shears
-│   │   │   ├── FishingRod
-│   │   │   ├── FlintAndSteel
-│   │   │   └── SpecialTool
-│   │   ├── Weapon
-│   │   │   ├── Sword
-│   │   │   ├── Bow
-│   │   │   ├── Crossbow
-│   │   │   ├── Trident
-│   │   │   ├── Mace
-│   │   │   └── Shield
-│   │   ├── Armor
-│   │   │   ├── Helmet
-│   │   │   ├── Chestplate
-│   │   │   ├── Leggings
-│   │   │   ├── Boots
-│   │   │   ├── Elytra
-│   │   │   └── WolfArmor
-│   │   ├── Food
-│   │   │   ├── RawFood
-│   │   │   ├── CookedFood
-│   │   │   └── SpecialFood
-│   │   ├── Material
-│   │   │   ├── Ingot
-│   │   │   ├── Gem
-│   │   │   ├── RawMineral
-│   │   │   ├── Nugget
-│   │   │   └── OrganicMaterial
-│   │   ├── Potion
-│   │   ├── Projectile
-│   │   ├── Bucket
-│   │   ├── Container
-│   │   ├── Vehicle
-│   │   │   ├── Boat
-│   │   │   └── Minecart
-│   │   ├── MobEquipment
-│   │   ├── Decoration
-│   │   ├── SpawnEgg
-│   │   ├── MusicDisc
-│   │   ├── Dye
-│   │   ├── Book
-│   │   ├── SmithingTemplate
-│   │   ├── UtilityItem
-│   │   ├── StackableItem
-│   │   └── NonStackableItem
-│   │
-│   ├── Entity
-│   │   ├── Mob
-│   │   │   ├── HostileMob
-│   │   │   │   ├── UndeadMob
-│   │   │   │   ├── ArthropodMob
-│   │   │   │   └── NetherMob
-│   │   │   ├── PassiveMob
-│   │   │   │   ├── Animal
-│   │   │   │   └── Villager
-│   │   │   ├── NeutralMob
-│   │   │   ├── TameableMob
-│   │   │   ├── BossMob
-│   │   │   └── AmbientMob
-│   │   └── ProjectileEntity
-│   │
-│   ├── PlaceableBlock
-│   ├── RenewableResource
-│   └── NonRenewableResource
-│
-├── Environment
-│   ├── Dimension
-│   ├── Biome
-│   │   ├── OverworldBiome
-│   │   ├── NetherBiome
-│   │   └── EndBiome
-│   └── Structure
-│       ├── NaturalStructure
-│       └── DimensionalStructure
-│
-├── Recipe
-│   ├── CraftingRecipe
-│   │   ├── ShapedRecipe
-│   │   └── ShapelessRecipe
-│   ├── SmeltingRecipe
-│   ├── BrewingRecipe
-│   └── SmithingRecipe
-│
-├── Enchantment
-│   ├── WeaponEnchantment
-│   ├── ArmorEnchantment
-│   ├── ToolEnchantment
-│   ├── BowEnchantment
-│   ├── CrossbowEnchantment
-│   ├── TridentEnchantment
-│   ├── MaceEnchantment
-│   └── CurseEnchantment
-│
-├── Effect
-│   ├── BeneficialEffect
-│   └── HarmfulEffect
-│
-└── MaterialTier
-```
-
----
-
-## Decisões de Modelação
-
-### Dualidade entre `Block` e `Item`
-
-Em Minecraft, muitos recursos existem simultaneamente como bloco no mundo e como item no inventário. Por exemplo, `stone`, `oak_planks` ou `diamond_ore` podem ser tratados como recursos do jogo e, em alguns casos, como objetos manipuláveis.
-
-Por isso, `Block` e `Item` não foram modeladas como classes disjuntas. A ontologia permite multi-classificação, ou seja, o mesmo indivíduo pode pertencer simultaneamente a mais do que uma classe.
-
-A classe `PlaceableBlock` representa esta interseção:
-
-```text
-PlaceableBlock ≡ Block ⊓ Item
-```
-
-### Encantamentos
-
-As subclasses de `Enchantment` não são necessariamente disjuntas, porque há encantamentos que se aplicam a vários tipos de item. Por exemplo, `unbreaking` e `mending` aplicam-se a vários equipamentos.
-
-A aplicabilidade é representada através das propriedades:
-
-```text
-applicableTo
-canBeEnchantedWith
-```
-
-### Receitas
-
-As receitas são modeladas como indivíduos da classe `Recipe`, com subclasses para receitas shaped e shapeless.
-
-As relações principais são:
-
-```text
-produces
-craftedBy
-hasIngredient
-usedIn
-hasSlot
-slotItem
-slotRow
-slotColumn
-outputQuantity
-```
-
-A representação com `RecipeSlot` permite preservar a estrutura de receitas shaped e calcular quantidades de ingredientes.
-
-### Material tiers
-
-Os tiers de material são representados como indivíduos da classe `MaterialTier`.
-
-Exemplos:
-
-```text
-Wood
-Stone
-Copper
-Iron
-Gold
-Diamond
-Netherite
-Leather
-Chainmail
-Turtle
-```
-
-A propriedade `tierOrder` permite ordenar os tiers e responder a perguntas sobre progressão de jogo.
-
----
-
-## Object Properties
-
-A ontologia define relações entre indivíduos, incluindo:
-
-| Property | Domínio → Alcance | Descrição |
-|---|---|---|
-| `obtainedFrom` | `Item → GameObject` | Origem genérica de um item |
-| `droppedBy` | `Item → Mob` | Mob que pode dropar o item |
-| `drops` | `Mob → Item` | Items que um mob pode dropar |
-| `minedFrom` | `Item → Block` | Bloco de onde um item pode ser obtido |
-| `minedDrops` | `Block → Item` | Item obtido ao minerar um bloco |
-| `minedWith` | `Block → Tool` | Ferramenta que pode minerar um bloco |
-| `canMine` | `Tool → Block` | Blocos que uma ferramenta pode minerar |
-| `requiresMinTier` | `Block → MaterialTier` | Tier mínimo necessário para minerar um bloco |
-| `madeOfMaterial` | `Item → MaterialTier` | Tier ou material principal de um item |
-| `spawnsIn` | `Mob → Biome` | Biomas onde um mob pode aparecer |
-| `hasSpawn` | `Biome → Mob` | Mobs que aparecem num bioma |
-| `locatedIn` | `GameObject → Environment` | Localização de um recurso |
-| `contains` | `Environment → GameObject` | Relação inversa de localização |
-| `generatesIn` | `Structure → Biome` | Biomas onde uma estrutura gera |
-| `hasStructure` | `Biome → Structure` | Estruturas existentes num bioma |
-| `applicableTo` | `Enchantment → Item` | Items aos quais um encantamento se aplica |
-| `canBeEnchantedWith` | `Item → Enchantment` | Encantamentos aplicáveis a um item |
-| `incompatibleWith` | `Enchantment → Enchantment` | Encantamentos incompatíveis |
-| `hasIngredient` | `Recipe → Item` | Ingrediente usado numa receita |
-| `usedIn` | `Item → Recipe` | Receitas onde um item é usado |
-| `produces` | `Recipe → Item` | Item produzido por uma receita |
-| `craftedBy` | `Item → Recipe` | Receita que produz o item |
-| `requiredToEnter` | `Dimension → Item` | Items necessários para aceder a uma dimensão |
-| `opensAccess` | `Item → Dimension` | Dimensão acessível através de um item |
-| `hasSlot` | `Recipe → RecipeSlot` | Slots associados a uma receita |
-| `slotItem` | `RecipeSlot → Item` | Item colocado num slot de crafting |
-
-Algumas destas propriedades têm inversas declaradas em OWL, permitindo navegação nos dois sentidos.
-
----
-
-## Data Properties
-
-A ontologia define atributos literais para vários tipos de indivíduos.
-
-### Propriedades gerais
-
-```text
-hasName
-hasDisplayName
-blockID
-itemID
-entityID
-biomeID
-effectID
-enchantmentID
-stackSize
-isRenewable
-```
-
-A propriedade genérica `hasID` foi substituída, na geração de dados, por propriedades específicas como `blockID`, `itemID`, `entityID`, `biomeID`, `effectID` e `enchantmentID`. Isto evita ambiguidades em recursos que existem simultaneamente como bloco e item, como `diamond_ore`.
-
-### Blocos
-
-```text
-hardness
-blastResistance
-isTransparent
-emitLight
-filterLight
-isDiggable
-affectedByGravity
-```
-
-### Items e equipamentos
-
-```text
-maxDurability
-attackDamage
-attackSpeed
-armorPoints
-armorToughness
-knockbackResistance
-```
-
-### Food
-
-```text
-foodPoints
-saturation
-effectiveQuality
-saturationRatio
-```
-
-### Entidades e mobs
-
-```text
-health
-mobAttackDamage
-experienceDrop
-entityWidth
-entityHeight
-isBurnableInSunlight
-isImmuneToFire
-```
-
-### Encantamentos
-
-```text
-maxLevel
-enchantmentWeight
-isTreasureOnly
-isCurse
-isTradeable
-isDiscoverable
-```
-
-### Biomas
-
-```text
-temperature
-hasPrecipitation
-biomeCategory
-```
-
-### Receitas e slots
-
-```text
-outputQuantity
-slotRow
-slotColumn
-```
-
-### Material tiers
-
-```text
-tierOrder
-```
-
-Nem todas as data properties são funcionais. As propriedades que representam um único valor por indivíduo, como `blockID`, `itemID`, `entityID`, `stackSize`, `hardness` ou `maxLevel`, podem ser funcionais. Outras propriedades não são funcionais quando representam informação repetível ou estrutural.
-
----
-
-## Classes Definidas
-
-A ontologia inclui classes que podem ser inferidas pelo reasoner:
-
-| Classe | Definição conceptual | Descrição |
-|---|---|---|
-| `PlaceableBlock` | `Block ⊓ Item` | Recursos que podem existir como bloco e item |
-| `LightEmittingBlock` | `Block` com `emitLight > 0` | Blocos que emitem luz |
-| `TransparentBlock` | `Block` com `isTransparent = true` | Blocos transparentes |
-| `IndestructibleBlock` | `Block` com `hardness = -1.0` | Blocos indestrutíveis |
-| `StackableItem` | `Item` com `stackSize > 1` | Items empilháveis |
-| `NonStackableItem` | `Item` com `stackSize = 1` | Items não empilháveis |
-| `RenewableResource` | `GameObject` com `isRenewable = true` | Recursos renováveis |
-| `NonRenewableResource` | `GameObject` com `isRenewable = false` | Recursos não renováveis |
-
----
-
-## Disjunções
-
-Foram definidas disjunções pontuais onde a distinção é segura no domínio.
-
-Exemplos:
-
-```text
-HostileMob disjointWith PassiveMob
-BeneficialEffect disjointWith HarmfulEffect
-ShapedRecipe disjointWith ShapelessRecipe
-```
-
-Não foram impostas disjunções globais entre `Block` e `Item`, porque isso impediria a representação natural de recursos que têm dupla natureza no Minecraft.
-
----
-
-## Geração da Ontologia
-
-A ontologia final é gerada automaticamente a partir da TBox e dos dados.
-
-Comando:
+Estas perguntas são implementadas como queries SPARQL na página **Queries de Competência** da aplicação web.
+
+## 4. Estrutura da ontologia
+
+A ontologia está organizada em duas partes:
+
+- **TBox**, definida em `ontology/classes.ttl`, com classes, hierarquias, object properties, data properties, restrições e disjunções;
+- **ABox**, gerada automaticamente a partir dos datasets e dos ficheiros manuais.
+
+A ontologia final é produzida em `ontology/minecraft.ttl`, juntando a TBox com os ficheiros RDF gerados pelos exporters.
+
+As principais classes de topo são:
+
+| Classe | Papel |
+|---|---|
+| `GameObject` | objetos do jogo, como blocos, items e entidades |
+| `Environment` | contextos espaciais, como dimensões, biomas e estruturas |
+| `Recipe` | processos de produção ou transformação de items |
+| `Enchantment` | modificadores aplicáveis a items |
+| `Effect` | estados temporários aplicáveis a entidades |
+| `MaterialTier` | níveis de progressão e qualidade dos materiais |
+
+A hierarquia detalhada inclui, por exemplo, `Block`, `Item`, `Entity`, `Mob`, `Biome`, `Structure`, `CraftingRecipe`, `ShapedRecipe`, `ShapelessRecipe`, `WeaponEnchantment`, `ArmorEnchantment`, `BeneficialEffect` e `HarmfulEffect`.
+
+Também foram definidas classes conceptuais ou inferíveis, como `PlaceableBlock`, `LightEmittingBlock`, `TransparentBlock`, `IndestructibleBlock`, `StackableItem`, `NonStackableItem`, `RenewableResource` e `NonRenewableResource`. Algumas destas classes podem não ter instâncias diretas no dataset final, mas foram mantidas porque fazem parte da modelação do domínio e permitem representar conceitos úteis para inferência, validação e extensão futura.
+
+## 5. Decisões de modelação
+
+Uma decisão importante foi não declarar `Block` e `Item` como classes disjuntas. No Minecraft, vários recursos têm dupla natureza: podem existir como bloco no mundo e como item no inventário. Exemplos como `stone`, `oak_planks` ou `diamond_ore` justificam esta multi-classificação. A classe `PlaceableBlock` representa precisamente a interseção conceptual entre blocos e items.
+
+As subclasses de `Enchantment` também não foram todas consideradas disjuntas. Alguns encantamentos aplicam-se a vários tipos de equipamento, como `unbreaking` ou `mending`. Por isso, a aplicabilidade foi modelada através de relações como `applicableTo` e `canBeEnchantedWith`.
+
+As receitas foram modeladas como indivíduos de `Recipe`, com especialização em `ShapedRecipe` e `ShapelessRecipe`. Para receitas shaped, foram usados indivíduos auxiliares `RecipeSlot`, permitindo preservar a posição dos ingredientes através de `slotRow`, `slotColumn` e `slotItem`. Isto permite consultar tanto os ingredientes usados como a estrutura da receita.
+
+Os tiers de material foram representados como indivíduos de `MaterialTier`, por exemplo `Wood`, `Stone`, `Iron`, `Diamond` e `Netherite`. A propriedade `tierOrder` permite ordenar estes tiers e responder a perguntas sobre progressão.
+
+Foram ainda definidas disjunções pontuais quando a separação era segura no domínio, como `HostileMob` disjoint with `PassiveMob`, `BeneficialEffect` disjoint with `HarmfulEffect` e `ShapedRecipe` disjoint with `ShapelessRecipe`.
+
+## 6. Propriedades principais
+
+A ontologia define object properties para representar relações entre indivíduos. As mais relevantes são:
+
+- `drops` / `droppedBy`, para relacionar mobs com items dropados;
+- `spawnsIn` / `hasSpawn`, para relacionar mobs com biomas;
+- `minedWith`, `canMine` e `requiresMinTier`, para requisitos de mineração;
+- `generatesIn` / `hasStructure`, para estruturas geradas em biomas;
+- `applicableTo` / `canBeEnchantedWith`, para encantamentos aplicáveis a items;
+- `incompatibleWith`, para incompatibilidades entre encantamentos;
+- `hasIngredient`, `usedIn`, `produces` e `craftedBy`, para receitas;
+- `requiredToEnter` / `opensAccess`, para acesso a dimensões;
+- `hasSlot` e `slotItem`, para estrutura interna de receitas shaped.
+
+As data properties representam atributos literais. Foram usadas propriedades específicas por tipo de recurso, como `blockID`, `itemID`, `entityID`, `biomeID`, `effectID` e `enchantmentID`, evitando ambiguidades em indivíduos que podem ser classificados em mais do que uma classe. Outros exemplos incluem `stackSize`, `hardness`, `blastResistance`, `emitLight`, `foodPoints`, `saturation`, `health`, `experienceDrop`, `maxLevel`, `temperature`, `outputQuantity` e `tierOrder`.
+
+## 7. Geração da ontologia
+
+A geração é feita automaticamente através do comando:
 
 ```bash
 python scripts/build_ontology.py
 ```
 
-Este script:
+Este script executa os exporters, gera os ficheiros `scripts/ontology/data_*.ttl`, junta-os com `ontology/classes.ttl`, produz `ontology/minecraft.ttl` e valida se o ficheiro Turtle final pode ser carregado.
 
-1. executa os exporters;
-2. gera os ficheiros `data_*.ttl`;
-3. junta `ontology/classes.ttl` com os ficheiros RDF gerados;
-4. produz `ontology/minecraft.ttl`;
-5. valida se o ficheiro Turtle final pode ser carregado;
-6. imprime estatísticas básicas da ontologia.
-
-Os ficheiros `scripts/ontology/data_*.ttl` são gerados automaticamente e não devem ser editados manualmente.
-
----
-
-## Execução com GraphDB
-
-Para correr o projeto:
-
-1. Abrir o GraphDB.
-
-2. Criar um repositório chamado:
+Na última geração foram obtidas as seguintes estatísticas:
 
 ```text
-minecraft
+Triples: 106319
+Classes: 164
+Object properties: 43
+Data properties: 59
 ```
 
-3. Importar o ficheiro:
+Os ficheiros `data_*.ttl` são resultados gerados automaticamente e não devem ser editados manualmente. Alterações permanentes ao conteúdo devem ser feitas nos datasets de origem, nos ficheiros manuais ou na TBox, seguidas de nova geração.
 
-```text
-ontology/minecraft.ttl
-```
+## 8. Aplicação web
 
-4. Confirmar que o endpoint SPARQL fica disponível em:
+A aplicação web foi desenvolvida em Flask e comunica com o GraphDB através do endpoint SPARQL. Permite consultar a ontologia de forma navegável, sem obrigar o utilizador a escrever SPARQL manualmente.
 
-```text
-http://localhost:7200/repositories/minecraft
-```
+Funcionalidades principais:
 
-5. Entrar na pasta da aplicação web:
+- página inicial com descrição do projeto;
+- listagem de classes;
+- consulta dos indivíduos de cada classe;
+- página de detalhe de cada recurso;
+- visualização de propriedades diretas e relações inversas;
+- execução de queries de competência;
+- execução de SPARQL livre;
+- criação de novos recursos na ABox;
+- inserção guiada de conhecimento;
+- inserção de triples genéricas com validação.
 
-```bash
-cd webapp
-```
+A aplicação responde assim aos dois requisitos práticos do projeto: explorar a ontologia e permitir o seu aumento a partir da interface web.
 
-6. Instalar dependências:
+## 9. Extensão da ontologia pela aplicação
 
-```bash
-pip install -r requirements.txt
-```
+A extensão da ontologia é feita ao nível da ABox, mantendo a TBox controlada nos ficheiros Turtle.
 
-7. Correr a aplicação:
+Existem três modos principais:
 
-```bash
-python app.py
-```
+1. **Adicionar Recurso**, para criar novos indivíduos, indicando nome local, classe, label e descrição opcional.
+2. **Adicionar Conhecimento**, para inserir padrões frequentes, como drops de mobs, spawns em biomas, estruturas em biomas, requisitos de mineração, acesso a dimensões ou propriedades de mobs.
+3. **Adicionar Relação**, para inserir triples genéricas, validando o predicado, o tipo esperado do objeto, o domínio e o range quando essa informação existe na TBox.
 
-8. Abrir no browser:
-
-```text
-http://127.0.0.1:5000
-```
-
-Sempre que `ontology/minecraft.ttl` for regenerado, deve limpar-se ou recriar-se o repositório GraphDB antes de importar novamente a ontologia, para evitar mistura entre dados antigos e dados novos.
-
----
-
-## Aplicação Web
-
-A aplicação web permite:
-
-- visualizar a página inicial do projeto;
-- listar classes da ontologia;
-- consultar indivíduos de uma classe;
-- abrir a página de detalhe de um recurso;
-- visualizar propriedades diretas agrupadas por propriedade;
-- visualizar relações inversas agrupadas por propriedade;
-- executar queries de competência;
-- criar novos recursos na ABox;
-- adicionar conhecimento através de formulários guiados;
-- inserir triples genéricas com validação de tipo, domínio e range quando possível.
-
-Rotas principais:
-
-```text
-/
- /ontology/classes
- /ontology/classes/<class_name>
- /ontology/resource/<resource_name>
- /competency/
- /admin/add-resource
- /admin/add-knowledge
- /admin/add-relation
-```
-
----
-
-## Extensão da Ontologia pela Aplicação Web
-
-A aplicação permite aumentar a ontologia ao nível da ABox, mantendo a TBox controlada nos ficheiros Turtle.
-
-Existem três modos de extensão.
-
-### Adicionar Recurso
-
-A página **Adicionar Recurso** permite criar novos indivíduos na ontologia, indicando:
-
-- nome local;
-- classe OWL;
-- nome legível;
-- descrição opcional.
-
-Exemplo:
-
-```text
-test_mob rdf:type HostileMob
-test_mob rdfs:label "Test Mob"
-test_mob rdfs:comment "Mob criado pela app"
-```
-
-Depois de criado, o recurso pode ser consultado em:
-
-```text
-/ontology/resource/test_mob
-```
-
-E passa a aparecer nas páginas das classes compatíveis, por exemplo:
-
-```text
-/ontology/classes/HostileMob
-```
-
-### Adicionar Conhecimento
-
-A página **Adicionar Conhecimento** permite inserir padrões frequentes de conhecimento através de formulários guiados.
-
-Exemplos de conhecimento suportado:
-
-- drop de mob;
-- spawn de mob em bioma;
-- estrutura em bioma;
-- item necessário para aceder a dimensão;
-- tier mínimo para minerar bloco;
-- bloco afetado pela gravidade;
-- mob imune ao fogo;
-- mob que arde à luz do sol.
-
-Exemplo:
-
-```text
-test_mob drops gunpowder
-gunpowder droppedBy test_mob
-```
-
-Neste modo, a aplicação cria automaticamente as relações inversas necessárias e valida os tipos esperados dos recursos.
-
-### Adicionar Relação
-
-A página **Adicionar Relação** permite inserir triples genéricas no repositório GraphDB.
-
-Exemplos válidos:
+Exemplo de triple válida:
 
 ```text
 creeper spawnsIn plains
-sand affectedByGravity true
-diamond_ore requiresMinTier Iron
 ```
-
-A aplicação valida:
-
-- nomes locais;
-- existência do predicado;
-- se o predicado é `ObjectProperty` ou `DatatypeProperty`;
-- se o objeto deve ser recurso ou literal;
-- o tipo do literal;
-- domínio e range quando essa informação existe na TBox.
 
 Exemplo de triple rejeitada:
 
@@ -701,97 +150,47 @@ Exemplo de triple rejeitada:
 creeper spawnsIn gunpowder
 ```
 
-Esta triple é rejeitada porque `spawnsIn` espera um recurso da classe `Biome`, e `gunpowder` é um `Item`.
+A segunda é rejeitada porque `spawnsIn` espera um recurso da classe `Biome`, enquanto `gunpowder` é um `Item`.
 
-As alterações feitas pela aplicação são inseridas diretamente no repositório GraphDB em tempo de execução. Para as tornar permanentes no ficheiro base da ontologia, devem ser exportadas do GraphDB ou adicionadas aos ficheiros em `data/manual/` e regeneradas com `python scripts/build_ontology.py`.
+As alterações feitas pela aplicação são inseridas no repositório GraphDB em tempo de execução. Para as tornar permanentes no ficheiro base, devem ser exportadas do GraphDB ou adicionadas aos ficheiros em `data/manual/` e depois regeneradas com `python scripts/build_ontology.py`.
 
----
+## 10. Execução
 
-## Estrutura do Projeto
+Para gerar a ontologia:
 
-```text
-Projeto2026/
-├── README.md
-├── data/
-│   ├── 1.21.11/
-│   │   ├── blocks.json
-│   │   ├── items.json
-│   │   ├── entities.json
-│   │   ├── biomes.json
-│   │   ├── foods.json
-│   │   ├── enchantments.json
-│   │   ├── recipes.json
-│   │   └── effects.json
-│   └── manual/
-│       ├── material_tiers.json
-│       ├── block_mining.json
-│       ├── mob_drops.json
-│       ├── mob_spawns.json
-│       ├── dimensions.json
-│       ├── structures.json
-│       ├── portals.json
-│       ├── mob_properties.json
-│       └── block_properties.json
-├── ontology/
-│   ├── classes.ttl
-│   └── minecraft.ttl
-├── scripts/
-│   ├── build_ontology.py
-│   ├── explore.py
-│   ├── explore_values.py
-│   ├── classify_items.py
-│   ├── exporter/
-│   │   ├── common.py
-│   │   ├── classifiers.py
-│   │   ├── run_all.py
-│   │   ├── item_exporter.py
-│   │   ├── blocks_exporter.py
-│   │   ├── entities_exporter.py
-│   │   ├── biomes_exporter.py
-│   │   ├── foods_exporter.py
-│   │   ├── enchantments_exporter.py
-│   │   ├── effects_exporter.py
-│   │   ├── recipies_exporter.py
-│   │   └── manual_exporter.py
-│   └── ontology/
-│       ├── data_items.ttl
-│       ├── data_blocks.ttl
-│       ├── data_entities.ttl
-│       ├── data_biomes.ttl
-│       ├── data_foods.ttl
-│       ├── data_enchantments.ttl
-│       ├── data_effects.ttl
-│       ├── data_recipes.ttl
-│       └── data_manual.ttl
-└── webapp/
-    ├── app.py
-    ├── config.py
-    ├── requirements.txt
-    ├── routes/
-    │   ├── admin.py
-    │   ├── competency.py
-    │   ├── main.py
-    │   └── ontology.py
-    ├── services/
-    │   ├── graphdb_client.py
-    │   ├── queries.py
-    │   └── validation.py
-    ├── static/
-    └── templates/
-        ├── add_resource.html
-        ├── add_knowledge.html
-        ├── add_relation.html
-        ├── competency.html
-        └── resource_detail.html
+```bash
+python scripts/build_ontology.py
 ```
 
----
+No GraphDB deve ser criado um repositório chamado `minecraft` e importado o ficheiro:
 
-## Exemplos de Demonstração
+```text
+ontology/minecraft.ttl
+```
 
-Exemplos úteis para testar na aplicação:
+O endpoint esperado é:
 
-| Query | Input |
+```text
+http://localhost:7200/repositories/minecraft
+```
+
+Para correr a aplicação:
+
+```bash
+cd webapp
+pip install -r requirements.txt
+python app.py
+```
+
+Depois, abrir no browser:
+
+```text
+http://127.0.0.1:5000
+```
+
+Exemplos úteis para demonstração:
+
+| Funcionalidade | Input |
 |---|---|
 | Ingredientes de receita | `torch` |
 | Mobs que dropam item | `gunpowder` |
@@ -800,41 +199,21 @@ Exemplos úteis para testar na aplicação:
 | Items aplicáveis a encantamento | `fortune` |
 | Estruturas por bioma | `desert` |
 | Items necessários para dimensão | `nether` |
-| Encantamentos incompatíveis | `fortune` |
 
-Queries sem input:
+## 11. Estrutura do projeto
 
-| Query |
-|---|
-| Progressão de tiers |
-| Mobs imunes ao fogo |
-| Mobs que ardem à luz do sol |
-| Blocos afetados pela gravidade |
-| Alimentos com maior saturação |
+A organização principal da pasta `Projeto2026` é:
 
-### Extensão da ontologia pela aplicação
+```text
+data/       datasets originais e dados manuais
+ontology/   TBox e ontologia final
+scripts/    exporters e geração da ABox
+webapp/     aplicação Flask
+README.md   relatório do projeto
+```
 
-Exemplos úteis para demonstrar a extensão da ontologia:
+## 12. Limitações
 
-| Funcionalidade | Exemplo |
-|---|---|
-| Adicionar Recurso | criar `test_mob` como `HostileMob` |
-| Adicionar Conhecimento | `test_mob drops gunpowder` |
-| Adicionar Relação válida | `test_mob spawnsIn plains` |
-| Validação de erro | rejeitar `test_mob spawnsIn gunpowder` |
+Alguma informação teve de ser adicionada manualmente porque não se encontrava totalmente disponível ou normalizada no dataset PrismarineJS. Os dados manuais cobrem um subconjunto representativo do domínio, suficiente para demonstrar as queries de competência e a extensibilidade da ontologia.
 
-Após estas operações, os novos dados podem ser consultados nas páginas dos recursos envolvidos.
-
----
-
-## Limitações
-
-Alguma informação de domínio foi adicionada manualmente porque não está totalmente disponível ou normalizada no dataset PrismarineJS.
-
-Os dados manuais cobrem um subconjunto representativo do domínio, suficiente para demonstrar as queries de competência e a extensibilidade da ontologia. A cobertura pode ser aumentada adicionando novas entradas aos ficheiros em `data/manual/` e regenerando a ontologia.
-
----
-
-## Autoria
-
-Projeto desenvolvido para RPCW 2025/2026.
+A cobertura pode ser aumentada adicionando novas entradas aos ficheiros em `data/manual/` e regenerando a ontologia. A aplicação permite inserir conhecimento diretamente no GraphDB, mas essas alterações só se tornam permanentes no ficheiro final se forem exportadas ou integradas nos dados de origem.

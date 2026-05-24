@@ -4,149 +4,119 @@
 {% block page_heading %}Recurso: {{ resource_name }}{% endblock %}
 
 {% block content %}
-<div class="grid-2">
-    <div class="card">
-        <div class="section-header">
-            <div>
-                <h3>Propriedades diretas</h3>
-                <p class="muted">Agrupadas por propriedade.</p>
+<div class="card" style="margin-bottom: 20px;">
+    <div class="home-feature-card">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="{{ url_for('static', filename='icons/' ~ resource_name ~ '.png') }}"
+                    onerror="this.src='{{ url_for('static', filename='icons/name_tag.png') }}'" class="mc-icon"
+                    style="width: 48px; height: 48px;" alt="Icon">
+                <div>
+                    <span class="badge">Item / Recurso</span>
+                    <h3 style="margin-top: 5px; font-size: 18px; color: #ffffff;">{{ resource_name|replace('_', '
+                        ')|title }}</h3>
+                </div>
             </div>
-            <div class="pill">{{ total_direct }} resultados</div>
+            <div style="text-align: right;">
+                <span class="pill" style="display: block; margin-bottom: 5px;">{{ total_direct }} Propriedades</span>
+            </div>
         </div>
-
-        {% if grouped_direct %}
-            <div class="relation-groups">
-                {% for predicate, rows in grouped_direct %}
-                {% set group_index = loop.index %}
-
-                <details class="relation-group" {% if group_index <= 5 %}open{% endif %}>
-                    <summary>
-                        <span>{{ predicate|local_name }}</span>
-                        <span class="pill small-pill">{{ rows|length }}</span>
-                    </summary>
-
-                    <div class="relation-list">
-                        {% for row in rows %}
-                            {% if row.o.value is internal_resource %}
-                                <a
-                                    class="relation-item {% if loop.index > 20 %}hidden-relation hidden-direct-{{ group_index }}{% endif %}"
-                                    href="{{ url_for('ontology.resource_detail', resource_name=row.o.value|local_name) }}"
-                                >
-                                    {{ row.o.value|local_name }}
-                                </a>
-                            {% else %}
-                                <div class="relation-item {% if loop.index > 20 %}hidden-relation hidden-direct-{{ group_index }}{% endif %}">
-                                    {{ row.o.value|local_name }}
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% if rows|length > 20 %}
-                        <button
-                            class="show-more-btn"
-                            type="button"
-                            data-expanded="false"
-                            data-show-text="Ver todos os {{ rows|length }} resultados"
-                            onclick="toggleRelations('direct-{{ group_index }}', this)">
-                            Ver todos os {{ rows|length }} resultados
-                        </button>
-                        {% endif %}
-                    </div>
-                </details>
-                {% endfor %}
-            </div>
-        {% else %}
-        <div class="empty-state compact">
-            <p>Sem propriedades diretas para apresentar.</p>
-        </div>
-        {% endif %}
-    </div>
-
-    <div class="card">
-        <div class="section-header">
-            <div>
-                <h3>Relações inversas</h3>
-                <p class="muted">Agrupadas por propriedade.</p>
-            </div>
-            <div class="pill">{{ total_inverse }} resultados</div>
-        </div>
-
-        {% if grouped_inverse %}
-            <div class="relation-groups">
-                {% for predicate, rows in grouped_inverse %}
-                {% set group_index = loop.index %}
-
-                <details class="relation-group" {% if group_index <= 3 %}open{% endif %}>
-                    <summary>
-                        <span>{{ predicate|local_name }}</span>
-                        <span class="pill small-pill">{{ rows|length }}</span>
-                    </summary>
-
-                    <div class="relation-list">
-                        {% for row in rows %}
-                        <a
-                            class="relation-item {% if loop.index > 20 %}hidden-relation hidden-inverse-{{ group_index }}{% endif %}"
-                            href="{{ url_for('ontology.resource_detail', resource_name=row.s.value|local_name) }}"
-                        >
-                            {{ row.s.value|local_name }}
-                        </a>
-                        {% endfor %}
-
-                        {% if rows|length > 20 %}
-                        <button
-                            class="show-more-btn"
-                            type="button"
-                            data-expanded="false"
-                            data-show-text="Ver todos os {{ rows|length }} resultados"
-                            onclick="toggleRelations('inverse-{{ group_index }}', this)">
-                            Ver todos os {{ rows|length }} resultados
-                        </button>
-                        {% endif %}
-                    </div>
-                </details>
-                {% endfor %}
-            </div>
-
-            {% if total_pages > 1 %}
-            <div class="pagination">
-                {% if page > 1 %}
-                <a class="button button-secondary" href="{{ url_for('ontology.resource_detail', resource_name=resource_name, page=page-1) }}">
-                    Anterior
-                </a>
-                {% endif %}
-
-                <span class="pagination-label">Página {{ page }} de {{ total_pages }}</span>
-
-                {% if page < total_pages %}
-                <a class="button button-secondary" href="{{ url_for('ontology.resource_detail', resource_name=resource_name, page=page+1) }}">
-                    Próxima
-                </a>
-                {% endif %}
-            </div>
-            {% endif %}
-        {% else %}
-        <div class="empty-state compact">
-            <p>Sem relações inversas para apresentar.</p>
-        </div>
-        {% endif %}
     </div>
 </div>
 
-<script>
-function toggleRelations(groupKey, button) {
-    const hiddenItems = document.querySelectorAll('.hidden-' + groupKey);
-    const isExpanded = button.dataset.expanded === "true";
+{% if 'recipe' in resource_name.lower() and 'slot' not in resource_name.lower() %}
+<div class="card" style="margin-bottom: 20px; text-align: center;">
+    <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 20px; color: #333; text-align: left;">
+        Interface de Crafting</h3>
 
-    if (isExpanded) {
-        hiddenItems.forEach(item => item.classList.add('hidden-relation'));
-        button.textContent = button.dataset.showText;
-        button.dataset.expanded = "false";
-    } else {
-        hiddenItems.forEach(item => item.classList.remove('hidden-relation'));
-        button.textContent = "Ocultar resultados";
-        button.dataset.expanded = "true";
-    }
-}
-</script>
+    <div class="gui-container">
+    
+        <div class="gui-grid-3x3">
+            {% for r in range(0, 3) %}
+            {% for c in range(0, 3) %}
+            <div class="gui-slot">
+                {% set item = grid_map.get((r, c)) %}
+                {% if item %}
+                <a href="{{ url_for('ontology.resource_detail', resource_name=item) }}">
+                    <img src="{{ url_for('static', filename='icons/' ~ item ~ '.png') }}"
+                        onerror="this.src='{{ url_for('static', filename='icons/name_tag.png') }}'">
+                </a>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
 
+        <div>
+            <img src="{{ url_for('static', filename='icons/arrow.png') }}" style="width: 48px;">
+        </div>
+
+        <div class="gui-slot large">
+            {% if output_item %}
+            <a href="{{ url_for('ontology.resource_detail', resource_name=output_item) }}">
+                <img src="{{ url_for('static', filename='icons/' ~ output_item ~ '.png') }}"
+                    onerror="this.src='{{ url_for('static', filename='icons/name_tag.png') }}'"
+                    title="{{ output_item|replace('_', ' ')|title }}">
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 15px; color: #333;">Estatísticas e
+        Ligações</h3>
+    <p class="muted" style="font-size: 13px; margin-bottom: 20px;">Informações do recurso (ID, Stack, Encantamentos,
+        etc).</p>
+
+    {% if grouped_direct %}
+    <div class="table-wrapper">
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th style="color: #ffffff; width: 30%;">Propriedade</th>
+                    <th style="color: #ffffff; width: 70%;">Valor(es)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for predicate, rows in grouped_direct %}
+                <tr>
+                    <td
+                        style="color: #1a1a1a; font-size: 12px; vertical-align: middle; padding-top: 14px; padding-bottom: 14px;">
+                        {{ predicate.split('#')[-1] if '#' in predicate else predicate.split('/')[-1] }}
+                    </td>
+
+                    <td style="padding-top: 14px; padding-bottom: 14px;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                            {% for row in rows %}
+                            {% set o_val = row.o.value %}
+
+                            {% if row.o.type == 'uri' %}
+                            {% set local_o = o_val.split('#')[-1] if '#' in o_val else o_val.split('/')[-1] %}
+                            <a href="{{ url_for('ontology.resource_detail', resource_name=local_o) }}"
+                                style="background-color: #2b2b2b; border: 2px solid #000; color: #fff; padding: 8px 12px; font-family: var(--font-pixel); font-size: 9px; text-decoration: none; display: inline-block; box-shadow: inset 2px 2px 0px 0px #555, inset -2px -2px 0px 0px #111;">
+                                {{ local_o|replace('_', ' ') }}
+                            </a>
+                            {% else %}
+                            <span
+                                style="color: #ffffff; font-family: var(--font-body); font-weight: bold; font-size: 15px; background: #1a1a1a; padding: 6px 12px; border: 2px solid #444;">
+                                {{ o_val }}
+                            </span>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <h4>Sem dados</h4>
+        <p>Este recurso não possui propriedades ou estatísticas na ontologia.</p>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}
