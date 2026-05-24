@@ -94,7 +94,7 @@ def resource_detail(resource_name):
     grid_map = {}
     output_item = None
     
-    if "recipe" in resource_name.lower():
+    if "recipe" in resource_name.lower() and "slot" not in resource_name.lower():
         # Usamos ?slotRow e ?slotColumn no SELECT para bater certo com o Python!
         # E colocamos o produces num OPTIONAL por segurança.
         query = f"""

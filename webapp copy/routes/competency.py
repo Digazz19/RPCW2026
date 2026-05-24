@@ -143,3 +143,36 @@ def competency():
         query_options=QUERY_OPTIONS,
         error=error,
     )
+
+@competency_bp.route("/sparql", methods=["GET", "POST"])
+def sparql_livre():
+    query = request.form.get("sparql_query", "").strip()
+    result = None
+    error = None
+    
+    # Query sugerida por omissão para ajudar o utilizador ao entrar na aba
+    if request.method == "GET":
+        query = """PREFIX : <http://rpcw.di.uminho.pt/2026/minecraft/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?s ?p ?o
+WHERE {
+    ?s ?p ?o .
+}
+LIMIT 20"""
+
+    if request.method == "POST":
+        if not query:
+            error = "O bloco de comandos não pode executar uma query vazia."
+        else:
+            try:
+                result = run_select(query)
+            except Exception as e:
+                error = str(e)
+
+    return render_template(
+        "sparql.html",
+        query=query,
+        result=result,
+        error=error
+    )
