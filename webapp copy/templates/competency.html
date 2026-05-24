@@ -36,12 +36,19 @@
                     type="text"
                     name="input_value"
                     id="input_value"
+                    list="resource-list"
                     value="{{ input_value or '' }}"
-                    placeholder="Ex.: torch, creeper, diamond_ore, fortune"
+                    placeholder="Começa a escrever para pesquisar..."
+                    autocomplete="off"
                     style="width: 100%;"
                 >
+                <datalist id="resource-list">
+                    {% for name in resource_names %}
+                    <option value="{{ name }}">
+                    {% endfor %}
+                </datalist>
                 <p class="muted" style="font-size: 11px; margin-top: 8px;">
-                    Usa o nome local do recurso. Ex: <code style="color: #55ff55; background: #222; padding: 2px 4px;">torch</code>, <code style="color: #55ff55; background: #222; padding: 2px 4px;">creeper</code>.
+                    Usa o nome local do recurso. Ex: <code style="color: #55ff55; background: #222; padding: 2px 4px;">torch</code>, <code style="color: #55ff55; background: #222; padding: 2px 4px;">creeper</code>. Escreve para filtrar a lista.
                 </p>
             </div>
 
@@ -126,12 +133,9 @@
         const select = document.getElementById("query_type");
         const selected = select.options[select.selectedIndex];
         const needsInput = selected.dataset.needsInput === "true";
-        const placeholder = selected.dataset.placeholder || "Ex.: torch";
 
         const inputGroup = document.getElementById("input-group");
         const input = document.getElementById("input_value");
-
-        input.placeholder = placeholder;
 
         if (needsInput) {
             inputGroup.style.display = "block";

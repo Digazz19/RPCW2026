@@ -105,6 +105,27 @@ QUERY_OPTIONS = {
 
 competency_bp = Blueprint("competency", __name__)
 
+
+def fetch_resource_names():
+    """Busca todos os nomes locais de recursos da ontologia."""
+    query = """
+    PREFIX : <http://rpcw.di.uminho.pt/2026/minecraft/>
+
+    SELECT DISTINCT ?name WHERE {
+        ?s a ?type .
+        FILTER(STRSTARTS(STR(?s), STR(:)))
+        BIND(STRAFTER(STR(?s), STR(:)) AS ?name)
+        FILTER(?name != "")
+    }
+    ORDER BY ?name
+    """
+    try:
+        result = run_select(query)
+        return [row["name"]["value"] for row in result["results"]["bindings"]]
+    except Exception:
+        return []
+
+
 @competency_bp.route("/", methods=["GET", "POST"])
 def competency():
     result = None
@@ -126,14 +147,18 @@ def competency():
             else:
                 from services.queries import get_recipe_output_query
                 query = get_recipe_output_query(input_value)
-
-        
+                try:
+                    result = run_select(query)
+                except Exception as e:
+                    error = str(e)
         else:
             try:
                 query = option["builder"](input_value)
                 result = run_select(query)
             except Exception as e:
                 error = str(e)
+
+    resource_names = fetch_resource_names()
 
     return render_template(
         "competency.html",
@@ -142,14 +167,16 @@ def competency():
         input_value=input_value,
         query_options=QUERY_OPTIONS,
         error=error,
+        resource_names=resource_names,
     )
+
 
 @competency_bp.route("/sparql", methods=["GET", "POST"])
 def sparql_livre():
     query = request.form.get("sparql_query", "").strip()
     result = None
     error = None
-    
+
     if request.method == "GET":
         query = """PREFIX : <http://rpcw.di.uminho.pt/2026/minecraft/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
