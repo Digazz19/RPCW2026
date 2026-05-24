@@ -8,8 +8,8 @@
     <div class="home-feature-card">
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center; gap: 15px;">
-                <img src="{{ url_for('static', filename='icons2/' ~ resource_name ~ '.png') }}"
-                    onerror="this.src='{{ url_for('static', filename='icons2/name_tag.png') }}'" class="mc-icon"
+                <img src="{{ url_for('static', filename='icons/' ~ resource_name ~ '.png') }}"
+                    onerror="this.src='{{ url_for('static', filename='icons/name_tag.png') }}'" class="mc-icon"
                     style="width: 48px; height: 48px;" alt="Icon">
                 <div>
                     <span class="badge">Item / Recurso</span>
@@ -38,8 +38,8 @@
                 {% set item = grid_map.get((r, c)) %}
                 {% if item %}
                 <a href="{{ url_for('ontology.resource_detail', resource_name=item) }}">
-                    <img src="{{ url_for('static', filename='icons2/' ~ item ~ '.png') }}"
-                        onerror="this.src='{{ url_for('static', filename='icons2/name_tag.png') }}'">
+                    <img src="{{ url_for('static', filename='icons/' ~ item ~ '.png') }}"
+                        onerror="this.src='{{ url_for('static', filename='icons/name_tag.png') }}'">
                 </a>
                 {% endif %}
             </div>
@@ -48,14 +48,14 @@
         </div>
 
         <div>
-            <img src="{{ url_for('static', filename='icons2/arrow.png') }}" style="width: 48px;">
+            <img src="{{ url_for('static', filename='icons/arrow.png') }}" style="width: 48px;">
         </div>
 
         <div class="gui-slot large">
             {% if output_item %}
             <a href="{{ url_for('ontology.resource_detail', resource_name=output_item) }}">
-                <img src="{{ url_for('static', filename='icons2/' ~ output_item ~ '.png') }}"
-                    onerror="this.src='{{ url_for('static', filename='icons2/name_tag.png') }}'"
+                <img src="{{ url_for('static', filename='icons/' ~ output_item ~ '.png') }}"
+                    onerror="this.src='{{ url_for('static', filename='icons/name_tag.png') }}'"
                     title="{{ output_item|replace('_', ' ')|title }}">
             </a>
             {% endif %}

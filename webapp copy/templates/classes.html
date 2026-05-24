@@ -14,7 +14,7 @@
     <div class="inventory-grid">
         {% for cls in classes %}
         <a class="inventory-slot" href="{{ url_for('ontology.class_detail', class_name=cls) }}">
-            <img src="{{ url_for('static', filename='icons2/enchanted_book.png') }}" class="mc-icon" alt="Class">
+            <img src="{{ url_for('static', filename='icons/enchanted_book.png') }}" class="mc-icon" alt="Class">
             <span>{{ cls }}</span>
         </a>
         {% endfor %}
