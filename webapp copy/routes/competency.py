@@ -150,7 +150,6 @@ def sparql_livre():
     result = None
     error = None
     
-    # Query sugerida por omissão para ajudar o utilizador ao entrar na aba
     if request.method == "GET":
         query = """PREFIX : <http://rpcw.di.uminho.pt/2026/minecraft/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>

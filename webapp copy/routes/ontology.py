@@ -56,7 +56,6 @@ def resource_detail(resource_name):
         if not is_blank_node_value(s_value):
             clean_inverse.append(row)
 
-    # Agrupar propriedades diretas por predicado
     grouped_direct = defaultdict(list)
 
     for row in clean_direct:
@@ -65,7 +64,6 @@ def resource_detail(resource_name):
 
     grouped_direct = dict(sorted(grouped_direct.items(), key=lambda item: item[0]))
 
-    # Agrupar relações inversas por predicado
     grouped_inverse = defaultdict(list)
 
     for row in clean_inverse:
@@ -74,7 +72,7 @@ def resource_detail(resource_name):
 
     grouped_inverse = dict(sorted(grouped_inverse.items(), key=lambda item: item[0]))
 
-    # Paginação só para grupos inversos, como já tinhas
+    # Paginação
     group_items = list(grouped_inverse.items())
     total_groups = len(group_items)
     total_pages = max((total_groups + per_page - 1) // per_page, 1)
@@ -90,13 +88,12 @@ def resource_detail(resource_name):
 
     paginated_inverse_groups = group_items[start:end]
 
-    # === NOVA LÓGICA: GRELHA 3x3 BASEADA EM COORDENADAS ===
+    # RELHA 3x3 BASEADA EM COORDENADAS ===
     grid_map = {}
     output_item = None
     
     if "recipe" in resource_name.lower() and "slot" not in resource_name.lower():
-        # Usamos ?slotRow e ?slotColumn no SELECT para bater certo com o Python!
-        # E colocamos o produces num OPTIONAL por segurança.
+
         query = f"""
         PREFIX : <http://rpcw.di.uminho.pt/2026/minecraft/>
         SELECT ?slotRow ?slotColumn ?item ?outputItem
@@ -111,19 +108,18 @@ def resource_detail(resource_name):
         grid_data = run_select(query)
         
         for row in grid_data["results"]["bindings"]:
-            # Agora os nomes das colunas batem certo!
             r = int(row["slotRow"]["value"])
             c = int(row["slotColumn"]["value"])
             uri = row["item"]["value"]
             item_name = uri.split('#')[-1] if '#' in uri else uri.split('/')[-1]
             grid_map[(r, c)] = item_name
 
-            # Verifica se a receita tem output (devido ao OPTIONAL)
+
             if not output_item and "outputItem" in row:
                 out_uri = row["outputItem"]["value"]
                 output_item = out_uri.split('#')[-1] if '#' in out_uri else out_uri.split('/')[-1]
 
-    # O resto do código (render_template) fica igual:
+
     return render_template(
         "resource_detail.html",
         resource_name=resource_name,
